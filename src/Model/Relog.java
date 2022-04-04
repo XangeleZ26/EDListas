@@ -84,6 +84,7 @@ public class Relog implements Runnable {
         Thread ex = Thread.currentThread();
         while (ex == hilo) {
             hora();
+            
             if (this.horaActual.equalsIgnoreCase("00:00")) {
                 fecha();
             }
@@ -103,7 +104,7 @@ public class Relog implements Runnable {
                 }
             }
             try {
-                Thread.sleep(50 * 1000); //colocar 58*1000
+                Thread.sleep(10 * 1000); //colocar 58*1000
 
             } catch (InterruptedException e) {
             }

@@ -22,12 +22,12 @@ public class ProductoPanel extends javax.swing.JPanel {
     public ProductoPanel() {
         initComponents();
         btnCancelarBusqueda.setVisible(false);
-        
+
         this.grupoBtnEliminar.add(this.RadioElimSelect);
         this.grupoBtnEliminar.add(this.RadioElimVencido);
-        
+
         this.RadioElimSelect.setSelected(true);
-        
+
 //        ImageIcon user=new ImageIcon(getClass().getResource("../Images/cerrar.png"));
 //        Icon userZ=new ImageIcon(user.getImage().getScaledInstance(this.btnCancelarBusqueda.getWidth(),this.btnCancelarBusqueda.getHeight(),Image.SCALE_DEFAULT));
 //        this.btnCancelarBusqueda.setIcon(userZ);
@@ -184,27 +184,31 @@ public class ProductoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
-        if(Buscadortxt.getText().equals("Ingrese nombre del producto")){
+        if (Buscadortxt.getText().equals("Ingrese nombre del producto")) {
             Buscadortxt.setText("");
             Buscadortxt.setForeground(Color.black);
         }
-     Buscadortxt.getCaret().setVisible(true);
+        tableProducto.clearSelection();
+        Buscadortxt.getCaret().setVisible(true);
     }//GEN-LAST:event_BuscadortxtMousePressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-            if(Buscadortxt.getText().isEmpty()){
+        if (Buscadortxt.getText().isEmpty()) {
             Buscadortxt.setText("Ingrese nombre del producto");
             Buscadortxt.setForeground(Color.gray);
-        } 
-            Buscadortxt.getCaret().setVisible(false);
+        }
+        
+        tableProducto.clearSelection();
+        Buscadortxt.getCaret().setVisible(false);
     }//GEN-LAST:event_formMousePressed
 
     private void tableProductoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductoMousePressed
-        if(Buscadortxt.getText().isEmpty()){
+        if (Buscadortxt.getText().isEmpty()) {
             Buscadortxt.setText("Ingrese nombre del producto");
             Buscadortxt.setForeground(Color.gray);
-        } 
-            Buscadortxt.getCaret().setVisible(false);
+        }
+        tableProducto.setDefaultEditor(Object.class, null);
+        Buscadortxt.getCaret().setVisible(false);
     }//GEN-LAST:event_tableProductoMousePressed
 
 

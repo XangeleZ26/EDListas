@@ -28,6 +28,5 @@ public class App {
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
         }}
-
     }
 }

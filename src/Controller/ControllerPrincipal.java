@@ -20,8 +20,12 @@ public class ControllerPrincipal {
 //        Configuracion.arrProductos.agregar(aa);
 //        Producto zz = new Producto("zzz", "desayuno", "VIGENTE","30/04/2022", "123", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(zz);
+//        Producto ae = new Producto("zzz", "desayuno", "VIGENTE","30/04/2022", "534", 100, 20, 12, 1200);
+//        Configuracion.arrProductos.agregar(ae);
 //        Producto xd = new Producto("Cocoa", "desayuno", "VIGENTE","01/04/2022", "34", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(xd);
+//        Producto qw = new Producto("cereal", "desayuno", "VIGENTE","04/04/2022", "865", 100, 20, 12, 1200);
+//        Configuracion.arrProductos.agregar(qw);
 //
 //
 //    //ESTE ALGORTIMO DE SERIALIZACION DEBE SER AGREGADO INMEDIATAMENTE DESPUÉS 

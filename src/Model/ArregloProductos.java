@@ -56,27 +56,81 @@ public class ArregloProductos implements Serializable {
         return false;
     }
 
-    public boolean eliminar(Producto producto) {
-        boolean resultado = false;
-        if (!this.estaVacio()) {
-            int encontrado = this.buscar(producto.getNumberEtiqueta());
-            if (encontrado >= 0) {
-                moverElementosParaEliminar(encontrado);
-                resultado = true;
+//    public boolean eliminar(Producto producto) {
+//        boolean resultado = false;
+//        if (!this.estaVacio()) {
+//            int encontrado = this.buscar(producto.getNumberEtiqueta());
+//            if (encontrado >= 0) {
+//                moverElementosParaEliminar(encontrado);
+//                resultado = true;
+//            }
+//        }
+//        return resultado;
+//    }
+    
+public void colocarNullParaVencidos(){
+
+      for(int i=0;i<this.indice;i++){
+          if(this.arregloP[i].getEstado().equals("VENCIDO")){
+//              System.out.println(i+" "+this.arregloP[i].getNumberEtiqueta()+" "+this.arregloP[i].getEstado());
+              this.arregloP[i].setEstado("ELIMINANDO");
+          }
+      }
+
+//      int indiceExtra=0;
+//      Producto productoExtra[]=new Producto[5];
+//      for(int i=0;i<this.indice;i++){
+//          if(this.arregloP[i]!=null){
+//              
+//          }
+//      }
+        //Primero se debe encontrar el orden del objeto en el arreglo
+//        for(int i=0; i<this.indice && orden==-1 ;i++){
+//            if(producto == this.arregloP[i]){
+//                orden=i;
+//                result = true; //LOS PRODUCTOS VENCIDOS PASAN CORRECTAMENTE A ESTE METODO
+//                System.out.println(i+" "+producto.getNumberEtiqueta()+" "+producto.getEstado());
+//            }
+//        }
+        //Una vez ubicado el orden del objeto, se borra copiando los objetos de adelante hacia atrás
+//        if(result==true){
+//        for(int i=orden; i<this.indice-1; i++){
+//            this.arregloP[i] = this.arregloP[i+1];
+//        } 
+//        //Se borra el espacio en memoria sobrante y se modifica la cantidad y el orden de objetos
+//        this.arregloP[this.indice-1] = null;
+//        this.indice--;
+//        }
+        }
+public void eliminarPorCodigo(String codigo){
+        boolean result = false;
+        int orden=-1;
+        //Primero se debe encontrar el orden del objeto en el arreglo
+        for(int i=0; i<this.indice && orden==-1 ;i++){
+            if(codigo == this.arregloP[i].getNumberEtiqueta()){
+                orden=i;
+                result = true;
             }
         }
-        return resultado;
-    }
-
-    public boolean eliminar(String codigo) {
-        boolean resultado = false;
-        int encontrado = this.buscar(codigo);
-        if (encontrado >= 0) {
-            moverElementosParaEliminar(encontrado);
-            resultado = true;
+        //Una vez ubicado el orden del objeto, se borra copiando los objetos de adelante hacia atrás
+        if(result==true){
+        for(int i=orden; i<this.indice-1; i++){
+            this.arregloP[i] = this.arregloP[i+1];
+        } 
+        //Se borra el espacio en memoria sobrante y se modifica la cantidad y el orden de objetos
+        this.arregloP[this.indice-1] = null;
+        this.indice--;
         }
-        return resultado;
-    }
+        }
+//    public boolean eliminar(String codigo) {
+//        boolean resultado = false;
+//        int encontrado = this.buscar(codigo);
+//        if (encontrado >= 0) {
+//            moverElementosParaEliminar(encontrado);
+//            resultado = true;
+//        }
+//        return resultado;
+//    }
 
     // Metodos para apoyar el proceso de eliminacion
     public int buscar(String codigo) {
@@ -107,7 +161,7 @@ public class ArregloProductos implements Serializable {
         }
         return null;
     }
-
+    
     public boolean documentoRegistrado(String codigo) {
         for (int i = 0; i < this.indice; i++) {
             if (arregloP[i].getNumberEtiqueta().equals(codigo)) {
@@ -192,3 +246,5 @@ public class ArregloProductos implements Serializable {
     }
 
 }
+
+   
