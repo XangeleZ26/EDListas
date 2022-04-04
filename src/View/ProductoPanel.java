@@ -6,6 +6,9 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,6 +21,17 @@ public class ProductoPanel extends javax.swing.JPanel {
      */
     public ProductoPanel() {
         initComponents();
+        btnCancelarBusqueda.setVisible(false);
+        
+        this.grupoBtnEliminar.add(this.RadioElimSelect);
+        this.grupoBtnEliminar.add(this.RadioElimVencido);
+        
+        this.RadioElimSelect.setSelected(true);
+        
+//        ImageIcon user=new ImageIcon(getClass().getResource("../Images/cerrar.png"));
+//        Icon userZ=new ImageIcon(user.getImage().getScaledInstance(this.btnCancelarBusqueda.getWidth(),this.btnCancelarBusqueda.getHeight(),Image.SCALE_DEFAULT));
+//        this.btnCancelarBusqueda.setIcon(userZ);
+//         this.repaint();
     }
 
     /**
@@ -29,18 +43,26 @@ public class ProductoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoBtnEliminar = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducto = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         Buscadortxt = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnModif = new javax.swing.JButton();
-        btnElim = new javax.swing.JButton();
         comboOrdenar = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        RadioElimVencido = new javax.swing.JRadioButton();
+        RadioElimSelect = new javax.swing.JRadioButton();
         cantidadProductos = new javax.swing.JLabel();
         btnLupa = new javax.swing.JLabel();
+        btnCancelarBusqueda = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        comboOrdenar1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        btnElim = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,6 +99,7 @@ public class ProductoPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
+        tableProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tableProductoMousePressed(evt);
@@ -86,14 +109,14 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 69, 760, 348));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Cantidad de productos: ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 435, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel3.setText("Eliminar:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, 50, 30));
 
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
         Buscadortxt.setText("Ingrese nombre del producto");
-        Buscadortxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Buscadortxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Buscadortxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BuscadortxtMousePressed(evt);
@@ -102,38 +125,70 @@ public class ProductoPanel extends javax.swing.JPanel {
         add(Buscadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 242, 30));
 
         btnAgregar.setText("Agregar");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 461, 91, 37));
 
         btnModif.setText("Modificar");
+        btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 460, 95, 39));
 
-        btnElim.setText("Eliminar");
-        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 460, 95, 39));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
+        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 130, 28));
 
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Mayores ventas", "Valor de stock", "Stock inicial", "Stock actual", "Nombre producto", " " }));
-        add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 120, 28));
+        RadioElimVencido.setText("Productos vencidos");
+        RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 390, -1, -1));
 
-        jRadioButton1.setText("mayor a menor");
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 190, -1, -1));
-
-        jRadioButton2.setText("menor a mayor");
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, -1, -1));
+        RadioElimSelect.setText("Por selección");
+        RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, -1, -1));
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cantidadProductos.setText("jLabel1");
         add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 60, 30));
 
         btnLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupita.png"))); // NOI18N
-        add(btnLupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 40, 30));
+        btnLupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnLupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 40, 30));
+
+        btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
+        btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnCancelarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 30, 30));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel4.setText("Cantidad de productos: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 435, -1, -1));
+
+        comboOrdenar1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Mayores ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto", " ", " " }));
+        comboOrdenar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(comboOrdenar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Ordenar por:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, -1, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setText("Filtro:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 50, 30));
+
+        jRadioButton3.setText("menor a mayor");
+        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, -1, -1));
+
+        jRadioButton4.setText("mayor a menor");
+        add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, -1, -1));
+
+        btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
+        btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 60, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
         if(Buscadortxt.getText().equals("Ingrese nombre del producto")){
             Buscadortxt.setText("");
-            Buscadortxt.getCaret().setVisible(true);
             Buscadortxt.setForeground(Color.black);
         }
-     
+     Buscadortxt.getCaret().setVisible(true);
     }//GEN-LAST:event_BuscadortxtMousePressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -155,15 +210,23 @@ public class ProductoPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
+    public javax.swing.JRadioButton RadioElimSelect;
+    public javax.swing.JRadioButton RadioElimVencido;
     public javax.swing.JButton btnAgregar;
-    public javax.swing.JButton btnElim;
+    public javax.swing.JLabel btnCancelarBusqueda;
+    public javax.swing.JLabel btnElim;
     public javax.swing.JLabel btnLupa;
     public javax.swing.JButton btnModif;
     public javax.swing.JLabel cantidadProductos;
     public javax.swing.JComboBox<String> comboOrdenar;
+    public javax.swing.JComboBox<String> comboOrdenar1;
+    public javax.swing.ButtonGroup grupoBtnEliminar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tableProducto;
     // End of variables declaration//GEN-END:variables

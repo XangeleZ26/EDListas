@@ -2,10 +2,12 @@ package Controller;
 
 import Model.*;
 import View.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerProductoPanel {
@@ -16,7 +18,8 @@ public class ControllerProductoPanel {
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
         this.arrProductos = Configuracion.arrProductos;
-
+        Object[] opciones={"Aceptar","Cancelar"};
+        
         this.frmProducto.btnLupa.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e){
@@ -24,17 +27,44 @@ public class ControllerProductoPanel {
             
                    if (frmProducto.Buscadortxt.getText().isEmpty()||frmProducto.Buscadortxt.getText().equalsIgnoreCase("Ingrese nombre del producto")) {
                     arrProductos = Configuracion.arrProductos;
-                       System.out.println(arrProductos.getArregloP()[1].getNombreProducto());
+                    frmProducto.btnCancelarBusqueda.setVisible(false);
                 } else {
 
                     paraBuscar(frmProducto.Buscadortxt.getText().trim());
+                    frmProducto.btnCancelarBusqueda.setVisible(true);
                 }
                 llenarTabla();
                 frmProducto.cantidadProductos.setText(Integer.toString(arrProductos.getIndice()));
                 
         }        
         });
-
+       this.frmProducto.btnCancelarBusqueda.addMouseListener(new MouseAdapter() {
+       @Override
+       public void mouseClicked(MouseEvent e){
+           frmProducto.Buscadortxt.getCaret().setVisible(false);
+           frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
+           frmProducto.Buscadortxt.setForeground(Color.gray);
+           arrProductos = Configuracion.arrProductos;
+           llenarTabla();
+           frmProducto.btnCancelarBusqueda.setVisible(false);
+       }
+       });
+       this.frmProducto.btnElim.addMouseListener(new MouseAdapter() {
+       @Override
+       public void mouseClicked(MouseEvent e){
+     
+           if(frmProducto.RadioElimSelect.isSelected()){
+               
+             int xd=JOptionPane.showOptionDialog(null,"Está seguro que desea eliminar este stock?",null,0,0,null, opciones,opciones[1]);
+             if(xd==0){
+                 System.out.println("XD");
+             }
+           }
+           if(frmProducto.RadioElimVencido.isSelected()){
+               JOptionPane.showMessageDialog(null,"AAA");
+           }
+       }
+       });
     }
 
     public void paraBuscar(String dato) {

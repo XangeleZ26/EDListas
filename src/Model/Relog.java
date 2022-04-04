@@ -88,7 +88,7 @@ public class Relog implements Runnable {
                 fecha();
             }
             for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-                if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("ACTIVO")) {
+                if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
                     if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
                         Configuracion.arrProductos.getArregloP()[i].setEstado("VENCIDO");
 
