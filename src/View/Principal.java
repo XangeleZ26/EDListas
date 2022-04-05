@@ -419,7 +419,7 @@ public class Principal extends javax.swing.JFrame {
     private void panelFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFacturaMouseClicked
         reset(3);
         ControllerFacturasPanel Ep = new ControllerFacturasPanel();
-        Ep.getFrmFactura().setSize(800, 600);
+        Ep.getFrmFactura().setSize(950, 600);
         Ep.getFrmFactura().setLocation(0, 0);
         panelCambiante.removeAll();
         panelCambiante.add(Ep.getFrmFactura(), BorderLayout.CENTER);

@@ -2,6 +2,8 @@
 package Model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ArregloFacturas implements Serializable{
     
@@ -31,7 +33,8 @@ public class ArregloFacturas implements Serializable{
             tmp[i][0] = this.arregloF[i].getNombre();
             tmp[i][1] = this.arregloF[i].getCodigo();
             tmp[i][2] = this.arregloF[i].getProducto();
-            tmp[i][3] = this.arregloF[i].getFechaVenta();
+            SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+            tmp[i][3] = formateadorFecha.format(this.arregloF[i].getFechaVenta());
             tmp[i][4] = this.arregloF[i].getCantidad();
             tmp[i][5] = this.arregloF[i].getMonto()*this.arregloF[i].getCantidad();
         }
