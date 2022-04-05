@@ -11,7 +11,6 @@ public class App {
         ControllerViewLogin controller=new ControllerViewLogin();
         controller.run();
         
-        
         File archivoProductos=new File("archivoProductos.txt");
         if(archivoProductos.exists()){
         try {
@@ -30,6 +29,5 @@ public class App {
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
         }}
-
     }
 }

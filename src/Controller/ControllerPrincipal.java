@@ -13,14 +13,18 @@ public class ControllerPrincipal {
         vista = new Principal();
 //       //ESTOS PRODUCTOS YA LOS TENGO AGREGADOS EN EL ARCHIVO
 //        
-//        Producto produccion = new Producto("Cocoa", "desayuno", "ACTIVO", "10/04/2021", "12", 100, 20, 12, 1200);
+//        Producto produccion = new Producto("Cocoa", "desayuno", "VIGENTE", "10/04/2021", "12", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(produccion);
-//        Producto aa = new Producto("XD", "desayuno", "ACTIVO","10/03/2022", "11", 100, 20, 12, 1200);
+//        Producto aa = new Producto("XD", "desayuno", "VIGENTE","10/03/2022", "11", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(aa);
-//        Producto zz = new Producto("zzz", "desayuno", "ACTIVO","30/04/2022", "123", 100, 20, 12, 1200);
+//        Producto zz = new Producto("zzz", "desayuno", "VIGENTE","30/04/2022", "123", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(zz);
-//        Producto xd = new Producto("Cocoa", "desayuno", "ACTIVO","01/04/2022", "34", 100, 20, 12, 1200);
+//        Producto ae = new Producto("zzz", "desayuno", "VIGENTE","30/04/2022", "534", 100, 20, 12, 1200);
+//        Configuracion.arrProductos.agregar(ae);
+//        Producto xd = new Producto("Cocoa", "desayuno", "VIGENTE","01/04/2022", "34", 100, 20, 12, 1200);
 //        Configuracion.arrProductos.agregar(xd);
+//        Producto qw = new Producto("cereal", "desayuno", "VIGENTE","04/04/2022", "865", 100, 20, 12, 1200);
+//        Configuracion.arrProductos.agregar(qw);
 //
 //
 //    //ESTE ALGORTIMO DE SERIALIZACION DEBE SER AGREGADO INMEDIATAMENTE DESPUÉS 
