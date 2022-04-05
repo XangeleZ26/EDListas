@@ -50,19 +50,21 @@ public class ProductoPanel extends javax.swing.JPanel {
         Buscadortxt = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnModif = new javax.swing.JButton();
-        comboOrdenar = new javax.swing.JComboBox<>();
+        comboFiltro = new javax.swing.JComboBox<>();
         RadioElimVencido = new javax.swing.JRadioButton();
         RadioElimSelect = new javax.swing.JRadioButton();
         cantidadProductos = new javax.swing.JLabel();
         btnLupa = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        comboOrdenar1 = new javax.swing.JComboBox<>();
+        comboOrdenar = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         btnElim = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnAplicarCambios = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +113,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Eliminar:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, 50, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 360, 50, 30));
 
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
@@ -132,17 +134,17 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 460, 95, 39));
 
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
-        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 130, 28));
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
+        comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, 130, 28));
 
         RadioElimVencido.setText("Productos vencidos");
         RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 390, -1, -1));
+        add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, -1));
 
         RadioElimSelect.setText("Por selección");
         RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, -1, -1));
+        add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, -1, -1));
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cantidadProductos.setText("jLabel1");
@@ -160,9 +162,9 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel4.setText("Cantidad de productos: ");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 435, -1, -1));
 
-        comboOrdenar1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Mayores ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto", " ", " " }));
-        comboOrdenar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(comboOrdenar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Mayores ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Ordenar por:");
@@ -170,17 +172,24 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Filtro:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 50, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 50, 30));
 
         jRadioButton3.setText("menor a mayor");
-        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, -1, -1));
+        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
         jRadioButton4.setText("mayor a menor");
-        add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, -1, -1));
+        add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
 
         btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
         btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 60, 50));
+        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 460, 60, 50));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAplicarCambios.setText("Aplicar cambios");
+        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 110, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 150, 280));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
@@ -217,18 +226,20 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JRadioButton RadioElimSelect;
     public javax.swing.JRadioButton RadioElimVencido;
     public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnAplicarCambios;
     public javax.swing.JLabel btnCancelarBusqueda;
     public javax.swing.JLabel btnElim;
     public javax.swing.JLabel btnLupa;
     public javax.swing.JButton btnModif;
     public javax.swing.JLabel cantidadProductos;
+    public javax.swing.JComboBox<String> comboFiltro;
     public javax.swing.JComboBox<String> comboOrdenar;
-    public javax.swing.JComboBox<String> comboOrdenar1;
     public javax.swing.ButtonGroup grupoBtnEliminar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;

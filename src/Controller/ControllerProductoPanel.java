@@ -20,21 +20,57 @@ public class ControllerProductoPanel {
         this.Productos = Configuracion.arrProductos;
         Object[] opciones = {"Aceptar", "Cancelar"};
 
+        //PRIORIDAD PARA LLENAR EL VECTOR DE ArregloProductos:
+        //  1. BUSCADOR
+        //  2. FILTRO
+        //  3. ORDENAMIENTO
         this.frmProducto.btnLupa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
                 if (frmProducto.Buscadortxt.getText().isEmpty() || frmProducto.Buscadortxt.getText().equalsIgnoreCase("Ingrese nombre del producto")) {
+                    //if el boton aplicar cambios esta siendo usado en filtro u ordenamiento,
+                    //entonces que esto no suceda
                     Productos = Configuracion.arrProductos;
+                    
                     frmProducto.btnCancelarBusqueda.setVisible(false);
                 } else {
-
+                    // 1° PRIORIDAD: BUSCADOR
                     paraBuscar(frmProducto.Buscadortxt.getText().trim());
                     frmProducto.btnCancelarBusqueda.setVisible(true);
+                    //si busca algo, que el filtro y el ordenamiento se resetee
+                    
                 }
+
                 llenarTabla();
                 frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
 
+            }
+        });
+        this.frmProducto.btnAplicarCambios.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              // 2° PRIORIDAD: FILTRO
+                    switch(frmProducto.comboFiltro.getSelectedIndex()){
+                        case 0:{ //sin filtro
+                            break;
+                        }
+                        case 1:{ //stocks vencidos
+                            
+                        }
+                        case 2:{ //stocks vigentes
+                            
+                        }
+                        case 3:{ //stocks acabados
+                            
+                        }
+                        case 4:{ //stocks activos
+                            
+                        }
+                    }
+                // 3° PRIORIDAD: ORDENAMIENTO
+                
+                
             }
         });
         this.frmProducto.btnCancelarBusqueda.addMouseListener(new MouseAdapter() {
@@ -45,6 +81,8 @@ public class ControllerProductoPanel {
                 frmProducto.Buscadortxt.setForeground(Color.gray);
                 frmProducto.btnCancelarBusqueda.setVisible(false);
                 Productos = Configuracion.arrProductos;
+                frmProducto.comboFiltro.setSelectedIndex(0); //para que vuelva a apuntar a "Sin filtro"
+                
                 llenarTabla();
             }
         });
