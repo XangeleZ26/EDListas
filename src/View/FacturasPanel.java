@@ -162,7 +162,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         panelRegistrar.setLayout(panelRegistrarLayout);
         panelRegistrarLayout.setHorizontalGroup(
             panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(textRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
         );
         panelRegistrarLayout.setVerticalGroup(
             panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +239,7 @@ public class FacturasPanel extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -317,9 +317,13 @@ public class FacturasPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textMontoKeyTyped
     private void agregar(){
+        SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+        dtm = (DefaultTableModel) tblDatos.getModel();
         dtm.addRow(new Object[] {
-            textNombre.getText(),""+(dtm.getRowCount()) ,
+            textNombre.getText(),
+            ""+(dtm.getRowCount()),
             productoSeleccionado.getText(),
+            formateadorFecha.format(new Date()),
             textCantidad.getText(),
             Integer.parseInt(textCantidad.getText())
                     *Float.parseFloat(textMonto.getText())});
@@ -330,12 +334,12 @@ public class FacturasPanel extends javax.swing.JPanel {
                 productoSeleccionado.getText(),
                 new Date(),
                 Integer.parseInt(textCantidad.getText()),
-                Integer.parseInt(textCantidad.getText())*
-                        Float.parseFloat(textMonto.getText())));
+                Float.parseFloat(textMonto.getText())*
+                        Integer.parseInt(textCantidad.getText())));
                     
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
-                    
+            System.out.println(" Prueba"+Configuracion.arrFacturas);
         } catch (IOException ex) {
             //F
         }

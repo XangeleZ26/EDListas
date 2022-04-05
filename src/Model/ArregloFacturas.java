@@ -145,4 +145,11 @@ public class ArregloFacturas implements Serializable{
     public void setIndice(int indice) {
         this.indice = indice;
     }
+
+    @Override
+    public String toString() {
+        return "ArregloFacturas{" + "arregloF=" + arregloF + ", indice=" + indice + '}';
+    }
+    
+    
 }
