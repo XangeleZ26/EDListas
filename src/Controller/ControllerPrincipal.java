@@ -37,7 +37,7 @@ public class ControllerPrincipal {
 //
 //        }
 
-
+    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("holacuatrovecesxdnombrelargodelmundo");
     }
 
     public void run() {

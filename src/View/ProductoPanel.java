@@ -22,7 +22,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public ProductoPanel() {
         initComponents();
         btnCancelarBusqueda.setVisible(false);
-
+        this.filtroCategoriastxt.setVisible(false);
         this.grupoBtnEliminar.add(this.RadioElimSelect);
         this.grupoBtnEliminar.add(this.RadioElimVencido);
 
@@ -50,7 +50,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         Buscadortxt = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnModif = new javax.swing.JButton();
-        comboFiltro = new javax.swing.JComboBox<>();
         RadioElimVencido = new javax.swing.JRadioButton();
         RadioElimSelect = new javax.swing.JRadioButton();
         cantidadProductos = new javax.swing.JLabel();
@@ -59,12 +58,14 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         comboOrdenar = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         btnElim = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnAplicarCambios = new javax.swing.JButton();
+        filtroCategoriastxt = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        comboFiltro = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,7 +114,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Eliminar:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 360, 50, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 50, 30));
 
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
@@ -134,17 +135,13 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 460, 95, 39));
 
-        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
-        comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, 130, 28));
-
         RadioElimVencido.setText("Productos vencidos");
         RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, -1));
+        add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, -1, -1));
 
         RadioElimSelect.setText("Por selección");
         RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, -1, -1));
+        add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, -1, -1));
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cantidadProductos.setText("jLabel1");
@@ -170,10 +167,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel5.setText("Ordenar por:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel6.setText("Filtro:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 50, 30));
-
         jRadioButton3.setText("menor a mayor");
         add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
@@ -182,14 +175,25 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
         btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 460, 60, 50));
+        add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 470, 60, 50));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAplicarCambios.setText("Aplicar cambios");
-        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 110, 30));
+        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 30));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 150, 280));
+        filtroCategoriastxt.setText("jTextField1");
+        jPanel1.add(filtroCategoriastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setText("Filtro:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 50, 30));
+
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
+        comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 150, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
@@ -234,6 +238,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JLabel cantidadProductos;
     public javax.swing.JComboBox<String> comboFiltro;
     public javax.swing.JComboBox<String> comboOrdenar;
+    public javax.swing.JTextField filtroCategoriastxt;
     public javax.swing.ButtonGroup grupoBtnEliminar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
