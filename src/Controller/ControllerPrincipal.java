@@ -11,7 +11,6 @@ public class ControllerPrincipal {
 
     public ControllerPrincipal() {
         vista = new Principal();
-        
 //       //ESTOS PRODUCTOS YA LOS TENGO AGREGADOS EN EL ARCHIVO
 //        
 //        Producto produccion = new Producto("Cocoa", "desayuno", "VIGENTE", "10/04/2021", "12", 100, 20, 12, 1200);

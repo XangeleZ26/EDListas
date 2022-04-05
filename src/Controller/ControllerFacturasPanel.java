@@ -13,7 +13,7 @@ public class ControllerFacturasPanel {
     public ControllerFacturasPanel() {
         this.frmFactura = new FacturasPanel();
         this.arrFacturas = Configuracion.arrFacturas;
-
+        llenarTabla();
     }
 
     

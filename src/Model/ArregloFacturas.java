@@ -16,7 +16,7 @@ public class ArregloFacturas implements Serializable{
     }
     
     public Object[] header() {
-        Object tmp [] = new Object[7];
+        Object tmp [] = new Object[6];
         tmp[0] = "Nombre";
         tmp[1] = "Codigo";
         tmp[2] = "Producto";
@@ -26,14 +26,14 @@ public class ArregloFacturas implements Serializable{
         return tmp;
     }
     public Object[][] data() {
-        Object tmp[][] = new Object[this.indice][9];
+        Object tmp[][] = new Object[this.indice][6];
         for (int i = 0; i < this.indice; i++) {
             tmp[i][0] = this.arregloF[i].getNombre();
             tmp[i][1] = this.arregloF[i].getCodigo();
             tmp[i][2] = this.arregloF[i].getProducto();
             tmp[i][3] = this.arregloF[i].getFechaVenta();
             tmp[i][4] = this.arregloF[i].getCantidad();
-            tmp[i][5] = this.arregloF[i].getMonto();
+            tmp[i][5] = this.arregloF[i].getMonto()*this.arregloF[i].getCantidad();
         }
         return tmp;
     }

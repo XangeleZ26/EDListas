@@ -5,8 +5,11 @@
  */
 package View;
 
+import Model.ArregloFacturas;
+import Model.Configuracion;
 import Model.Facturas;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -318,10 +321,27 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textMontoKeyTyped
     private void agregar(){
         dtm.addRow(new Object[] {
-         textNombre.getText(),0 ,productoSeleccionado.getText(),
+            textNombre.getText(),""+(dtm.getRowCount()) ,
+            productoSeleccionado.getText(),
             textCantidad.getText(),
             Integer.parseInt(textCantidad.getText())
                     *Float.parseFloat(textMonto.getText())});
+        
+        Configuracion.arrFacturas.agregar(new Facturas(
+                textNombre.getText(),
+                ""+(dtm.getRowCount()-1),
+                productoSeleccionado.getText(),
+                new Date(),
+                Integer.parseInt(textCantidad.getText()),
+                Integer.parseInt(textCantidad.getText())*
+                        Float.parseFloat(textMonto.getText())));
+                    
+        try{
+            Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
+                    
+        } catch (IOException ex) {
+            //F
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
