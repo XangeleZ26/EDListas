@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
         ControllerViewLogin controller=new ControllerViewLogin();
         controller.run();
-        
+        //xd
         File archivoProductos=new File("archivoProductos.txt");
         if(archivoProductos.exists()){
         try {
