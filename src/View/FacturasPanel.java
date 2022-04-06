@@ -63,10 +63,10 @@ public class FacturasPanel extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         panelRegistrar = new javax.swing.JPanel();
         textRegistrar = new javax.swing.JLabel();
-        productoSeleccionado = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         textMonto = new javax.swing.JTextField();
+        productoSeleccionado = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         textFecha = new javax.swing.JLabel();
@@ -113,7 +113,6 @@ public class FacturasPanel extends javax.swing.JPanel {
         });
         jPanel1.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 149, -1));
 
-        textCantidad.setText("0");
         textCantidad.setBorder(null);
         textCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +161,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         panelRegistrar.setLayout(panelRegistrarLayout);
         panelRegistrarLayout.setHorizontalGroup(
             panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(textRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
         );
         panelRegistrarLayout.setVerticalGroup(
             panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,15 +170,6 @@ public class FacturasPanel extends javax.swing.JPanel {
 
         jPanel1.add(panelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 149, -1));
 
-        productoSeleccionado.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        productoSeleccionado.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        productoSeleccionado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                productoSeleccionadoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(productoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 20));
-
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("PRODUCTO");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
@@ -187,7 +177,6 @@ public class FacturasPanel extends javax.swing.JPanel {
         jSeparator6.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 149, 11));
 
-        textMonto.setText("0");
         textMonto.setBorder(null);
         textMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +189,24 @@ public class FacturasPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(textMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 149, -1));
+
+        productoSeleccionado.setBorder(null);
+        productoSeleccionado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productoSeleccionadoMouseClicked(evt);
+            }
+        });
+        productoSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoSeleccionadoActionPerformed(evt);
+            }
+        });
+        productoSeleccionado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                productoSeleccionadoKeyPressed(evt);
+            }
+        });
+        jPanel1.add(productoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 20));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -231,22 +238,19 @@ public class FacturasPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(450, 450, 450)
-                                .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel4)))
-                        .addGap(19, 19, 19))
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,11 +258,11 @@ public class FacturasPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel4)
-                .addGap(23, 23, 23)
+                .addGap(34, 34, 34)
                 .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -301,11 +305,8 @@ public class FacturasPanel extends javax.swing.JPanel {
             Logger.getLogger(FacturasPanel.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         agregar();
+        borrarCampos();
     }//GEN-LAST:event_textRegistrarMouseClicked
-
-    private void productoSeleccionadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoSeleccionadoMouseClicked
-        listP.setVisible(true);
-    }//GEN-LAST:event_productoSeleccionadoMouseClicked
 
     private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
         productoSeleccionado.setText(listProductos.getSelectedValue());
@@ -319,10 +320,26 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void textMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMontoKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_textMontoKeyTyped
+
+    private void productoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoSeleccionadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productoSeleccionadoActionPerformed
+
+    private void productoSeleccionadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoSeleccionadoMouseClicked
+        listP.setVisible(true);
+    }//GEN-LAST:event_productoSeleccionadoMouseClicked
+
+    private void productoSeleccionadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productoSeleccionadoKeyPressed
+        listP.setVisible(false);
+    }//GEN-LAST:event_productoSeleccionadoKeyPressed
     private void agregar(){
+        SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+        dtm = (DefaultTableModel) tblDatos.getModel();
         dtm.addRow(new Object[] {
-            textNombre.getText(),""+(dtm.getRowCount()) ,
+            textNombre.getText(),
+            ""+(dtm.getRowCount()),
             productoSeleccionado.getText(),
+            formateadorFecha.format(new Date()),
             textCantidad.getText(),
             Integer.parseInt(textCantidad.getText())
                     *Float.parseFloat(textMonto.getText())});
@@ -333,17 +350,23 @@ public class FacturasPanel extends javax.swing.JPanel {
                 productoSeleccionado.getText(),
                 new Date(),
                 Integer.parseInt(textCantidad.getText()),
-                Integer.parseInt(textCantidad.getText())*
-                        Float.parseFloat(textMonto.getText())));
+                Float.parseFloat(textMonto.getText())*
+                        Integer.parseInt(textCantidad.getText())));
                     
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
-                    
+            System.out.println(" Prueba"+Configuracion.arrFacturas);
         } catch (IOException ex) {
             //F
         }
     }
 
+    private void borrarCampos(){
+        textNombre.setText("");
+        productoSeleccionado.setText("");
+        textCantidad.setText("");
+        textMonto.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -360,7 +383,7 @@ public class FacturasPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane listP;
     private javax.swing.JList<String> listProductos;
     private javax.swing.JPanel panelRegistrar;
-    private javax.swing.JLabel productoSeleccionado;
+    private javax.swing.JTextField productoSeleccionado;
     public javax.swing.JTable tblDatos;
     private javax.swing.JTextField textCantidad;
     private javax.swing.JLabel textFecha;
