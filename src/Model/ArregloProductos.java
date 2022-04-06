@@ -67,15 +67,14 @@ public class ArregloProductos implements Serializable {
 //        }
 //        return resultado;
 //    }
-    
-public void colocarNullParaVencidos(){
+    public void colocarEliminandoParaVencidos() {
 
-      for(int i=0;i<this.indice;i++){
-          if(this.arregloP[i].getEstado().equals("VENCIDO")){
+        for (int i = 0; i < this.indice; i++) {
+            if (this.arregloP[i].getEstado().equals("VENCIDO")) {
 //              System.out.println(i+" "+this.arregloP[i].getNumberEtiqueta()+" "+this.arregloP[i].getEstado());
-              this.arregloP[i].setEstado("ELIMINANDO");
-          }
-      }
+                this.arregloP[i].setEstado("ELIMINANDO");
+            }
+        }
 
 //      int indiceExtra=0;
 //      Producto productoExtra[]=new Producto[5];
@@ -101,27 +100,28 @@ public void colocarNullParaVencidos(){
 //        this.arregloP[this.indice-1] = null;
 //        this.indice--;
 //        }
-        }
-public void eliminarPorCodigo(String codigo){
+    }
+
+    public void eliminarPorCodigo(String codigo) {
         boolean result = false;
-        int orden=-1;
+        int orden = -1;
         //Primero se debe encontrar el orden del objeto en el arreglo
-        for(int i=0; i<this.indice && orden==-1 ;i++){
-            if(codigo == this.arregloP[i].getNumberEtiqueta()){
-                orden=i;
+        for (int i = 0; i < this.indice && orden == -1; i++) {
+            if (codigo == this.arregloP[i].getNumberEtiqueta()) {
+                orden = i;
                 result = true;
             }
         }
         //Una vez ubicado el orden del objeto, se borra copiando los objetos de adelante hacia atrás
-        if(result==true){
-        for(int i=orden; i<this.indice-1; i++){
-            this.arregloP[i] = this.arregloP[i+1];
-        } 
-        //Se borra el espacio en memoria sobrante y se modifica la cantidad y el orden de objetos
-        this.arregloP[this.indice-1] = null;
-        this.indice--;
+        if (result == true) {
+            for (int i = orden; i < this.indice - 1; i++) {
+                this.arregloP[i] = this.arregloP[i + 1];
+            }
+            //Se borra el espacio en memoria sobrante y se modifica la cantidad y el orden de objetos
+            this.arregloP[this.indice - 1] = null;
+            this.indice--;
         }
-        }
+    }
 //    public boolean eliminar(String codigo) {
 //        boolean resultado = false;
 //        int encontrado = this.buscar(codigo);
@@ -161,7 +161,147 @@ public void eliminarPorCodigo(String codigo){
         }
         return null;
     }
-    
+
+    public void ordenarPorNombre(boolean ascendente) { // método de la burbuja        
+        int n = this.arregloP.length;
+        Producto[] arr = this.arregloP;
+        try {
+            for (int i = 1; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (ascendente) {
+                        if (arr[j].getNombreProducto().compareTo(arr[j + 1].getNombreProducto()) > 0) {
+                            Producto temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+                    } else { // orden descendente
+                        if (arr[j].getNombreProducto().compareTo(arr[j + 1].getNombreProducto()) < 0) {
+                            Producto temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+                    }
+                }
+            }
+            this.arregloP = arr;
+        } catch (Exception ex) {
+            System.out.println("Error burbuja: " + ex.getMessage());
+        }
+    }
+
+    public void ordenarPorStockActual(boolean ascendente) { // método shell                
+        Producto[] arr = this.arregloP.clone();
+        int n = arr.length - 1;
+        int j = 0, intervalo = 0;
+        try {
+            for (intervalo = n / 2; intervalo > 0; intervalo /= 2) {
+                for (int i = intervalo; i < n; i++) {
+                    Producto temp = arr[i];
+                    j = i;
+                    if (ascendente) {
+                        while (j >= intervalo && temp.getStock() < arr[j - intervalo].getStock()) {
+                            arr[j] = arr[j - intervalo];
+                            j -= intervalo;
+                        }
+                    } else { // descendente
+                        while (j >= intervalo && temp.getStock() > arr[j - intervalo].getStock()) {
+                            arr[j] = arr[j - intervalo];
+                            j -= intervalo;
+                        }
+                    }
+                    arr[j] = temp;
+                }
+            }
+            this.arregloP = arr;
+        } catch (Exception ex) {
+            System.out.println("Error shell2: " + ex.toString());
+        }
+    }
+
+    public void ordenarPorStockInicial(boolean ascendente) { // método por inserción       
+        int n = this.arregloP.length - 1;
+        Producto[] arr = this.arregloP.clone();
+        try {
+            for (int i = 1; i < n; i++) {
+                Producto temp = arr[i];
+                int j = i - 1;
+                if (ascendente) { // orden ascendente
+                    while (j >= 0 && (temp.getStockInicial() < arr[j].getStockInicial())) {
+                        arr[j + 1] = arr[j];
+                        j--;
+                    }
+                } else { // orden descendente                    
+                    while (j >= 0 && temp.getStockInicial() > arr[j].getStockInicial()) {
+                        arr[j + 1] = arr[j];
+                        j--;
+                    }
+                }
+                arr[j + 1] = temp;
+            }
+            this.arregloP = arr;
+        } catch (Exception ex) {
+            System.out.println("Error insercion: " + ex.toString());
+        }
+    }
+
+    public void ordenarPorValorStock(boolean ascendente) {
+        int n = this.arregloP.length - 1;
+        Producto[] arr = this.arregloP.clone();
+        try {
+            for (int i = 1; i < n; i++) {
+                Producto temp = arr[i];
+                int j = i - 1;
+                if (ascendente) { // orden ascendente
+                    while (j >= 0 && (temp.getValorTotalStock() < arr[j].getValorTotalStock())) {
+                        //System.out.println("valorstock: " + temp.getValorTotalStock() );
+                        arr[j + 1] = arr[j];
+                        j--;
+                    }
+                } else { // orden descendente                    
+                    while (j >= 0 && temp.getValorTotalStock() > arr[j].getValorTotalStock()) {
+                        arr[j + 1] = arr[j];
+                        j--;
+                    }
+                }
+                arr[j + 1] = temp;
+            }
+            this.arregloP = arr;
+        } catch (Exception ex) {
+            System.out.println("Error valorstock: " + ex.toString());
+        }
+    }
+
+    public void ordenarPorMayoresVentas(boolean ascendente) { // método shell                
+        Producto[] arr = this.arregloP.clone();
+        int n = arr.length - 1;
+        int j = 0, intervalo = 0;
+        try {
+            for (intervalo = n / 2; intervalo > 0; intervalo /= 2) {
+                for (int i = intervalo; i < n; i++) {
+                    Producto temp = arr[i];
+                    j = i;
+                    if (ascendente) {
+                        while (j >= intervalo
+                                && (temp.getStockInicial() - temp.getStock()) < (arr[j - intervalo].getStockInicial() - arr[j - intervalo].getStock())) {
+                            arr[j] = arr[j - intervalo];
+                            j -= intervalo;
+                        }
+                    } else { // descendente
+                        while (j >= intervalo
+                                && (temp.getStockInicial() - temp.getStock()) > (arr[j - intervalo].getStockInicial() - arr[j - intervalo].getStock())) {
+                            arr[j] = arr[j - intervalo];
+                            j -= intervalo;
+                        }
+                    }
+                    arr[j] = temp;
+                }
+            }
+            this.arregloP = arr;
+        } catch (Exception ex) {
+            System.out.println("Error mayores ventas: " + ex.toString());
+        }
+    }
+
     public boolean documentoRegistrado(String codigo) {
         for (int i = 0; i < this.indice; i++) {
             if (arregloP[i].getNumberEtiqueta().equals(codigo)) {
@@ -246,5 +386,3 @@ public void eliminarPorCodigo(String codigo){
     }
 
 }
-
-   

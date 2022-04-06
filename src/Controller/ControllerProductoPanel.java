@@ -16,6 +16,7 @@ public class ControllerProductoPanel {
     ArregloProductos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
     ProductoPanel frmProducto;
     boolean puedeOrdenar;
+    boolean esAscendente;
     
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
@@ -60,7 +61,6 @@ public class ControllerProductoPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 puedeOrdenar=true;
-                
                 // 2° PRIORIDAD: FILTRO
                 
                 //ES NECESARIO QUE CONSIDERE LOS VALORES DE LA BUSQUEDA EN CASO SE QUIERA REVERTIR UN FILTRO/ORDENAMIENTO
@@ -108,14 +108,33 @@ public class ControllerProductoPanel {
                 }
                 // 3° PRIORIDAD: ORDENAMIENTO
                 if (puedeOrdenar) {
-                        
+                    
+                        if (frmProducto.radioAscendente.isSelected()) {
+                            esAscendente=true;  //se ordenará en ascendente
+                        }else{ 
+                            esAscendente=false; //se ordenará en descendente
+                            System.out.println("descendente"); //PRUEBA DE QUE FUNCIONA HASTA AQUI
+                        }
                         switch (frmProducto.comboOrdenar.getSelectedIndex()) {
                             case 0: { //sin ordenar
                         break; //ESTE DEBE DE QUEDAR ASÍ, EN LOS SIGUIENTES cases AGREGAR METODOS
                             }
-                            
-                            //agregar cases
-                            
+                            case 1:{ //mayores ventas
+                                ordenarMayoresVentas(esAscendente); break;
+                            }
+                            case 2:{ //valor inicial de stock
+                                ordenarValorStock(esAscendente); break;
+                            }
+                            case 3:{ //cantidad inicial de stock
+                                ordenarStockInicial(esAscendente); break;
+                            }
+                            case 4:{ //actidad actual de stock
+                                ordenarStockActual(esAscendente); break;
+                            }
+                            case 5:{ //ordenamiento por nombre
+                                ordenarNombre(esAscendente); break;
+                            }
+
                         }
                         
                         
@@ -184,7 +203,7 @@ public class ControllerProductoPanel {
                     int xd = JOptionPane.showOptionDialog(null, "¿Está seguro que desea eliminar\n los stocks de inventario vacíos?", null, 0, 0, null, opciones, opciones[0]);
                     if (xd == 0) {
 
-                        Configuracion.arrProductos.colocarNullParaVencidos();
+                        Configuracion.arrProductos.colocarEliminandoParaVencidos();
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                         try {
@@ -282,7 +301,26 @@ public class ControllerProductoPanel {
         }
         Productos = extra;
     }
-
+    void ordenarNombre(boolean ascendente) {
+        this.Productos.ordenarPorNombre(ascendente);        
+    }
+   
+    void ordenarValorStock(boolean ascendente) {
+        this.Productos.ordenarPorValorStock(ascendente);    
+    }
+    
+    void ordenarMayoresVentas(boolean ascendente) {
+        this.Productos.ordenarPorMayoresVentas(ascendente);    
+    }
+    
+    void ordenarStockActual(boolean ascendente) {
+        this.Productos.ordenarPorStockActual(ascendente);    
+    }
+    
+    void ordenarStockInicial(boolean ascendente) {
+        this.Productos.ordenarPorStockInicial(ascendente);    
+    }
+    
     public void paraBuscar(String dato) {
         ArregloProductos extra = new ArregloProductos();
         for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {

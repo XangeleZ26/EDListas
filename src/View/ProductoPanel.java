@@ -27,8 +27,12 @@ public class ProductoPanel extends javax.swing.JPanel {
         this.filtroCategoriastxt.setVisible(false);
         this.grupoBtnEliminar.add(this.RadioElimSelect);
         this.grupoBtnEliminar.add(this.RadioElimVencido);
-
         this.RadioElimSelect.setSelected(true);
+        
+        this.grupoBtnOrdenar.add(this.radioDescendente);
+        this.grupoBtnOrdenar.add(this.radioAscendente);
+        this.radioAscendente.setSelected(true);
+        
 
 //        ImageIcon user=new ImageIcon(getClass().getResource("../Images/cerrar.png"));
 //        Icon userZ=new ImageIcon(user.getImage().getScaledInstance(this.btnCancelarBusqueda.getWidth(),this.btnCancelarBusqueda.getHeight(),Image.SCALE_DEFAULT));
@@ -46,6 +50,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         grupoBtnEliminar = new javax.swing.ButtonGroup();
+        grupoBtnOrdenar = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducto = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -60,8 +65,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         comboOrdenar = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        radioAscendente = new javax.swing.JRadioButton();
+        radioDescendente = new javax.swing.JRadioButton();
         btnElim = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnAplicarCambios = new javax.swing.JButton();
@@ -175,11 +180,11 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel5.setText("Ordenar por:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, -1, 30));
 
-        jRadioButton3.setText("menor a mayor");
-        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
+        radioAscendente.setText("menor a mayor");
+        add(radioAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
 
-        jRadioButton4.setText("mayor a menor");
-        add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
+        radioDescendente.setText("mayor a menor");
+        add(radioDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
 
         btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
         btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -287,14 +292,15 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> comboOrdenar;
     public javax.swing.JTextField filtroCategoriastxt;
     public javax.swing.ButtonGroup grupoBtnEliminar;
+    public javax.swing.ButtonGroup grupoBtnOrdenar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JRadioButton radioAscendente;
+    public javax.swing.JRadioButton radioDescendente;
     public javax.swing.JTable tableProducto;
     // End of variables declaration//GEN-END:variables
 }
