@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
 
 /**
  *
@@ -21,6 +22,7 @@ public class ProductoPanel extends javax.swing.JPanel {
      */
     public ProductoPanel() {
         initComponents();
+        
         btnCancelarBusqueda.setVisible(false);
         this.filtroCategoriastxt.setVisible(false);
         this.grupoBtnEliminar.add(this.RadioElimSelect);
@@ -109,6 +111,12 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tableProducto);
+        if (tableProducto.getColumnModel().getColumnCount() > 0) {
+            tableProducto.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tableProducto.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableProducto.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tableProducto.getColumnModel().getColumn(8).setPreferredWidth(60);
+        }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 69, 760, 348));
 
@@ -182,15 +190,27 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnAplicarCambios.setText("Aplicar cambios");
         jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 30));
 
-        filtroCategoriastxt.setText("jTextField1");
-        jPanel1.add(filtroCategoriastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, -1));
+        filtroCategoriastxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        filtroCategoriastxt.setForeground(new java.awt.Color(204, 204, 204));
+        filtroCategoriastxt.setText("Ingrese categoría");
+        filtroCategoriastxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                filtroCategoriastxtMousePressed(evt);
+            }
+        });
+        jPanel1.add(filtroCategoriastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Filtro:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 50, 30));
 
-        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Por categoría", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
         comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboFiltroActionPerformed(evt);
+            }
+        });
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 150, 300));
@@ -201,7 +221,7 @@ public class ProductoPanel extends javax.swing.JPanel {
             Buscadortxt.setText("");
             Buscadortxt.setForeground(Color.black);
         }
-        tableProducto.clearSelection();
+        tableProducto.clearSelection(); //limpiar seleccion de tabla
         Buscadortxt.getCaret().setVisible(true);
     }//GEN-LAST:event_BuscadortxtMousePressed
 
@@ -210,9 +230,13 @@ public class ProductoPanel extends javax.swing.JPanel {
             Buscadortxt.setText("Ingrese nombre del producto");
             Buscadortxt.setForeground(Color.gray);
         }
-        
+        if (filtroCategoriastxt.getText().isEmpty()) {
+            filtroCategoriastxt.setText("Ingrese categoría");
+            filtroCategoriastxt.setForeground(Color.gray);
+        }
         tableProducto.clearSelection();
         Buscadortxt.getCaret().setVisible(false);
+        filtroCategoriastxt.getCaret().setVisible(false);
     }//GEN-LAST:event_formMousePressed
 
     private void tableProductoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductoMousePressed
@@ -222,8 +246,31 @@ public class ProductoPanel extends javax.swing.JPanel {
         }
         tableProducto.setDefaultEditor(Object.class, null);
         Buscadortxt.getCaret().setVisible(false);
+        filtroCategoriastxt.getCaret().setVisible(false);
     }//GEN-LAST:event_tableProductoMousePressed
 
+    private void filtroCategoriastxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filtroCategoriastxtMousePressed
+        if (filtroCategoriastxt.getText().equals("Ingrese categoría")) {
+            filtroCategoriastxt.setText("");
+            filtroCategoriastxt.setForeground(Color.black);
+        }
+        filtroCategoriastxt.getCaret().setVisible(true);
+        tableProducto.clearSelection();
+    }//GEN-LAST:event_filtroCategoriastxtMousePressed
+
+    private void comboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFiltroActionPerformed
+        
+        if(this.comboFiltro.getSelectedIndex()==1){
+            filtroCategoriastxt.setText("Ingrese categoría");
+            filtroCategoriastxt.setForeground(Color.gray);
+            filtroCategoriastxt.setVisible(true);
+            filtroCategoriastxt.getCaret().setVisible(false);
+        }else{
+            Buscadortxt.setForeground(Color.gray);
+            filtroCategoriastxt.setVisible(false);
+        }
+        tableProducto.clearSelection();
+    }//GEN-LAST:event_comboFiltroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;

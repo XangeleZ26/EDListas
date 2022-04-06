@@ -21,8 +21,8 @@ public class ArregloProductos implements Serializable {
         tmp[2] = "Categoria";
         tmp[3] = "Stock inicial";
         tmp[4] = "Stock actual";
-        tmp[5] = "Valor unidad";
-        tmp[6] = "Valor total";
+        tmp[5] = "Valor c/u(S/.)";
+        tmp[6] = "Valor stock(S/.)";
         tmp[7] = "Vencimiento";
         tmp[8] = "Estado";
         return tmp;
