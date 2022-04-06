@@ -48,7 +48,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(39, 117, 178));
+        jPanel2.setBackground(new java.awt.Color(191, 142, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
@@ -60,16 +60,16 @@ public class Principal extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 14));
 
-        panelPrincipal.setBackground(new java.awt.Color(39, 130, 194));
+        panelPrincipal.setBackground(new java.awt.Color(204, 155, 64));
         panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelPrincipalMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelPrincipalMouseEntered(evt);
             }
         });
 
@@ -91,16 +91,16 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 190, 60));
 
-        panelBuscar.setBackground(new java.awt.Color(39, 130, 194));
+        panelBuscar.setBackground(new java.awt.Color(204, 155, 64));
         panelBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBuscarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelBuscarMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelBuscarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBuscarMouseEntered(evt);
             }
         });
 
@@ -122,16 +122,16 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.add(panelBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 190, 60));
 
-        panelProducto.setBackground(new java.awt.Color(39, 130, 194));
+        panelProducto.setBackground(new java.awt.Color(204, 155, 64));
         panelProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelProductoMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelProductoMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelProductoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelProductoMouseEntered(evt);
             }
         });
 
@@ -144,7 +144,7 @@ public class Principal extends javax.swing.JFrame {
         panelProducto.setLayout(panelProductoLayout);
         panelProductoLayout.setHorizontalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(productotxt, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+            .addComponent(productotxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.add(panelProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 190, 60));
 
-        panelFactura.setBackground(new java.awt.Color(39, 130, 194));
+        panelFactura.setBackground(new java.awt.Color(204, 155, 64));
         panelFactura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelFacturaMouseClicked(evt);
@@ -355,22 +355,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void panelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseEntered
         if (opciones[0])
-            panelPrincipal.setBackground(new Color(39, 157, 220));
+            panelPrincipal.setBackground(new Color(210, 168, 89));
     }//GEN-LAST:event_panelPrincipalMouseEntered
 
     private void panelPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseExited
         if (opciones[0])
-            panelPrincipal.setBackground(new Color(39, 130, 194));
+            panelPrincipal.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_panelPrincipalMouseExited
 
     private void panelBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBuscarMouseEntered
         if (opciones[1])
-            panelBuscar.setBackground(new Color(39, 157, 220));
+            panelBuscar.setBackground(new Color(210, 168, 89));
     }//GEN-LAST:event_panelBuscarMouseEntered
 
     private void panelBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBuscarMouseExited
         if (opciones[1])
-            panelBuscar.setBackground(new Color(39, 130, 194));
+            panelBuscar.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_panelBuscarMouseExited
 
     private void panelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBuscarMouseClicked
@@ -386,12 +386,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void panelProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductoMouseEntered
         if (opciones[2])
-            panelProducto.setBackground(new Color(39, 157, 220));
+            panelProducto.setBackground(new Color(210, 168, 89));
     }//GEN-LAST:event_panelProductoMouseEntered
 
     private void panelProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductoMouseExited
         if (opciones[2])
-            panelProducto.setBackground(new Color(39, 130, 194));
+            panelProducto.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_panelProductoMouseExited
 
     private void panelProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductoMouseClicked
@@ -408,12 +408,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void panelFacturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFacturaMouseEntered
         if (opciones[3])
-            panelFactura.setBackground(new Color(39, 157, 220));
+            panelFactura.setBackground(new Color(210, 168, 89));
     }//GEN-LAST:event_panelFacturaMouseEntered
 
     private void panelFacturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFacturaMouseExited
         if (opciones[3])
-            panelFactura.setBackground(new Color(39, 130, 194));
+            panelFactura.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_panelFacturaMouseExited
 
     private void panelFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFacturaMouseClicked
@@ -433,16 +433,16 @@ public class Principal extends javax.swing.JFrame {
         }
         opciones[opcion] = false;
         if (opcion != 0) {
-            panelPrincipal.setBackground(new Color(39, 130, 194));
+            panelPrincipal.setBackground(new Color(204,155,64));
         }
         if (opcion != 1) {
-            panelBuscar.setBackground(new Color(39, 130, 194));
+            panelBuscar.setBackground(new Color(204,155,64));
         }
         if (opcion != 2) {
-            panelProducto.setBackground(new Color(39, 130, 194));
+            panelProducto.setBackground(new Color(204,155,64));
         }
         if (opcion != 3) {
-            panelFactura.setBackground(new Color(39, 130, 194));
+            panelFactura.setBackground(new Color(204,155,64));
         }
     }
 

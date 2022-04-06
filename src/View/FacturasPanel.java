@@ -201,6 +201,11 @@ public class FacturasPanel extends javax.swing.JPanel {
                 productoSeleccionadoActionPerformed(evt);
             }
         });
+        productoSeleccionado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                productoSeleccionadoKeyPressed(evt);
+            }
+        });
         jPanel1.add(productoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 20));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -300,6 +305,7 @@ public class FacturasPanel extends javax.swing.JPanel {
             Logger.getLogger(FacturasPanel.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         agregar();
+        borrarCampos();
     }//GEN-LAST:event_textRegistrarMouseClicked
 
     private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
@@ -322,6 +328,10 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void productoSeleccionadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productoSeleccionadoMouseClicked
         listP.setVisible(true);
     }//GEN-LAST:event_productoSeleccionadoMouseClicked
+
+    private void productoSeleccionadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productoSeleccionadoKeyPressed
+        listP.setVisible(false);
+    }//GEN-LAST:event_productoSeleccionadoKeyPressed
     private void agregar(){
         SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
         dtm = (DefaultTableModel) tblDatos.getModel();
@@ -351,6 +361,12 @@ public class FacturasPanel extends javax.swing.JPanel {
         }
     }
 
+    private void borrarCampos(){
+        textNombre.setText("");
+        productoSeleccionado.setText("");
+        textCantidad.setText("");
+        textMonto.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -6,6 +6,9 @@ package View;
 
 import Controller.ControllerPrincipal;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +21,14 @@ public class ViewLogin extends javax.swing.JFrame {
      */
     public ViewLogin() {
         initComponents();
-        
+        TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
     }
-
+    private void TamanioDinamico(String direccion, javax.swing.JLabel Borde){
+        ImageIcon imagen = new ImageIcon(getClass().getResource(direccion));
+        Icon fondo1=new ImageIcon((imagen.getImage().getScaledInstance(Borde.getWidth(), Borde.getHeight(), Image.SCALE_DEFAULT)));
+        Borde.setIcon(fondo1);
+        this.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,16 +67,16 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fondoInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondoInicio.setText("foto");
         fondoInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 fondoInicioMousePressed(evt);
             }
         });
-        jPanel1.add(fondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 630));
+        jPanel1.add(fondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 630));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("INICIAR SESIÓN");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 110, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 150, 30));
 
         Barra.setBackground(new java.awt.Color(255, 255, 255));
         Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -154,10 +162,10 @@ public class ViewLogin extends javax.swing.JFrame {
 
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 40));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
 
-        usuarioText.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         usuarioText.setForeground(new java.awt.Color(204, 204, 204));
         usuarioText.setText("Ingrese su nombre de usuario");
         usuarioText.setBorder(null);
@@ -176,12 +184,13 @@ public class ViewLogin extends javax.swing.JFrame {
                 usuarioTextKeyTyped(evt);
             }
         });
-        jPanel1.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 240, 30));
+        jPanel1.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 240, 30));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("USUARIO ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
 
-        contraseniaText.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        contraseniaText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         contraseniaText.setForeground(new java.awt.Color(204, 204, 204));
         contraseniaText.setText("*********");
         contraseniaText.setBorder(null);
@@ -195,11 +204,11 @@ public class ViewLogin extends javax.swing.JFrame {
                 contraseniaTextActionPerformed(evt);
             }
         });
-        jPanel1.add(contraseniaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 240, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 240, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 240, 20));
+        jPanel1.add(contraseniaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 240, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 240, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 240, 20));
 
-        panelEntrar.setBackground(new java.awt.Color(0, 134, 190));
+        panelEntrar.setBackground(new java.awt.Color(204, 155, 64));
         panelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelEntrarMouseClicked(evt);
@@ -214,11 +223,11 @@ public class ViewLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textEntrarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                textEntrarMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 textEntrarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textEntrarMouseEntered(evt);
             }
         });
 
@@ -226,18 +235,16 @@ public class ViewLogin extends javax.swing.JFrame {
         panelEntrar.setLayout(panelEntrarLayout);
         panelEntrarLayout.setHorizontalGroup(
             panelEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEntrarLayout.createSequentialGroup()
-                .addComponent(textEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(textEntrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
         );
         panelEntrarLayout.setVerticalGroup(
             panelEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEntrarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntrarLayout.createSequentialGroup()
                 .addComponent(textEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 170, 50));
+        jPanel1.add(panelEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 170, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,11 +330,11 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_textEntrarMouseClicked
 
     private void textEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseEntered
-        panelEntrar.setBackground(new Color(0,156,223));
+        panelEntrar.setBackground(new Color(250,206,126));
     }//GEN-LAST:event_textEntrarMouseEntered
 
     private void textEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseExited
-        panelEntrar.setBackground(new Color(0, 134, 190));
+        panelEntrar.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_textEntrarMouseExited
 
     private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
