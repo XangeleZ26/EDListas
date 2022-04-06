@@ -37,7 +37,10 @@ public class ControllerPrincipal {
 //
 //        }
 
-    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("holacuatrovecesxdnombrelargodelmundo");
+    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("holacomoestanxdxdsanmarcosnombrelargo");
+    Configuracion.arrProductos.getArregloP()[1].setCategoria("comercio");
+    Configuracion.arrProductos.getArregloP()[2].setCategoria("comercio");
+    Configuracion.arrProductos.getArregloP()[3].setCategoria("establo");
     }
 
     public void run() {

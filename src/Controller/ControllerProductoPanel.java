@@ -13,17 +13,21 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerProductoPanel {
 
     ArregloProductos Productos;
+    ArregloProductos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
     ProductoPanel frmProducto;
-
+    boolean puedeOrdenar;
+    
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
         this.Productos = Configuracion.arrProductos;
+        this.extraProductosFO = Configuracion.arrProductos;
         Object[] opciones = {"Aceptar", "Cancelar"};
 
         //PRIORIDAD PARA LLENAR EL VECTOR DE ArregloProductos:
         //  1. BUSCADOR
         //  2. FILTRO
         //  3. ORDENAMIENTO
+        //BOTON DE LUPA (BUSCAR)
         this.frmProducto.btnLupa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -32,47 +36,98 @@ public class ControllerProductoPanel {
                     //if el boton aplicar cambios esta siendo usado en filtro u ordenamiento,
                     //entonces que esto no suceda
                     Productos = Configuracion.arrProductos;
-                    
+
                     frmProducto.btnCancelarBusqueda.setVisible(false);
                 } else {
                     // 1° PRIORIDAD: BUSCADOR
                     paraBuscar(frmProducto.Buscadortxt.getText().trim());
                     frmProducto.btnCancelarBusqueda.setVisible(true);
                     //si busca algo, que el filtro y el ordenamiento se resetee
-                    
-                }
 
+                }
+                extraProductosFO = Productos;
+                frmProducto.comboFiltro.setSelectedIndex(0); //para que vuelva a apuntar a "Sin filtro"
+                frmProducto.comboOrdenar.setSelectedIndex(0); //para que vuelva a apuntar a "Sin ordenar"
                 llenarTabla();
                 frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
 
             }
         });
+
+
+        //BOTON APLICAR CAMBIOS DE FILTRO Y ORDENAMIENTO
         this.frmProducto.btnAplicarCambios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              // 2° PRIORIDAD: FILTRO
-                    switch(frmProducto.comboFiltro.getSelectedIndex()){
-                        case 0:{ //sin filtro
-                            break;
-                        }
-                        case 1:{ //stocks vencidos
-                            
-                        }
-                        case 2:{ //stocks vigentes
-                            
-                        }
-                        case 3:{ //stocks acabados
-                            
-                        }
-                        case 4:{ //stocks activos
-                            
-                        }
+                puedeOrdenar=true;
+                
+                // 2° PRIORIDAD: FILTRO
+                
+                //ES NECESARIO QUE CONSIDERE LOS VALORES DE LA BUSQUEDA EN CASO SE QUIERA REVERTIR UN FILTRO/ORDENAMIENTO
+                Productos = extraProductosFO;
+
+                switch (frmProducto.comboFiltro.getSelectedIndex()) {
+                    case 0: { //sin filtro
+
+                        break;
                     }
+                    case 1: {
+                        if (!(frmProducto.filtroCategoriastxt.getText().equals("Ingrese categoría") || frmProducto.filtroCategoriastxt.getText().trim().isEmpty())) {
+                            if (existeCategoria()) {
+                                filtroCategoria();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Esta categoría no está disponible entre \nlos datos que la tabla muestra actualmente.");
+                                frmProducto.filtroCategoriastxt.setText("Ingrese categoría");
+                                frmProducto.filtroCategoriastxt.setForeground(Color.gray);
+                                puedeOrdenar=false;
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "¡Ingrese la categoría a filtrar!");
+                                frmProducto.filtroCategoriastxt.setText("Ingrese categoría");
+                                frmProducto.filtroCategoriastxt.setForeground(Color.gray);
+                                puedeOrdenar=false;
+                        }
+                        break;
+                    }
+                    case 2: { //stocks vencidos
+                        filtroStocksVencidos();
+                        break;
+                    }
+                    case 3: { //stocks vigentes
+                        filtroStocksVigentes();
+                        break;
+                    }
+                    case 4: { //stocks acabados
+                        filtroStocksAcabados();
+                        break;
+                    }
+                    case 5: { //stocks activos
+                        filtroStocksActivos();
+                        break;
+                    }
+                }
                 // 3° PRIORIDAD: ORDENAMIENTO
-                
-                
+                if (puedeOrdenar) {
+                        
+                        switch (frmProducto.comboOrdenar.getSelectedIndex()) {
+                            case 0: { //sin ordenar
+                        break; //ESTE DEBE DE QUEDAR ASÍ, EN LOS SIGUIENTES cases AGREGAR METODOS
+                            }
+                            
+                            //agregar cases
+                            
+                        }
+                        
+                        
+                }
+
+                //Procede a llenar tabla
+                llenarTabla();
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
             }
         });
+
+        //BOTON DE CANCELAR BUSQUEDA
         this.frmProducto.btnCancelarBusqueda.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -81,17 +136,20 @@ public class ControllerProductoPanel {
                 frmProducto.Buscadortxt.setForeground(Color.gray);
                 frmProducto.btnCancelarBusqueda.setVisible(false);
                 Productos = Configuracion.arrProductos;
+                extraProductosFO = Configuracion.arrProductos;
                 frmProducto.comboFiltro.setSelectedIndex(0); //para que vuelva a apuntar a "Sin filtro"
-                
+                frmProducto.comboOrdenar.setSelectedIndex(0); //para que vuelva a apuntar a "Sin ordenar"
                 llenarTabla();
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
             }
         });
-        //FALTA ARREGLAR ELIMINACION CUANDO HAGO BUSQUEDA 
+
+        //BOTON DE ELIMINAR (CON SUS DOS VARIANTES ACTUALES: POR SELECCIÓN Y CONJUNTO DE VENCIDOS)
         this.frmProducto.btnElim.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int seleccionado = frmProducto.tableProducto.getSelectedRow();
-                
+
                 //opcion de eliminar el producto seleccionado
                 if (frmProducto.RadioElimSelect.isSelected()) {
                     if (seleccionado != -1) {
@@ -112,6 +170,7 @@ public class ControllerProductoPanel {
                             frmProducto.Buscadortxt.setForeground(Color.gray);
                             frmProducto.btnCancelarBusqueda.setVisible(false);
                             Productos = Configuracion.arrProductos;
+
                             llenarTabla();
                             frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
                         }
@@ -129,12 +188,12 @@ public class ControllerProductoPanel {
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                         try {
-                                Configuracion.serial.serializar("archivoProductos.txt", Configuracion.arrProductos);
+                            Configuracion.serial.serializar("archivoProductos.txt", Configuracion.arrProductos);
 
-                            } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
-                            }
+                        }
                         frmProducto.Buscadortxt.getCaret().setVisible(false);
                         frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
                         frmProducto.Buscadortxt.setForeground(Color.gray);
@@ -158,8 +217,70 @@ public class ControllerProductoPanel {
         }
         Configuracion.arrProductos = extra;
         this.Productos = Configuracion.arrProductos;
-        //Aqui tengo que hacer que se cancele cualquier busqueda o filtro incurrido
-        //tambien ocultar el boton equis
+
+    }
+
+    public void filtroCategoria() {
+
+        ArregloProductos extra = new ArregloProductos();
+        for (int i = 0; i < Productos.getIndice(); i++) {
+            if (Productos.getArregloP()[i].getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
+                extra.agregar(Productos.getArregloP()[i]);
+            }
+        }
+        Productos = extra;
+    }
+
+    public boolean existeCategoria() {
+        boolean result = false;  //usando busqueda secuencial
+        for (int i = 0; i < Productos.getIndice(); i++) {
+           
+            if (Productos.getArregloP()[i].getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
+        return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void filtroStocksVigentes() {
+        ArregloProductos extra = new ArregloProductos();
+        for (int i = 0; i < Productos.getIndice(); i++) {
+            if (Productos.getArregloP()[i].getEstado().equals("VIGENTE")) {
+                extra.agregar(Productos.getArregloP()[i]);
+            }
+        }
+        Productos = extra;
+    }
+
+    public void filtroStocksVencidos() {
+        ArregloProductos extra = new ArregloProductos();
+        for (int i = 0; i < Productos.getIndice(); i++) {
+            if (Productos.getArregloP()[i].getEstado().equals("VENCIDO")) {
+                extra.agregar(Productos.getArregloP()[i]);
+            }
+        }
+        Productos = extra;
+    }
+
+    public void filtroStocksAcabados() {
+        ArregloProductos extra = new ArregloProductos();
+        for (int i = 0; i < Productos.getIndice(); i++) {
+            if (Productos.getArregloP()[i].getStock() == 0) {
+                extra.agregar(Productos.getArregloP()[i]);
+            }
+        }
+        Productos = extra;
+    }
+
+    public void filtroStocksActivos() {
+        ArregloProductos extra = new ArregloProductos();
+        for (int i = 0; i < Productos.getIndice(); i++) {
+            if (Productos.getArregloP()[i].getStock() > 0) {
+                extra.agregar(Productos.getArregloP()[i]);
+            }
+        }
+        Productos = extra;
     }
 
     public void paraBuscar(String dato) {
