@@ -39,6 +39,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        barraArrastra = new javax.swing.JLabel();
         fondoInicio = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Barra = new javax.swing.JPanel();
@@ -66,6 +67,18 @@ public class ViewLogin extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        barraArrastra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraArrastraMouseDragged(evt);
+            }
+        });
+        barraArrastra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraArrastraMousePressed(evt);
+            }
+        });
+        jPanel1.add(barraArrastra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 40));
+
         fondoInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondoInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -76,7 +89,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("INICIAR SESIÓN");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 150, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 150, 30));
 
         Barra.setBackground(new java.awt.Color(255, 255, 255));
         Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -164,7 +177,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
         usuarioText.setForeground(new java.awt.Color(204, 204, 204));
         usuarioText.setText("Ingrese su nombre de usuario");
@@ -184,11 +197,11 @@ public class ViewLogin extends javax.swing.JFrame {
                 usuarioTextKeyTyped(evt);
             }
         });
-        jPanel1.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 240, 30));
+        jPanel1.add(usuarioText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("USUARIO ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
         contraseniaText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         contraseniaText.setForeground(new java.awt.Color(204, 204, 204));
@@ -204,9 +217,9 @@ public class ViewLogin extends javax.swing.JFrame {
                 contraseniaTextActionPerformed(evt);
             }
         });
-        jPanel1.add(contraseniaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 240, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 240, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 240, 20));
+        jPanel1.add(contraseniaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 240, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 240, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 240, 20));
 
         panelEntrar.setBackground(new java.awt.Color(204, 155, 64));
         panelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -338,25 +351,11 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_textEntrarMouseExited
 
     private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
-               int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse, y-yMouse);
+
     }//GEN-LAST:event_BarraMouseDragged
 
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-        if(usuarioText.getText().isEmpty()){
-            usuarioText.setText("Ingrese su nombre de usuario");
-            usuarioText.setForeground(Color.gray);
-        } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
-       
-       usuarioText.getCaret().setVisible(false);
-       contraseniaText.getCaret().setVisible(false);
+        
     }//GEN-LAST:event_BarraMousePressed
 
     private void panelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEntrarMouseClicked
@@ -400,6 +399,28 @@ public class ViewLogin extends javax.swing.JFrame {
        contraseniaText.getCaret().setVisible(false);
     }//GEN-LAST:event_jPanel1MousePressed
 
+    private void barraArrastraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraArrastraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+        if(usuarioText.getText().isEmpty()){
+            usuarioText.setText("Ingrese su nombre de usuario");
+            usuarioText.setForeground(Color.gray);
+        } 
+       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+            contraseniaText.setText("*********");
+            contraseniaText.setForeground(Color.gray);            
+        }
+       
+       usuarioText.getCaret().setVisible(false);
+       contraseniaText.getCaret().setVisible(false);
+    }//GEN-LAST:event_barraArrastraMousePressed
+
+    private void barraArrastraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraArrastraMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xMouse, y-yMouse);
+    }//GEN-LAST:event_barraArrastraMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +459,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Barra;
+    private javax.swing.JLabel barraArrastra;
     public javax.swing.JPasswordField contraseniaText;
     public javax.swing.JLabel fondoInicio;
     private javax.swing.JLabel jLabel1;
