@@ -37,32 +37,36 @@ public class ControllerPrincipal {
 //
 //        }
 
-    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("Torta de chocolate");
-    Configuracion.arrProductos.getArregloP()[1].setNombreProducto("Leche");
-    Configuracion.arrProductos.getArregloP()[2].setNombreProducto("Mermelada");
-    Configuracion.arrProductos.getArregloP()[3].setNombreProducto("Yogurt");
-    Configuracion.arrProductos.getArregloP()[4].setNombreProducto("Pie de limon");
-    Configuracion.arrProductos.getArregloP()[5].setNombreProducto("Tarta");
-    Configuracion.arrProductos.getArregloP()[1].setCategoria("comercio");
-    Configuracion.arrProductos.getArregloP()[2].setCategoria("comercio");
-    Configuracion.arrProductos.getArregloP()[3].setCategoria("establo");
-    Configuracion.arrProductos.getArregloP()[0].setStockInicial(111);
-    Configuracion.arrProductos.getArregloP()[1].setStockInicial(103);
-    Configuracion.arrProductos.getArregloP()[2].setStockInicial(200);
-    Configuracion.arrProductos.getArregloP()[3].setStockInicial(150);
-    Configuracion.arrProductos.getArregloP()[4].setStockInicial(102);
-    Configuracion.arrProductos.getArregloP()[5].setStockInicial(90);
-    Configuracion.arrProductos.getArregloP()[0].setStock(20);
-    Configuracion.arrProductos.getArregloP()[1].setStock(15);
-    Configuracion.arrProductos.getArregloP()[2].setStock(25);
-    Configuracion.arrProductos.getArregloP()[3].setStock(17);
-    Configuracion.arrProductos.getArregloP()[4].setStock(11);
-    Configuracion.arrProductos.getArregloP()[5].setStock(30);
-    Configuracion.arrProductos.getArregloP()[1].setValorXUnidad(10);
-    Configuracion.arrProductos.getArregloP()[2].setValorXUnidad(5);
-    Configuracion.arrProductos.getArregloP()[3].setValorXUnidad(12);
-    Configuracion.arrProductos.getArregloP()[4].setValorXUnidad(7);
-    Configuracion.arrProductos.getArregloP()[5].setValorXUnidad(15);
+//    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("Torta de chocolate");
+//    Configuracion.arrProductos.getArregloP()[1].setNombreProducto("Leche");
+//    Configuracion.arrProductos.getArregloP()[2].setNombreProducto("Mermelada");
+//    Configuracion.arrProductos.getArregloP()[3].setNombreProducto("Yogurt");
+//    Configuracion.arrProductos.getArregloP()[4].setNombreProducto("Pie de limon");
+//    Configuracion.arrProductos.getArregloP()[5].setNombreProducto("Tarta");
+//    
+//    Configuracion.arrProductos.getArregloP()[1].setCategoria("comercio");
+//    Configuracion.arrProductos.getArregloP()[2].setCategoria("comercio");
+//    Configuracion.arrProductos.getArregloP()[3].setCategoria("establo");
+//    Configuracion.arrProductos.getArregloP()[0].setStockInicial(111);
+//    Configuracion.arrProductos.getArregloP()[1].setStockInicial(103);
+//    Configuracion.arrProductos.getArregloP()[2].setStockInicial(200);
+//    Configuracion.arrProductos.getArregloP()[3].setStockInicial(150);
+//    Configuracion.arrProductos.getArregloP()[4].setStockInicial(102);
+//    Configuracion.arrProductos.getArregloP()[5].setStockInicial(90);
+//    Configuracion.arrProductos.getArregloP()[0].setStock(20);
+//    Configuracion.arrProductos.getArregloP()[1].setStock(15);
+//    Configuracion.arrProductos.getArregloP()[2].setStock(25);
+//    Configuracion.arrProductos.getArregloP()[3].setStock(17);
+//    Configuracion.arrProductos.getArregloP()[4].setStock(11);
+//    Configuracion.arrProductos.getArregloP()[5].setStock(30);
+//    Configuracion.arrProductos.getArregloP()[1].setValorXUnidad(10);
+//    Configuracion.arrProductos.getArregloP()[2].setValorXUnidad(5);
+//    Configuracion.arrProductos.getArregloP()[3].setValorXUnidad(12);
+//    Configuracion.arrProductos.getArregloP()[4].setValorXUnidad(7);
+//    Configuracion.arrProductos.getArregloP()[5].setValorXUnidad(15);
+    
+    
+    
     }
 
     public void run() {

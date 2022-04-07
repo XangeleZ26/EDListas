@@ -21,7 +21,7 @@ public class Producto implements Serializable {
 
     }
 
-    public Producto(String nombreProducto, String categoria, String estado, String fechaVencimiento, String NumberEtiqueta, int stockInicial, int stock, double valorXUnidad, double valorTotalStock) {
+    public Producto(String nombreProducto, String categoria, String estado, String fechaVencimiento, String NumberEtiqueta, int stockInicial, int stock, double valorXUnidad) {
         this.nombreProducto = nombreProducto;
         this.categoria = categoria;
         this.estado = estado;
@@ -30,9 +30,9 @@ public class Producto implements Serializable {
         this.stockInicial = stockInicial;
         this.stock = stock;
         this.valorXUnidad = valorXUnidad;
-        this.valorTotalStock = valorTotalStock;
+        this.valorTotalStock = this.valorXUnidad*this.stockInicial;
     }
-
+    
     public String getFechaVencimiento() {
         return fechaVencimiento;
     }

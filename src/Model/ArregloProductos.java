@@ -37,7 +37,7 @@ public class ArregloProductos implements Serializable {
             tmp[i][3] = this.arregloP[i].getStockInicial();
             tmp[i][4] = this.arregloP[i].getStock();
             tmp[i][5] = this.arregloP[i].getValorXUnidad();
-            tmp[i][6] = this.arregloP[i].getStockInicial() * this.arregloP[i].getValorXUnidad();
+            tmp[i][6] = this.arregloP[i].getValorTotalStock();
             tmp[i][7] = this.arregloP[i].getFechaVencimiento();
             tmp[i][8] = this.arregloP[i].getEstado();
         }

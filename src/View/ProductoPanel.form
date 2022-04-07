@@ -302,7 +302,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="Sin ordenar"/>
-            <StringItem index="1" value="Mayores ventas"/>
+            <StringItem index="1" value="Ventas"/>
             <StringItem index="2" value="Valor inicial de stock"/>
             <StringItem index="3" value="Cantidad inicial"/>
             <StringItem index="4" value="Cantidad actual"/>

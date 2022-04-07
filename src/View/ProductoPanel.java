@@ -172,7 +172,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel4.setText("Cantidad de productos: ");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 435, -1, -1));
 
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Mayores ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
 
