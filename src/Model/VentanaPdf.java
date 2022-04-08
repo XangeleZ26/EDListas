@@ -1,5 +1,5 @@
 
-package plantillapdfmain;
+package Model;
 
 import java.awt.Desktop;
 import java.io.File;
