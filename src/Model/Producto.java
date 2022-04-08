@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Image;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,14 +10,18 @@ public class Producto implements Serializable {
 
     private String nombreProducto;
     private String categoria;
-    private String estado;
+    private String descripcion; 
     private String fechaVencimiento;
-    private String NumberEtiqueta;
-    private int stockInicial;
-    private int stock;
+    private Image imagen;
+    private int stockInicial; 
     private double valorXUnidad;
-    private double valorTotalStock;
-
+    private Image imagenBarras;
+    
+    private double valorTotalStock; //esto se añade solo
+    private String estado; //esto se añade solo (según el relog)
+    private int stock;  //esto se determina según las ventas
+    private String NumberEtiqueta; //esto se crea solo (automatico e irrepetible)
+    
     public Producto() {
 
     }
@@ -32,7 +37,51 @@ public class Producto implements Serializable {
         this.valorXUnidad = valorXUnidad;
         this.valorTotalStock = this.valorXUnidad*this.stockInicial;
     }
-    
+       public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, Image imagen, int stockInicial, double valorXUnidad) {
+        this.nombreProducto = nombreProducto;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.fechaVencimiento = fechaVencimiento;
+        this.imagen = imagen;
+        this.stockInicial = stockInicial;
+        this.valorXUnidad = valorXUnidad;
+        this.valorTotalStock=this.valorXUnidad*this.stockInicial;
+        //agregar luego la etiqueta
+    }
+  public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, int stockInicial, double valorXUnidad) {
+        this.nombreProducto = nombreProducto;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.fechaVencimiento = fechaVencimiento;
+        this.stockInicial = stockInicial;
+        this.valorXUnidad = valorXUnidad;
+        this.valorTotalStock=this.valorXUnidad*this.stockInicial;
+        //agregar luego la etiqueta
+    }
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
+    }
+
+    public Image getImagenBarras() {
+        return imagenBarras;
+    }
+
+    public void setImagenBarras(Image imagenBarras) {
+        this.imagenBarras = imagenBarras;
+    }
+       
     public String getFechaVencimiento() {
         return fechaVencimiento;
     }

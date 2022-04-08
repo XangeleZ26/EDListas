@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControllerCreacion;
 import Controller.ControllerFacturasPanel;
 import Controller.ControllerProductoPanel;
 import java.awt.BorderLayout;
@@ -374,15 +375,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_panelAgregarMouseExited
 
     private void panelAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAgregarMouseClicked
-//           reset(1);
-//        ControllerCreacion VC=new ControllerCreacion();
-//        VC.run();
-//        VC.getVista().setSize(1000, 1000);
-//        VC.getVista().setLocation(0, 0);
-//        panelCambiante.removeAll();
-//        panelCambiante.add(VC.getVista(), BorderLayout.CENTER);
-//        panelCambiante.revalidate();
-//        panelCambiante.repaint();
+           reset(1);
+        ControllerCreacion VC=new ControllerCreacion();
+        VC.run();
+        VC.getVista().setSize(1000, 1000);
+        VC.getVista().setLocation(0, 0);
+        panelCambiante.removeAll();
+        panelCambiante.add(VC.getVista(), BorderLayout.CENTER);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
     }//GEN-LAST:event_panelAgregarMouseClicked
 
     private void panelProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelProductoMouseEntered

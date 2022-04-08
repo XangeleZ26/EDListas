@@ -36,7 +36,7 @@ public class ControllerPrincipal {
 //            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 //
 //        }
-//
+
 //    Configuracion.arrProductos.getArregloP()[0].setNombreProducto("Torta de chocolate");
 //    Configuracion.arrProductos.getArregloP()[1].setNombreProducto("Leche");
 //    Configuracion.arrProductos.getArregloP()[2].setNombreProducto("Mermelada");
