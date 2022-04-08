@@ -17,7 +17,7 @@ import net.sourceforge.jbarcodebean.model.Interleaved25;
 public class ControllerCreacion {
 
     private VistaCreacionProducto vista;
-    private Image imagen;
+    private Icon imagencita;
     private JBarcodeBean barcode = new JBarcodeBean();
     private BufferedImage imagenBarras = null;
 
@@ -37,9 +37,9 @@ public class ControllerCreacion {
 
                 if (respuestaSelect == JFileChooser.APPROVE_OPTION) {
                     url = buscarImage.getSelectedFile().getPath(); //se captura la ruta de la imagen seleccionada
-                    imagen = new ImageIcon(url).getImage(); //obtengo la imagen
-                    Icon icono = new ImageIcon(imagen.getScaledInstance(vista.imagenProductoimg.getWidth(), vista.imagenProductoimg.getHeight(), Image.SCALE_SMOOTH));
-                    vista.imagenProductoimg.setIcon(icono);
+                    Image imagen = new ImageIcon(url).getImage(); //obtengo la imagen
+                    imagencita = new ImageIcon(imagen.getScaledInstance(vista.imagenProductoimg.getWidth(), vista.imagenProductoimg.getHeight(), Image.SCALE_SMOOTH));
+                    vista.imagenProductoimg.setIcon(imagencita);
                 }
             }
         });
@@ -53,25 +53,25 @@ public class ControllerCreacion {
                     SimpleDateFormat fechaVencimiento = new SimpleDateFormat("dd/MM/yyyy");
                     Producto NuevoProducto = new Producto(vista.nombretxt.getText().trim(),
                             vista.categoriatxt.getText().trim(), vista.descripciontxt.getText().trim(),
-                            fechaVencimiento.format(vista.fechaVencimientotxt.getDate()),
+                            fechaVencimiento.format(vista.fechaVencimientotxt.getDate()),imagencita,
                             Integer.parseInt(vista.stockInicialtxt.getText().trim()), Double.parseDouble(vista.valorUnidadtxt.getText().trim()));
                         //Agregamos estado del objeto
                         NuevoProducto.setEstado("VIGENTE");
                        //aqui pasamos a agregar un codigo
                             NuevoProducto.setNumberEtiqueta(codigoAleatorio());
                        //pasamos a agregar la imagen de codigo de barras
-//                            NuevoProducto.setImagenBarras(generarBarras(NuevoProducto.getNumberEtiqueta()));              
+                            NuevoProducto.setImagenBarras(generarBarras(NuevoProducto.getNumberEtiqueta()));              
                             //GUARDAMOS AL VECTOR
                             Configuracion.arrProductos.agregar(NuevoProducto);
                             //GUARDAMOS AL ARCHIVO
           
-//        try {
-//            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-//          
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-//
-//        }
+        try {
+            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+          
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+        }
 //                            
 //                } else {
 //                    JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
@@ -107,7 +107,7 @@ public class ControllerCreacion {
         
         return codigoCadena;
     }
-       public Image generarBarras(String codigo) {
+       public Icon generarBarras(String codigo) {
 
         String codigoCadena = codigo;
 
@@ -117,12 +117,10 @@ public class ControllerCreacion {
         barcode.setBackground(new Color(121, 127, 139));
         barcode.setBarcodeBackground(new Color(121, 127, 139));
         imagenBarras = barcode.draw(new BufferedImage(180, 230, BufferedImage.TYPE_INT_RGB));
-       
-        //ESTO VA CUANDO QUIERO CONVERTIRLO A ICONO PARA USARLO
-//        ImageIcon barras = new ImageIcon(imagenBarras);
+        ImageIcon barras = new ImageIcon(imagenBarras);
         //ESTO VA EN LA PROXIMA VISTA QUE CREARÉ, RESPECTO A MÁS INFO
 //        vistaBoleta.lblCodigoBarras.setIcon(barras);
-        return imagenBarras;
+        return barras;
     }
        
     public boolean datosLlenos() {
@@ -132,7 +130,7 @@ public class ControllerCreacion {
                 && this.vista.fechaVencimientotxt.getDate() != null
                 && this.vista.stockInicialtxt.getText().trim().length() != 0
                 && this.vista.valorUnidadtxt.getText().trim().length() != 0
-                && this.imagen != null);
+                && this.imagencita != null);
     }
 
     public VistaCreacionProducto getVista() {

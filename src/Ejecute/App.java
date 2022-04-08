@@ -10,6 +10,7 @@ public class App {
     public static void main(String[] args) {
         ControllerViewLogin controller=new ControllerViewLogin();
         controller.run();
+        
         //xd
         File archivoProductos=new File("archivoProductos.dat");
         if(archivoProductos.exists()){
@@ -29,5 +30,8 @@ public class App {
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
         }}
+        VistaCliente view=new VistaCliente();
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
     }
 }

@@ -3,6 +3,7 @@ package Model;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.Date;
+import javax.swing.Icon;
 
 public class Producto implements Serializable {
 
@@ -12,10 +13,10 @@ public class Producto implements Serializable {
     private String categoria;
     private String descripcion; 
     private String fechaVencimiento;
-    private Image imagen;
+    private Icon imagen;
     private int stockInicial; 
     private double valorXUnidad;
-    private Image imagenBarras;
+    private Icon imagenBarras;
     
     private double valorTotalStock; //esto se añade solo
     private String estado; //esto se añade solo (según el relog)
@@ -37,7 +38,7 @@ public class Producto implements Serializable {
         this.valorXUnidad = valorXUnidad;
         this.valorTotalStock = this.valorXUnidad*this.stockInicial;
     }
-       public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, Image imagen, int stockInicial, double valorXUnidad) {
+       public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, Icon imagen, int stockInicial, double valorXUnidad) {
         this.nombreProducto = nombreProducto;
         this.categoria = categoria;
         this.descripcion = descripcion;
@@ -66,22 +67,24 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Image getImagen() {
+    public Icon getImagen() {
         return imagen;
     }
 
-    public void setImagen(Image imagen) {
+    public void setImagen(Icon imagen) {
         this.imagen = imagen;
     }
 
-    public Image getImagenBarras() {
+    public Icon getImagenBarras() {
         return imagenBarras;
     }
 
-    public void setImagenBarras(Image imagenBarras) {
+    public void setImagenBarras(Icon imagenBarras) {
         this.imagenBarras = imagenBarras;
     }
-       
+
+    
+    
     public String getFechaVencimiento() {
         return fechaVencimiento;
     }
