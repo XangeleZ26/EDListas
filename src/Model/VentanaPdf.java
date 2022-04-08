@@ -10,16 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaPdf extends javax.swing.JFrame {
-//
-//    List<Persona> personas; 
-//    DefaultTableModel modeloTabla;
-//    public VentanaPdf() {
-//        initComponents();
-//        personas = new ArrayList<>();
-//        modeloTabla = (DefaultTableModel) tablaDatos.getModel();
-//    }
-//
-//    @SuppressWarnings("unchecked")
+
+    List<Facturas> personas; 
+    DefaultTableModel modeloTabla;
+    public VentanaPdf() {
+    initComponents();
+    personas = new ArrayList<>();
+    modeloTabla = (DefaultTableModel) tablaDatos.getModel();
+    }
+
+    @SuppressWarnings("unchecked")
 //    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 //    private void initComponents() {
 //
