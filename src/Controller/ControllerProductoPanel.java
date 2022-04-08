@@ -12,11 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControllerProductoPanel {
 
-    ArregloProductos Productos;
-    ArregloProductos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
-    ProductoPanel frmProducto;
-    boolean puedeOrdenar;
-    boolean esAscendente;
+    private ArregloProductos Productos;
+    private ArregloProductos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
+    private ProductoPanel frmProducto;
+    private boolean puedeOrdenar;
+    private boolean esAscendente;
     
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
@@ -178,7 +178,7 @@ public class ControllerProductoPanel {
                             Configuracion.arrProductos.eliminarPorCodigo(codigo);
                             JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                             try {
-                                Configuracion.serial.serializar("archivoProductos.txt", Configuracion.arrProductos);
+                                Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
                             } catch (Exception ex) {
                                 JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
@@ -207,7 +207,7 @@ public class ControllerProductoPanel {
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                         try {
-                            Configuracion.serial.serializar("archivoProductos.txt", Configuracion.arrProductos);
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
@@ -302,23 +302,23 @@ public class ControllerProductoPanel {
         Productos = extra;
     }
     void ordenarNombre(boolean ascendente) {
-        this.Productos.ordenarPorNombre(ascendente);        
+        this.Productos=this.Productos.ordenarPorNombre(ascendente);
     }
    
     void ordenarValorStock(boolean ascendente) {
-        this.Productos.ordenarPorValorStock(ascendente);    
+        this.Productos=this.Productos.ordenarPorValorStock(ascendente);    
     }
     
     void ordenarMayoresVentas(boolean ascendente) {
-        this.Productos.ordenarPorMayoresVentas(ascendente);    
+        this.Productos=this.Productos.ordenarPorMayoresVentas(ascendente);    
     }
     
     void ordenarStockActual(boolean ascendente) {
-        this.Productos.ordenarPorStockActual(ascendente);    
+        this.Productos=this.Productos.ordenarPorStockActual(ascendente);    
     }
     
     void ordenarStockInicial(boolean ascendente) {
-        this.Productos.ordenarPorStockInicial(ascendente);    
+        this.Productos=this.Productos.ordenarPorStockInicial(ascendente);    
     }
     
     public void paraBuscar(String dato) {

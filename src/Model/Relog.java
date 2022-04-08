@@ -92,9 +92,9 @@ public class Relog implements Runnable {
                 if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
                     if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
                         Configuracion.arrProductos.getArregloP()[i].setEstado("VENCIDO");
-
+                        
                         try {
-                            Configuracion.serial.serializar("archivoProductos.txt", Configuracion.arrProductos);
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
                         } catch (IOException xd) {
                             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
@@ -104,7 +104,7 @@ public class Relog implements Runnable {
                 }
             }
             try {
-                Thread.sleep(10 * 1000); //colocar 58*1000
+                Thread.sleep(3 * 1000);
 
             } catch (InterruptedException e) {
             }

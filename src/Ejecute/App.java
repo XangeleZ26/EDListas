@@ -11,10 +11,10 @@ public class App {
         ControllerViewLogin controller=new ControllerViewLogin();
         controller.run();
         //xd
-        File archivoProductos=new File("archivoProductos.txt");
+        File archivoProductos=new File("archivoProductos.dat");
         if(archivoProductos.exists()){
         try {
-            ArregloProductos extra = (ArregloProductos) Configuracion.serial.deserializar("archivoProductos.txt");
+            ArregloProductos extra = (ArregloProductos) Configuracion.serial.deserializar("archivoProductos.dat");
             Configuracion.arrProductos = extra;
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");

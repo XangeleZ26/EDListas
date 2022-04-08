@@ -161,8 +161,11 @@ public class ArregloProductos implements Serializable {
         }
         return null;
     }
- public void ordenarPorNombre(boolean ascendente) { // método de la burbuja        
+ public ArregloProductos ordenarPorNombre(boolean ascendente) { // método de la burbuja        
         int n = this.indice;
+        ArregloProductos extra = new ArregloProductos();
+        extra.setIndice(n);
+        
         Producto[] arr = this.arregloP.clone();
         try {
             for (int i = 0; i < n - 1; i++) {
@@ -182,17 +185,22 @@ public class ArregloProductos implements Serializable {
                         }
                     }
                 }            
-            }            
-            this.arregloP = arr;
+            }     
+            extra.setArregloP(arr);
+//            this.arregloP = arr;
         }
         catch(Exception ex) {
             System.out.println("Error burbuja: " +ex.getMessage()); 
-        }        
+        }   
+        return extra;
     }
     
-    public void ordenarPorStockActual(boolean ascendente) { // método shell                
+    public ArregloProductos ordenarPorStockActual(boolean ascendente) { // método shell  
+        
         Producto[] arr = this.arregloP.clone();
         int n = this.indice; //arr.length-1;
+        ArregloProductos extra = new ArregloProductos();
+        extra.setIndice(n);
         int j=0, intervalo=0;
         try {            
             for (intervalo = n/2; intervalo > 0; intervalo /= 2) {                
@@ -213,17 +221,21 @@ public class ArregloProductos implements Serializable {
                     }
                     arr[j] = temp;
                 }            
-            }            
-            this.arregloP = arr;
+            }   
+            extra.setArregloP(arr);
+//            this.arregloP = arr;
         }
         catch(Exception ex) {            
             System.out.println("Error shell2: " + ex.toString());
-        }        
+        } 
+        return extra;
     }
     
-    public void ordenarPorStockInicial(boolean ascendente) { // método por inserción       
+    public ArregloProductos ordenarPorStockInicial(boolean ascendente) { // método por inserción       
         int n = this.indice; //this.arregloP.length-1;
-        Producto[] arr = this.arregloP.clone();        
+        Producto[] arr = this.arregloP.clone();  
+        ArregloProductos extra = new ArregloProductos();
+        extra.setIndice(n);
         try {    
             for (int i = 1; i < n; i++) {
                 Producto temp = arr[i];
@@ -242,16 +254,20 @@ public class ArregloProductos implements Serializable {
                 }
                 arr[j+1] = temp;            
             }
-            this.arregloP = arr;
+            extra.setArregloP(arr);
+//            this.arregloP = arr;
         }
          catch(Exception ex) {            
             System.out.println("Error insercion: " +ex.toString()); 
         } 
+        return extra;
     }
     
-    public void ordenarPorValorStock(boolean ascendente) {    
+    public ArregloProductos ordenarPorValorStock(boolean ascendente) {    
         int n = this.indice;//this.arregloP.length-1;
         Producto[] arr = this.arregloP.clone();
+        ArregloProductos extra = new ArregloProductos();
+        extra.setIndice(n);
         try {    
             for (int i = 1; i < n; i++) {
                 Producto temp = arr[i];
@@ -271,16 +287,20 @@ public class ArregloProductos implements Serializable {
                 }
                 arr[j+1] = temp;            
             }
-            this.arregloP = arr;
+            extra.setArregloP(arr);
+//            this.arregloP = arr;
         }
          catch(Exception ex) {            
             System.out.println("Error valorstock: " +ex.toString()); 
         } 
+        return extra;
     }
     
-    public void ordenarPorMayoresVentas(boolean ascendente) { // método shell                
+    public ArregloProductos ordenarPorMayoresVentas(boolean ascendente) { // método shell                
         Producto[] arr = this.arregloP.clone();
         int n = this.indice; //arr.length-1;
+        ArregloProductos extra = new ArregloProductos();
+        extra.setIndice(n);
         int j=0, intervalo=0;
         try {            
             for (intervalo = n/2; intervalo > 0; intervalo /= 2) {                
@@ -304,11 +324,13 @@ public class ArregloProductos implements Serializable {
                     arr[j] = temp;
                 }            
             }            
-            this.arregloP = arr;
+            extra.setArregloP(arr);
+//            this.arregloP = arr;
         }
         catch(Exception ex) {            
             System.out.println("Error mayores ventas: " + ex.toString());
-        }        
+        }     
+        return extra;
     }
     
     public boolean documentoRegistrado(String codigo) {
