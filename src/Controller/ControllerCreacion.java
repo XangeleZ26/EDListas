@@ -29,6 +29,7 @@ public class ControllerCreacion {
             public void actionPerformed(ActionEvent e) {
                 String url = "";
                 JFileChooser buscarImage = new JFileChooser();
+                
                 //para solo admitir imagenes png o jpg
                 FileNameExtensionFilter filtrado = new FileNameExtensionFilter(".jpg o .png", "jpg", "png");
                 buscarImage.setFileFilter(filtrado);
@@ -41,6 +42,9 @@ public class ControllerCreacion {
                     imagencita = new ImageIcon(imagen.getScaledInstance(vista.imagenProductoimg.getWidth(), vista.imagenProductoimg.getHeight(), Image.SCALE_SMOOTH));
                     vista.imagenProductoimg.setIcon(imagencita);
                 }
+//                else{
+//                    JOptionPane.showMessageDialog(null, "Solo se admiten archivos en formato png o jpg.");
+//                }
             }
         });
 
@@ -48,7 +52,7 @@ public class ControllerCreacion {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-//                if (datosLlenos()) {
+                if (datosLlenos()) {
 
                     SimpleDateFormat fechaVencimiento = new SimpleDateFormat("dd/MM/yyyy");
                     Producto NuevoProducto = new Producto(vista.nombretxt.getText().trim(),
@@ -72,10 +76,10 @@ public class ControllerCreacion {
             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
         }
-//                            
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
-//                }
+                            
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
+                }
             }
         });
     }

@@ -113,6 +113,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 200, 40));
 
+        imagenProductoimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sinImagen.png"))); // NOI18N
         imagenProductoimg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(imagenProductoimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 270, 190));
 

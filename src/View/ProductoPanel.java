@@ -22,17 +22,19 @@ public class ProductoPanel extends javax.swing.JPanel {
      */
     public ProductoPanel() {
         initComponents();
-        
+
         btnCancelarBusqueda.setVisible(false);
         this.filtroCategoriastxt.setVisible(false);
+        this.radioAscendente.setVisible(false);
+        this.radioDescendente.setVisible(false);
+
         this.grupoBtnEliminar.add(this.RadioElimSelect);
         this.grupoBtnEliminar.add(this.RadioElimVencido);
         this.RadioElimSelect.setSelected(true);
-        
+
         this.grupoBtnOrdenar.add(this.radioDescendente);
         this.grupoBtnOrdenar.add(this.radioAscendente);
         this.radioAscendente.setSelected(true);
-        
 
 //        ImageIcon user=new ImageIcon(getClass().getResource("../Images/cerrar.png"));
 //        Icon userZ=new ImageIcon(user.getImage().getScaledInstance(this.btnCancelarBusqueda.getWidth(),this.btnCancelarBusqueda.getHeight(),Image.SCALE_DEFAULT));
@@ -73,6 +75,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         filtroCategoriastxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboFiltro = new javax.swing.JComboBox<>();
+        btnRefrescar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +126,7 @@ public class ProductoPanel extends javax.swing.JPanel {
             tableProducto.getColumnModel().getColumn(8).setPreferredWidth(60);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 69, 760, 348));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 760, 348));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Eliminar:");
@@ -142,11 +145,11 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         btnAgregar.setText("Agregar");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 461, 91, 37));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 91, 37));
 
         btnModif.setText("Modificar");
         btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 460, 95, 39));
+        add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 95, 39));
 
         RadioElimVencido.setText("Productos vencidos");
         RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -158,7 +161,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cantidadProductos.setText("jLabel1");
-        add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 60, 30));
+        add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 60, 30));
 
         btnLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupita.png"))); // NOI18N
         btnLupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,10 +173,15 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad de productos: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 435, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
 
         comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrdenarActionPerformed(evt);
+            }
+        });
         add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -193,6 +201,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAplicarCambios.setText("Aplicar cambios");
+        btnAplicarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 30));
 
         filtroCategoriastxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -219,6 +228,11 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 150, 300));
+
+        btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refrescar.png"))); // NOI18N
+        btnRefrescar.setText("jLabel1");
+        btnRefrescar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnRefrescar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 40, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
@@ -264,18 +278,28 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_filtroCategoriastxtMousePressed
 
     private void comboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFiltroActionPerformed
-        
-        if(this.comboFiltro.getSelectedIndex()==1){
+
+        if (this.comboFiltro.getSelectedIndex() == 1) {
             filtroCategoriastxt.setText("Ingrese categoría");
             filtroCategoriastxt.setForeground(Color.gray);
             filtroCategoriastxt.setVisible(true);
             filtroCategoriastxt.getCaret().setVisible(false);
-        }else{
+        } else {
             Buscadortxt.setForeground(Color.gray);
             filtroCategoriastxt.setVisible(false);
         }
         tableProducto.clearSelection();
     }//GEN-LAST:event_comboFiltroActionPerformed
+
+    private void comboOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrdenarActionPerformed
+        if (this.comboOrdenar.getSelectedIndex() != 0) {
+            this.radioAscendente.setVisible(true);
+            this.radioDescendente.setVisible(true);
+        } else {
+            this.radioAscendente.setVisible(false);
+            this.radioDescendente.setVisible(false);
+        }
+    }//GEN-LAST:event_comboOrdenarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
@@ -287,6 +311,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JLabel btnElim;
     public javax.swing.JLabel btnLupa;
     public javax.swing.JButton btnModif;
+    public javax.swing.JLabel btnRefrescar;
     public javax.swing.JLabel cantidadProductos;
     public javax.swing.JComboBox<String> comboFiltro;
     public javax.swing.JComboBox<String> comboOrdenar;

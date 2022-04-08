@@ -14,12 +14,11 @@ public class Relog implements Runnable {
 
     private String horaActual;
     private String fechaActual;
-
     private int diaActual;
     private int mesActual;
     private int anioActual;
     private Thread hilo;
-
+    
     public Relog() {
         fecha();
         this.hilo = new Thread(this);
@@ -100,6 +99,7 @@ public class Relog implements Runnable {
                             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
                         }
+                        
                     }
                 }
             }

@@ -8,10 +8,7 @@ import java.io.File;
 
 public class App {
     public static void main(String[] args) {
-        ControllerViewLogin controller=new ControllerViewLogin();
-        controller.run();
-        
-        //xd
+
         File archivoProductos=new File("archivoProductos.dat");
         if(archivoProductos.exists()){
         try {
@@ -33,5 +30,8 @@ public class App {
         VistaCliente view=new VistaCliente();
         view.setVisible(true);
         view.setLocationRelativeTo(null);
+        
+        ControllerViewLogin controller=new ControllerViewLogin();
+        controller.run();
     }
 }
