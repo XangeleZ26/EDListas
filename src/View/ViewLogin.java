@@ -357,10 +357,10 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextMousePressed
 
     private void textEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseClicked
-//        ControllerPrincipal controller=new ControllerPrincipal();
-//        controller.run();
-//       
-//        dispose();
+        ControllerPrincipal controller=new ControllerPrincipal();
+        controller.run();
+       
+        dispose();
 
     }//GEN-LAST:event_textEntrarMouseClicked
 
