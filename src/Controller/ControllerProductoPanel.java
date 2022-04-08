@@ -17,7 +17,7 @@ public class ControllerProductoPanel {
     private ProductoPanel frmProducto;
     private boolean puedeOrdenar;
     private boolean esAscendente;
-    
+
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
         this.Productos = Configuracion.arrProductos;
@@ -55,14 +55,13 @@ public class ControllerProductoPanel {
             }
         });
 
-
         //BOTON APLICAR CAMBIOS DE FILTRO Y ORDENAMIENTO
         this.frmProducto.btnAplicarCambios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                puedeOrdenar=true;
+                puedeOrdenar = true;
                 // 2° PRIORIDAD: FILTRO
-                
+
                 //ES NECESARIO QUE CONSIDERE LOS VALORES DE LA BUSQUEDA EN CASO SE QUIERA REVERTIR UN FILTRO/ORDENAMIENTO
                 Productos = extraProductosFO;
 
@@ -79,13 +78,13 @@ public class ControllerProductoPanel {
                                 JOptionPane.showMessageDialog(null, "Esta categoría no está disponible entre \nlos datos que la tabla muestra actualmente.");
                                 frmProducto.filtroCategoriastxt.setText("Ingrese categoría");
                                 frmProducto.filtroCategoriastxt.setForeground(Color.gray);
-                                puedeOrdenar=false;
+                                puedeOrdenar = false;
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "¡Ingrese la categoría a filtrar!");
-                                frmProducto.filtroCategoriastxt.setText("Ingrese categoría");
-                                frmProducto.filtroCategoriastxt.setForeground(Color.gray);
-                                puedeOrdenar=false;
+                            frmProducto.filtroCategoriastxt.setText("Ingrese categoría");
+                            frmProducto.filtroCategoriastxt.setForeground(Color.gray);
+                            puedeOrdenar = false;
                         }
                         break;
                     }
@@ -108,36 +107,40 @@ public class ControllerProductoPanel {
                 }
                 // 3° PRIORIDAD: ORDENAMIENTO
                 if (puedeOrdenar) {
-                    
-                        if (frmProducto.radioAscendente.isSelected()) {
-                            esAscendente=true;  //se ordenará en ascendente
-                        }else{ 
-                            esAscendente=false; //se ordenará en descendente
-                            System.out.println("descendente"); //PRUEBA DE QUE FUNCIONA HASTA AQUI
-                        }
-                        switch (frmProducto.comboOrdenar.getSelectedIndex()) {
-                            case 0: { //sin ordenar
-                        break; //ESTE DEBE DE QUEDAR ASÍ, EN LOS SIGUIENTES cases AGREGAR METODOS
-                            }
-                            case 1:{ //mayores ventas
-                                ordenarMayoresVentas(esAscendente); break;
-                            }
-                            case 2:{ //valor inicial de stock
-                                ordenarValorStock(esAscendente); break;
-                            }
-                            case 3:{ //cantidad inicial de stock
-                                ordenarStockInicial(esAscendente); break;
-                            }
-                            case 4:{ //actidad actual de stock
-                                ordenarStockActual(esAscendente); break;
-                            }
-                            case 5:{ //ordenamiento por nombre
-                                ordenarNombre(esAscendente); break;
-                            }
 
+                    if (frmProducto.radioAscendente.isSelected()) {
+                        esAscendente = true;  //se ordenará en ascendente
+                    } else {
+                        esAscendente = false; //se ordenará en descendente
+                        System.out.println("descendente"); //PRUEBA DE QUE FUNCIONA HASTA AQUI
+                    }
+                    switch (frmProducto.comboOrdenar.getSelectedIndex()) {
+                        case 0: { //sin ordenar
+                            break; //ESTE DEBE DE QUEDAR ASÍ, EN LOS SIGUIENTES cases AGREGAR METODOS
                         }
-                        
-                        
+                        case 1: { //mayores ventas
+                            ordenarMayoresVentas(esAscendente);
+                            break;
+                        }
+                        case 2: { //valor inicial de stock
+                            ordenarValorStock(esAscendente);
+                            break;
+                        }
+                        case 3: { //cantidad inicial de stock
+                            ordenarStockInicial(esAscendente);
+                            break;
+                        }
+                        case 4: { //actidad actual de stock
+                            ordenarStockActual(esAscendente);
+                            break;
+                        }
+                        case 5: { //ordenamiento por nombre
+                            ordenarNombre(esAscendente);
+                            break;
+                        }
+
+                    }
+
                 }
 
                 //Procede a llenar tabla
@@ -225,6 +228,14 @@ public class ControllerProductoPanel {
 
             }
         });
+        this.frmProducto.btnRefrescar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                llenarTabla();
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+
+            }
+        });
     }
 
     public void concretarElim() {
@@ -253,9 +264,9 @@ public class ControllerProductoPanel {
     public boolean existeCategoria() {
         boolean result = false;  //usando busqueda secuencial
         for (int i = 0; i < Productos.getIndice(); i++) {
-           
+
             if (Productos.getArregloP()[i].getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
-        return true;
+                return true;
             }
         }
 
@@ -301,26 +312,27 @@ public class ControllerProductoPanel {
         }
         Productos = extra;
     }
+
     void ordenarNombre(boolean ascendente) {
-        this.Productos=this.Productos.ordenarPorNombre(ascendente);
+        this.Productos = this.Productos.ordenarPorNombre(ascendente);
     }
-   
+
     void ordenarValorStock(boolean ascendente) {
-        this.Productos=this.Productos.ordenarPorValorStock(ascendente);    
+        this.Productos = this.Productos.ordenarPorValorStock(ascendente);
     }
-    
+
     void ordenarMayoresVentas(boolean ascendente) {
-        this.Productos=this.Productos.ordenarPorMayoresVentas(ascendente);    
+        this.Productos = this.Productos.ordenarPorMayoresVentas(ascendente);
     }
-    
+
     void ordenarStockActual(boolean ascendente) {
-        this.Productos=this.Productos.ordenarPorStockActual(ascendente);    
+        this.Productos = this.Productos.ordenarPorStockActual(ascendente);
     }
-    
+
     void ordenarStockInicial(boolean ascendente) {
-        this.Productos=this.Productos.ordenarPorStockInicial(ascendente);    
+        this.Productos = this.Productos.ordenarPorStockInicial(ascendente);
     }
-    
+
     public void paraBuscar(String dato) {
         ArregloProductos extra = new ArregloProductos();
         for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {

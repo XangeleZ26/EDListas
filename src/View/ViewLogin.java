@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +23,9 @@ public class ViewLogin extends javax.swing.JFrame {
     public ViewLogin() {
         initComponents();
         TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
+        this.imagenOcultarContra.setVisible(false);
+//        contraseniaText.setText("●●●●●●");
+    contraseniaText.setEchoChar('●');
     }
     private void TamanioDinamico(String direccion, javax.swing.JLabel Borde){
         ImageIcon imagen = new ImageIcon(getClass().getResource(direccion));
@@ -55,6 +59,8 @@ public class ViewLogin extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         panelEntrar = new javax.swing.JPanel();
         textEntrar = new javax.swing.JLabel();
+        imagenOcultarContra = new javax.swing.JLabel();
+        imagenVerContra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -179,6 +185,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
+        usuarioText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usuarioText.setForeground(new java.awt.Color(204, 204, 204));
         usuarioText.setText("Ingrese su nombre de usuario");
         usuarioText.setBorder(null);
@@ -203,9 +210,8 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel3.setText("USUARIO ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
-        contraseniaText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        contraseniaText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         contraseniaText.setForeground(new java.awt.Color(204, 204, 204));
-        contraseniaText.setText("*********");
         contraseniaText.setBorder(null);
         contraseniaText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -231,16 +237,16 @@ public class ViewLogin extends javax.swing.JFrame {
         textEntrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         textEntrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textEntrar.setText("ENTRAR");
-        textEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        textEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textEntrarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                textEntrarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 textEntrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textEntrarMouseExited(evt);
             }
         });
 
@@ -259,15 +265,31 @@ public class ViewLogin extends javax.swing.JFrame {
 
         jPanel1.add(panelEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 170, 50));
 
+        imagenOcultarContra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ocultarcontra.png"))); // NOI18N
+        imagenOcultarContra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagenOcultarContraMouseClicked(evt);
+            }
+        });
+        jPanel1.add(imagenOcultarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, -1, -1));
+
+        imagenVerContra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/vercontra.png"))); // NOI18N
+        imagenVerContra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagenVerContraMouseClicked(evt);
+            }
+        });
+        jPanel1.add(imagenVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -312,8 +334,8 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setForeground(Color.black);
         }
         if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
         }
         usuarioText.getCaret().setVisible(true);
     }//GEN-LAST:event_usuarioTextMousePressed
@@ -323,10 +345,10 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextActionPerformed
 
     private void contraseniaTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseniaTextMousePressed
-      if (String.valueOf(contraseniaText.getPassword()).equals("*********")){
-            contraseniaText.setText("");
+//      if (String.valueOf(contraseniaText.getPassword()).equals("")){
+//            contraseniaText.setText("");
             contraseniaText.setForeground(Color.black);
-        }
+//        }
         if (usuarioText.getText().isEmpty()){
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
@@ -335,10 +357,10 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextMousePressed
 
     private void textEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseClicked
-        ControllerPrincipal controller=new ControllerPrincipal();
-        controller.run();
-       
-        dispose();
+//        ControllerPrincipal controller=new ControllerPrincipal();
+//        controller.run();
+//       
+//        dispose();
 
     }//GEN-LAST:event_textEntrarMouseClicked
 
@@ -359,9 +381,24 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BarraMousePressed
 
     private void panelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEntrarMouseClicked
-    ControllerPrincipal controller=new ControllerPrincipal();
-        controller.run();
-        dispose();
+ /*       String usuario = usuarioText.getText();
+        String paswd = contraseniaText.getText();
+        
+        if(usuario.isEmpty() || paswd.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Digite ambos campos");
+            
+        }else{
+             if(usuario.equals("Administrador") && paswd.equals("1234")){
+*/        
+                 ControllerPrincipal controller=new ControllerPrincipal();
+                 controller.run();
+                 this.dispose();
+ /*                                 
+             }else{
+                 JOptionPane.showMessageDialog(null,"Usuario y/o contraseña incorrecto");
+             }
+        }
+ */
     }//GEN-LAST:event_panelEntrarMouseClicked
 
     private void fondoInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoInicioMousePressed
@@ -369,10 +406,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
@@ -390,10 +427,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
@@ -406,10 +443,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
@@ -420,6 +457,21 @@ public class ViewLogin extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x-xMouse, y-yMouse);
     }//GEN-LAST:event_barraArrastraMouseDragged
+
+    private void imagenVerContraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagenVerContraMouseClicked
+        // TODO add your handling code here:
+        imagenVerContra.setVisible(false);
+        imagenOcultarContra.setVisible(true);
+        contraseniaText.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_imagenVerContraMouseClicked
+
+    private void imagenOcultarContraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagenOcultarContraMouseClicked
+        // TODO add your handling code here:
+        imagenVerContra.setVisible(true);
+        imagenOcultarContra.setVisible(false);
+        contraseniaText.setEchoChar('●');
+    }//GEN-LAST:event_imagenOcultarContraMouseClicked
 
     /**
      * @param args the command line arguments
@@ -462,6 +514,8 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel barraArrastra;
     public javax.swing.JPasswordField contraseniaText;
     public javax.swing.JLabel fondoInicio;
+    private javax.swing.JLabel imagenOcultarContra;
+    private javax.swing.JLabel imagenVerContra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
