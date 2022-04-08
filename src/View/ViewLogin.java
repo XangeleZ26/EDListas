@@ -24,6 +24,8 @@ public class ViewLogin extends javax.swing.JFrame {
         initComponents();
         TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
         this.imagenOcultarContra.setVisible(false);
+//        contraseniaText.setText("●●●●●●");
+    contraseniaText.setEchoChar('●');
     }
     private void TamanioDinamico(String direccion, javax.swing.JLabel Borde){
         ImageIcon imagen = new ImageIcon(getClass().getResource(direccion));
@@ -183,6 +185,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
+        usuarioText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usuarioText.setForeground(new java.awt.Color(204, 204, 204));
         usuarioText.setText("Ingrese su nombre de usuario");
         usuarioText.setBorder(null);
@@ -207,9 +210,8 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel3.setText("USUARIO ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
-        contraseniaText.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        contraseniaText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         contraseniaText.setForeground(new java.awt.Color(204, 204, 204));
-        contraseniaText.setText("*********");
         contraseniaText.setBorder(null);
         contraseniaText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -332,8 +334,8 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setForeground(Color.black);
         }
         if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
         }
         usuarioText.getCaret().setVisible(true);
     }//GEN-LAST:event_usuarioTextMousePressed
@@ -343,10 +345,10 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextActionPerformed
 
     private void contraseniaTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseniaTextMousePressed
-      if (String.valueOf(contraseniaText.getPassword()).equals("*********")){
-            contraseniaText.setText("");
+//      if (String.valueOf(contraseniaText.getPassword()).equals("")){
+//            contraseniaText.setText("");
             contraseniaText.setForeground(Color.black);
-        }
+//        }
         if (usuarioText.getText().isEmpty()){
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
@@ -355,10 +357,10 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextMousePressed
 
     private void textEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseClicked
-        ControllerPrincipal controller=new ControllerPrincipal();
-        controller.run();
-       
-        dispose();
+//        ControllerPrincipal controller=new ControllerPrincipal();
+//        controller.run();
+//       
+//        dispose();
 
     }//GEN-LAST:event_textEntrarMouseClicked
 
@@ -404,10 +406,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
@@ -425,10 +427,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
@@ -441,10 +443,10 @@ public class ViewLogin extends javax.swing.JFrame {
             usuarioText.setText("Ingrese su nombre de usuario");
             usuarioText.setForeground(Color.gray);
         } 
-       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
-            contraseniaText.setText("*********");
-            contraseniaText.setForeground(Color.gray);            
-        }
+//       if (String.valueOf(contraseniaText.getPassword()).isEmpty()){
+//            contraseniaText.setText("●●●●●●");
+//            contraseniaText.setForeground(Color.gray);            
+//        }
        
        usuarioText.getCaret().setVisible(false);
        contraseniaText.getCaret().setVisible(false);
