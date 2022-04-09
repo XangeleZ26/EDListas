@@ -97,7 +97,7 @@ public class Plantilla {
                 tabla.addCell(factura.getCantidad()+"");
                 tabla.addCell(factura.getCodigo());
                 tabla.addCell(factura.getProducto());  
-                tabla.addCell(factura.getMonto());
+                tabla.addCell(String.valueOf(factura.getMonto()));
             }
             documento.add(tabla);          
             documento.add(Chunk.NEWLINE);

@@ -1,6 +1,8 @@
 
 package View;
 
+import Model.Facturas;
+import Model.Plantilla;
 import java.awt.Desktop;
 import java.io.File;
 import java.util.ArrayList;
@@ -248,7 +250,7 @@ public class VentanaPdf extends javax.swing.JFrame {
        factura.setCantidad(Integer.parseInt(cantidad.getText()));
        factura.setCodigo(codigo.getText());
        factura.setProducto(producto.getText());
-       factura.setMonto(monto.getText());
+       factura.setMonto(Float.parseFloat(monto.getText()));
        
        facturas.add(factura);        
        modeloTabla.addRow(new Object[]{factura.getNombre(),factura.getCantidad(), factura.getCodigo(), factura.getProducto(),factura.getMonto()});
