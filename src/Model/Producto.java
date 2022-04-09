@@ -45,10 +45,12 @@ public class Producto implements Serializable {
         this.fechaVencimiento = fechaVencimiento;
         this.imagen = imagen;
         this.stockInicial = stockInicial;
+        this.stock=stockInicial;
         this.valorXUnidad = valorXUnidad;
         this.valorTotalStock=this.valorXUnidad*this.stockInicial;
         //agregar luego la etiqueta
     }
+       
   public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, int stockInicial, double valorXUnidad) {
         this.nombreProducto = nombreProducto;
         this.categoria = categoria;

@@ -128,16 +128,13 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("MODIFICAR  PRODUCTO");
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Nombre:");
 
-        textNombre.setBackground(new java.awt.Color(255, 255, 255));
         textNombre.setForeground(new java.awt.Color(204, 204, 204));
         textNombre.setText("jTextField1");
         textNombre.setBorder(null);
@@ -149,11 +146,9 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Categoría:");
 
-        textCategoria.setBackground(new java.awt.Color(255, 255, 255));
         textCategoria.setForeground(new java.awt.Color(204, 204, 204));
         textCategoria.setText("jTextField2");
         textCategoria.setBorder(null);
@@ -163,13 +158,10 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
-        textValor.setBackground(new java.awt.Color(255, 255, 255));
         textValor.setForeground(new java.awt.Color(204, 204, 204));
         textValor.setText("jTextField3");
         textValor.setBorder(null);
@@ -186,14 +178,11 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Valor c/u:");
 
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        textValorStock.setBackground(new java.awt.Color(255, 255, 255));
         textValorStock.setForeground(new java.awt.Color(204, 204, 204));
         textValorStock.setText("jTextField4");
         textValorStock.setBorder(null);
@@ -210,11 +199,9 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Valor stock:");
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         panelGuardar.setBackground(new java.awt.Color(204, 155, 64));
@@ -230,7 +217,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Guardar cambios");
 
@@ -261,7 +247,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Cancelar");
 
