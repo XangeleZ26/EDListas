@@ -18,45 +18,45 @@ import javax.swing.SwingConstants;
 public class VistaCliente extends javax.swing.JFrame {
 
     public VistaCliente() {
-    JPanel panelProductos = new JPanel();
-        panelProductos.setLayout(null);
-        int left=0;
-        int down=0;
-        setSize(1100, 800);
-//        for (int i = 0; i < 5; i++) {
-            int leftDato=left;
-            int downDato=down;
-            JLabel imagenLabel = new JLabel();
-            JLabel nombreLabel=new JLabel();
-            JLabel precioLabel=new JLabel();
-            
-            imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[7].getImagen(),170,170));
-            nombreLabel.setText("pruebita");
-            nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            precioLabel.setText("$50");
-            precioLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            imagenLabel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    System.out.println("XDDD perro ");
-                    
-                }
-            });
-
-            imagenLabel.setBounds(20+leftDato, 90, 170,170);
-            nombreLabel.setBounds(20+leftDato, 230, 150,20);
-            precioLabel.setBounds(20+leftDato, 250,150,10);
-            panelProductos.add(imagenLabel);
-            panelProductos.add(nombreLabel);
-            panelProductos.add(precioLabel);
-            left+=60;
-//        }
-
-        add(panelProductos);
-        
-        setVisible(true);
-        setLocationRelativeTo(null);
-        
+//    JPanel panelProductos = new JPanel();
+//        panelProductos.setLayout(null);
+//        int left=0;
+//        int down=0;
+//        setSize(1100, 800);
+////        for (int i = 0; i < 5; i++) {
+//            int leftDato=left;
+//            int downDato=down;
+//            JLabel imagenLabel = new JLabel();
+//            JLabel nombreLabel=new JLabel();
+//            JLabel precioLabel=new JLabel();
+//            
+//            imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[7].getImagen(),170,170));
+//            nombreLabel.setText("pruebita");
+//            nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//            precioLabel.setText("$50");
+//            precioLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//            imagenLabel.addMouseListener(new MouseAdapter() {
+//                @Override
+//                public void mouseClicked(MouseEvent e) {
+//                    System.out.println("XDDD perro ");
+//                    
+//                }
+//            });
+//
+//            imagenLabel.setBounds(20+leftDato, 90, 170,170);
+//            nombreLabel.setBounds(20+leftDato, 230, 150,20);
+//            precioLabel.setBounds(20+leftDato, 250,150,10);
+//            panelProductos.add(imagenLabel);
+//            panelProductos.add(nombreLabel);
+//            panelProductos.add(precioLabel);
+//            left+=60;
+////        }
+//
+//        add(panelProductos);
+//        
+//        setVisible(true);
+//        setLocationRelativeTo(null);
+//        
     }
 
 

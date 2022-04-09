@@ -97,12 +97,12 @@ public class ProductoPanel extends javax.swing.JPanel {
         filtroCategoriastxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboFiltro = new javax.swing.JComboBox<>();
+        comboOrdenar = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         Buscadortxt = new javax.swing.JTextField();
         cantidadProductos = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
-        comboOrdenar = new javax.swing.JComboBox<>();
         btnModif = new javax.swing.JButton();
         btnElim = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -128,16 +128,13 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("MODIFICAR  PRODUCTO");
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Nombre:");
 
-        textNombre.setBackground(new java.awt.Color(255, 255, 255));
         textNombre.setForeground(new java.awt.Color(204, 204, 204));
         textNombre.setText("jTextField1");
         textNombre.setBorder(null);
@@ -149,11 +146,9 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Categoría:");
 
-        textCategoria.setBackground(new java.awt.Color(255, 255, 255));
         textCategoria.setForeground(new java.awt.Color(204, 204, 204));
         textCategoria.setText("jTextField2");
         textCategoria.setBorder(null);
@@ -163,13 +158,10 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
-        textValor.setBackground(new java.awt.Color(255, 255, 255));
         textValor.setForeground(new java.awt.Color(204, 204, 204));
         textValor.setText("jTextField3");
         textValor.setBorder(null);
@@ -181,14 +173,11 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Valor c/u:");
 
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        textValorStock.setBackground(new java.awt.Color(255, 255, 255));
         textValorStock.setForeground(new java.awt.Color(204, 204, 204));
         textValorStock.setText("jTextField4");
         textValorStock.setBorder(null);
@@ -200,11 +189,9 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Valor stock:");
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         panelGuardar.setBackground(new java.awt.Color(204, 155, 64));
@@ -220,7 +207,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Guardar cambios");
 
@@ -251,7 +237,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Cancelar");
 
@@ -464,6 +449,15 @@ public class ProductoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrdenarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 28));
+
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 150, 300));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -497,15 +491,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnCancelarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 30, 30));
-
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
-        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboOrdenarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
 
         btnModif.setText("Modificar");
         btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

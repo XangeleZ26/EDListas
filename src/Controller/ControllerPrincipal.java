@@ -29,6 +29,7 @@ public class ControllerPrincipal {
 //
 //    //ESTE ALGORTIMO DE SERIALIZACION DEBE SER AGREGADO INMEDIATAMENTE DESPUÉS 
 //    //DE QUE SE HALLA CREADO UN OBJETO NUEVO O SE HALLA HECHO UNA MODIFICACION (FALTA QUE IMPLEMENTEN LA PARTE DE "AGREGAR PRODUCTOS")
+
 //        try {
 //            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 //          
@@ -36,7 +37,7 @@ public class ControllerPrincipal {
 //            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 //
 //        }
-
+//
     }
 
     public void run() {
