@@ -97,12 +97,12 @@ public class ProductoPanel extends javax.swing.JPanel {
         filtroCategoriastxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboFiltro = new javax.swing.JComboBox<>();
+        comboOrdenar = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         Buscadortxt = new javax.swing.JTextField();
         cantidadProductos = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
-        comboOrdenar = new javax.swing.JComboBox<>();
         btnModif = new javax.swing.JButton();
         btnElim = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -178,6 +178,11 @@ public class ProductoPanel extends javax.swing.JPanel {
                 textValorMouseClicked(evt);
             }
         });
+        textValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textValorKeyTyped(evt);
+            }
+        });
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -195,6 +200,11 @@ public class ProductoPanel extends javax.swing.JPanel {
         textValorStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textValorStockMouseClicked(evt);
+            }
+        });
+        textValorStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textValorStockKeyTyped(evt);
             }
         });
 
@@ -464,6 +474,15 @@ public class ProductoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrdenarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 28));
+
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 150, 300));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -497,15 +516,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnCancelarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 30, 30));
-
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
-        comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboOrdenarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 130, 28));
 
         btnModif.setText("Modificar");
         btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -655,9 +665,13 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnModifActionPerformed
     private void llenarDatos(){
         textNombre.setText((String) obj[1]);
+        textNombre.setForeground(new Color(204,204,204));
         textCategoria.setText((String) obj[2]);
+        textCategoria.setForeground(new Color(204,204,204));
         textValor.setText(""+(Double) obj[5]);
+        textValor.setForeground(new Color(204,204,204));
         textValorStock.setText(""+(Double) obj[6]);
+        textValorStock.setForeground(new Color(204,204,204));
         labelCodigo.setText("Codigo: "+(String) obj[0]);
         labelStockInicial.setText("Stock Inicial: "+(Integer) obj[3]);
         labelStockActual.setText("Stock Actual: "+(Integer) obj[4]);
@@ -735,6 +749,32 @@ public class ProductoPanel extends javax.swing.JPanel {
     private void panelModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModificarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_panelModificarMouseClicked
+
+    private void textValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textValorKeyTyped
+        try{
+            float valor = Float.parseFloat(textValor.getText()+evt.getKeyChar())*(Integer) obj[3];
+            textValorStock.setText(valor+"");
+            textValorStock.setForeground(Color.BLACK);
+        }catch(Exception e){
+            float valor = Float.parseFloat(""+evt.getKeyChar())*(Integer) obj[3];
+            textValorStock.setText(valor+"");
+            textValorStock.setForeground(Color.BLACK);
+        }
+        
+    }//GEN-LAST:event_textValorKeyTyped
+
+    private void textValorStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textValorStockKeyTyped
+        try{
+            float valor = Float.parseFloat(textValorStock.getText()+evt.getKeyChar())/(Integer) obj[3];
+            textValor.setText(valor+"");
+            textValor.setForeground(Color.BLACK);
+        }catch(Exception e){
+            float valor = Float.parseFloat(""+evt.getKeyChar())/(Integer) obj[3];
+            textValor.setText(valor+"");
+            textValor.setForeground(Color.BLACK);
+        }
+        
+    }//GEN-LAST:event_textValorStockKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
