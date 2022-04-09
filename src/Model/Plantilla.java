@@ -1,5 +1,5 @@
 
-package plantillapdfmain;
+package Model;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -22,7 +22,7 @@ public class Plantilla {
     String nombreOperador;
     String fecha;
     String rutaImagen;
-    List<Persona> personas;
+    List<Facturas> facturas;
     
     Document documento;
     FileOutputStream archivo;
@@ -31,12 +31,12 @@ public class Plantilla {
     public Plantilla(String nombreOperador,
             String fecha,
             String rutaImagen,
-            List<Persona> personas)
+            List<Facturas> facturas)
     {
         this.nombreOperador = nombreOperador;
         this.fecha = fecha;
         this.rutaImagen = rutaImagen;
-        this.personas = personas;
+        this.facturas = facturas;
         
         documento = new Document();
         titulo  = new Paragraph("Pasteleria *Encantos* ");        
@@ -92,12 +92,12 @@ public class Plantilla {
             tabla.addCell(producto);
             tabla.addCell(monto);
             
-            for(Persona persona: this.personas){
-                tabla.addCell(persona.getNombre());                
-                tabla.addCell(persona.getCantidad()+"");
-                tabla.addCell(persona.getCodigo());
-                tabla.addCell(persona.getProducto());  
-                tabla.addCell(persona.getMonto());
+            for(Facturas factura: this.facturas){
+                tabla.addCell(factura.getNombre());                
+                tabla.addCell(factura.getCantidad()+"");
+                tabla.addCell(factura.getCodigo());
+                tabla.addCell(factura.getProducto());  
+                tabla.addCell(factura.getMonto());
             }
             documento.add(tabla);          
             documento.add(Chunk.NEWLINE);
