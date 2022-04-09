@@ -1,5 +1,5 @@
 
-package plantillapdfmain;
+package View;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaPdf extends javax.swing.JFrame {
 
-    List<Persona> personas; 
+    List<Facturas> personas; 
     DefaultTableModel modeloTabla;
     public VentanaPdf() {
         initComponents();
@@ -250,8 +250,8 @@ public class VentanaPdf extends javax.swing.JFrame {
         persona.setProducto(producto.getText());
         persona.setMonto(monto.getText());
         
-        personas.add(persona);        
-        modeloTabla.addRow(new Object[]{persona.getNombre(),persona.getCantidad(), persona.getCodigo(), persona.getProducto(),persona.getMonto()});
+        personas.add(Facturas);        
+        modeloTabla.addRow(new Object[]{Facturas.getNombre(),Facturas.getCantidad(), Facturas.getCodigo(), Facturas.getProducto(),Facturas.getMonto()});
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
