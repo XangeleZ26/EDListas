@@ -55,11 +55,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ArtStock");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 126, 30));
+        jLabel3.setText("Encantos");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 126, 30));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, 14));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 110, 14));
 
         panelPrincipal.setBackground(new java.awt.Color(204, 155, 64));
         panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
         principaltxt.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         principaltxt.setForeground(new java.awt.Color(255, 255, 255));
         principaltxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        principaltxt.setText("Principal");
+        principaltxt.setText("Inicio");
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -189,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
         textUsuario.setForeground(new java.awt.Color(255, 255, 255));
         textUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textUsuario.setText("Usuario");
-        jPanel2.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 158, 60));
+        jPanel2.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 520, 190, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 640));
 

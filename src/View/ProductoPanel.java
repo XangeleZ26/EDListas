@@ -22,10 +22,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductoPanel extends javax.swing.JPanel {
     private Object[] obj;
+    private boolean habilitadoMod;
     /**
      * Creates new form ProductoPanel
      */
     public ProductoPanel() {
+        habilitadoMod = true;
         initComponents();
         this.panelModificar.setVisible(false);
         btnCancelarBusqueda.setVisible(false);
@@ -99,14 +101,16 @@ public class ProductoPanel extends javax.swing.JPanel {
         comboFiltro = new javax.swing.JComboBox<>();
         comboOrdenar = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
         Buscadortxt = new javax.swing.JTextField();
         cantidadProductos = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
-        btnModif = new javax.swing.JButton();
         btnElim = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducto = new javax.swing.JTable();
+        panelMod = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -474,15 +478,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel3.setText("Eliminar:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 50, 30));
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 91, 37));
-
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
         Buscadortxt.setText("Ingrese nombre del producto");
@@ -501,15 +496,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnCancelarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 30, 30));
-
-        btnModif.setText("Modificar");
-        btnModif.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnModif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModifActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnModif, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, 95, 39));
 
         btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
         btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -557,6 +543,71 @@ public class ProductoPanel extends javax.swing.JPanel {
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 700, 360));
+
+        panelMod.setBackground(new java.awt.Color(204, 155, 64));
+        panelMod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelMod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelModMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelModMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelModMouseEntered(evt);
+            }
+        });
+
+        jLabel13.setText("Modificar");
+
+        javax.swing.GroupLayout panelModLayout = new javax.swing.GroupLayout(panelMod);
+        panelMod.setLayout(panelModLayout);
+        panelModLayout.setHorizontalGroup(
+            panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel13)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        panelModLayout.setVerticalGroup(
+            panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(panelMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 91, 37));
+        panelMod.getAccessibleContext().setAccessibleName("");
+
+        btnAgregar.setBackground(new java.awt.Color(204, 155, 64));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseEntered(evt);
+            }
+        });
+
+        jLabel14.setText("Agregar");
+
+        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
+        btnAgregar.setLayout(btnAgregarLayout);
+        btnAgregarLayout.setHorizontalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel14)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        btnAgregarLayout.setVerticalGroup(
+            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 91, 37));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 600));
     }// </editor-fold>//GEN-END:initComponents
@@ -626,28 +677,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             this.radioDescendente.setVisible(false);
         }
     }//GEN-LAST:event_comboOrdenarActionPerformed
-
-    private void btnModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
-        int index=0;
-        try{
-            index=tableProducto.getSelectedRow();
-            this.obj = new Object[] {
-                dtm.getValueAt(index, 0),
-                dtm.getValueAt(index, 1),
-                dtm.getValueAt(index, 2),
-                dtm.getValueAt(index, 3),
-                dtm.getValueAt(index, 4),
-                dtm.getValueAt(index, 5),
-                dtm.getValueAt(index, 6),
-                dtm.getValueAt(index, 7),
-                dtm.getValueAt(index, 8)
-            };
-            llenarDatos();
-            panelModificar.setVisible(true);
-        } catch(Exception ex){
-        }
-    }//GEN-LAST:event_btnModifActionPerformed
     private void llenarDatos(){
         textNombre.setText((String) obj[1]);
         textNombre.setForeground(new Color(204,204,204));
@@ -678,10 +707,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             //F
         }
     }
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void textNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textNombreMouseClicked
         textNombre.setText("");
         textNombre.setForeground(Color.black);
@@ -708,6 +733,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(Configuracion.arrProductos.data(), Configuracion.arrProductos.header());
         tableProducto.setModel(modelo);
         panelModificar.setVisible(false);
+        llenarComponentes();
         //terminar
     }//GEN-LAST:event_panelGuardarMouseClicked
 
@@ -721,6 +747,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
     private void panelCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCancelarMouseClicked
         panelModificar.setVisible(false);
+        llenarComponentes();
     }//GEN-LAST:event_panelCancelarMouseClicked
 
     private void panelCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCancelarMouseExited
@@ -761,16 +788,71 @@ public class ProductoPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_textValorStockKeyTyped
 
+    private void panelModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseClicked
+        DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
+        panelMod.setBackground(new Color(204,155,64));
+        int index=0;
+        try{
+            index=tableProducto.getSelectedRow();
+            this.obj = new Object[] {
+                dtm.getValueAt(index, 0),
+                dtm.getValueAt(index, 1),
+                dtm.getValueAt(index, 2),
+                dtm.getValueAt(index, 3),
+                dtm.getValueAt(index, 4),
+                dtm.getValueAt(index, 5),
+                dtm.getValueAt(index, 6),
+                dtm.getValueAt(index, 7),
+                dtm.getValueAt(index, 8)
+            };
+            llenarDatos();
+            panelModificar.setVisible(true);
+            limpiarComponentes();
+            
+            
+        } catch(Exception ex){
+        }
+    }//GEN-LAST:event_panelModMouseClicked
+    private void llenarComponentes(){
+        this.habilitadoMod = true;
+        tableProducto.setVisible(true);
+    }
+    private void limpiarComponentes(){
+        this.habilitadoMod = false;
+        tableProducto.clearSelection();
+        tableProducto.setVisible(false);
+        //tableProducto.setVisible(true);
+    }
+    private void panelModMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseEntered
+        panelMod.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_panelModMouseEntered
+
+    private void panelModMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseExited
+        if(this.habilitadoMod)
+            panelMod.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_panelModMouseExited
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
+        btnAgregar.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_btnAgregarMouseEntered
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        btnAgregar.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
     public javax.swing.JRadioButton RadioElimSelect;
     public javax.swing.JRadioButton RadioElimVencido;
-    public javax.swing.JButton btnAgregar;
+    private javax.swing.JPanel btnAgregar;
     public javax.swing.JButton btnAplicarCambios;
     public javax.swing.JLabel btnCancelarBusqueda;
     public javax.swing.JLabel btnElim;
     public javax.swing.JLabel btnLupa;
-    public javax.swing.JButton btnModif;
     public javax.swing.JLabel btnRefrescar;
     public javax.swing.JLabel cantidadProductos;
     public javax.swing.JComboBox<String> comboFiltro;
@@ -782,6 +864,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -805,6 +889,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelVencimiento;
     private javax.swing.JPanel panelCancelar;
     private javax.swing.JPanel panelGuardar;
+    private javax.swing.JPanel panelMod;
     private javax.swing.JPanel panelModificar;
     public javax.swing.JRadioButton radioAscendente;
     public javax.swing.JRadioButton radioDescendente;
