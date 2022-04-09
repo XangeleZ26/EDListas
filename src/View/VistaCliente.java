@@ -30,7 +30,7 @@ public class VistaCliente extends javax.swing.JFrame {
 //            JLabel nombreLabel=new JLabel();
 //            JLabel precioLabel=new JLabel();
 //            
-//            imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[7].getImagen(),170,170));
+//            imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[0].getImagen(),170,170));
 //            nombreLabel.setText("pruebita");
 //            nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 //            precioLabel.setText("$50");
@@ -64,8 +64,18 @@ public class VistaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Pruebitaaaaa");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,5 +131,7 @@ public class VistaCliente extends javax.swing.JFrame {
         return new ImageIcon(icon.getImage().getScaledInstance(nw, nh, Image.SCALE_DEFAULT));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
