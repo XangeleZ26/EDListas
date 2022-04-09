@@ -1,5 +1,5 @@
 
-package plantillapdfmain;
+package Model;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -17,12 +17,12 @@ import java.io.FileOutputStream;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class Plantilla {
+public class Facturas {
     
     String nombreOperador;
     String fecha;
     String rutaImagen;
-    List<Persona> personas;
+    List<Facturas> personas;
     
     Document documento;
     FileOutputStream archivo;
@@ -31,7 +31,7 @@ public class Plantilla {
     public Plantilla(String nombreOperador,
             String fecha,
             String rutaImagen,
-            List<Persona> personas)
+            List<Facturas> personas)
     {
         this.nombreOperador = nombreOperador;
         this.fecha = fecha;
@@ -92,7 +92,7 @@ public class Plantilla {
             tabla.addCell(producto);
             tabla.addCell(monto);
             
-            for(Persona persona: this.personas){
+            for(Facturas persona: this.personas){
                 tabla.addCell(persona.getNombre());                
                 tabla.addCell(persona.getCantidad()+"");
                 tabla.addCell(persona.getCodigo());
@@ -112,8 +112,5 @@ public class Plantilla {
         }
         
     }
-    
-    
-    
     
 }
