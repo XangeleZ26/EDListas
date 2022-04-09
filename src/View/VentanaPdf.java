@@ -11,11 +11,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaPdf extends javax.swing.JFrame {
 
-    List<Facturas> personas; 
+//    List<Facturas> personas; 
     DefaultTableModel modeloTabla;
     public VentanaPdf() {
         initComponents();
-        personas = new ArrayList<>();
+//        personas = new ArrayList<>();
         modeloTabla = (DefaultTableModel) tablaDatos.getModel();
     }
 
@@ -243,24 +243,24 @@ public class VentanaPdf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Persona persona = new Persona();
-        persona.setNombre(nombre.getText());
-        persona.setCantidad(Integer.parseInt(cantidad.getText()));
-        persona.setCodigo(codigo.getText());
-        persona.setProducto(producto.getText());
-        persona.setMonto(monto.getText());
-        
-        personas.add(Facturas);        
-        modeloTabla.addRow(new Object[]{Facturas.getNombre(),Facturas.getCantidad(), Facturas.getCodigo(), Facturas.getProducto(),Facturas.getMonto()});
+//        Persona persona = new Persona();
+//        persona.setNombre(nombre.getText());
+//        persona.setCantidad(Integer.parseInt(cantidad.getText()));
+//        persona.setCodigo(codigo.getText());
+//        persona.setProducto(producto.getText());
+//        persona.setMonto(monto.getText());
+//        
+//        personas.add(Facturas);        
+//        modeloTabla.addRow(new Object[]{Facturas.getNombre(),Facturas.getCantidad(), Facturas.getCodigo(), Facturas.getProducto(),Facturas.getMonto()});
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Plantilla plantilla = new Plantilla(operador.getText(),
-                new Date().toString(),
-                "C:\\pdf\\pasteleria.jpg",
-                this.personas);
-        plantilla.crearPlantilla();
+//        Plantilla plantilla = new Plantilla(operador.getText(),
+//                new Date().toString(),
+//                "C:\\pdf\\pasteleria.jpg",
+//                this.personas);
+//        plantilla.crearPlantilla();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void abrirPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirPdfActionPerformed
