@@ -8,7 +8,7 @@ import java.io.File;
 
 public class App {
     public static void main(String[] args) {
-
+        //xd
         File archivoProductos=new File("archivoProductos.dat");
         if(archivoProductos.exists()){
         try {
