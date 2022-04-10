@@ -1,7 +1,9 @@
 package View;
 
+import Controller.ControllerComprar;
 import Controller.ControllerCreacion;
 import Model.Configuracion;
+import Model.Producto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -91,13 +93,14 @@ public class VistaCliente extends javax.swing.JFrame {
                 precioLabel.setText("S/. " + String.valueOf(Configuracion.arrProductos.getArregloP()[i].getValorXUnidad()));
                 precioLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-                String dato = Configuracion.arrProductos.getArregloP()[i].getNombreProducto();
+                Producto datoProducto = Configuracion.arrProductos.getArregloP()[i];
                 //MOUSE LISTENER
                 imagenLabel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        System.out.println(dato);
-
+                        ControllerComprar controller=new ControllerComprar(datoProducto);
+                        controller.run();
+//                            ControllerCreacion xd=new ControllerCreacion();
                     }
                 });
 
@@ -132,8 +135,13 @@ public class VistaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("TODO EL CODIGO DE VISTA ESTÁ EN EL SOURCE DE ESTA CLASE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 390, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,5 +194,6 @@ public class VistaCliente extends javax.swing.JFrame {
         return new ImageIcon(icon.getImage().getScaledInstance(nw, nh, Image.SCALE_DEFAULT));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
