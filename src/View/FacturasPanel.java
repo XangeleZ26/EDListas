@@ -205,6 +205,9 @@ public class FacturasPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 productoSeleccionadoKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                productoSeleccionadoKeyTyped(evt);
+            }
         });
         jPanel1.add(productoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 20));
 
@@ -238,7 +241,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -290,7 +293,11 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textCantidadKeyTyped
 
     private void textNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNombreKeyTyped
-   
+         char caracter = evt.getKeyChar();
+        
+        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+            evt.consume();
+        }     
     }//GEN-LAST:event_textNombreKeyTyped
 
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
@@ -318,7 +325,12 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textMontoActionPerformed
 
     private void textMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMontoKeyTyped
-        // TODO add your handling code here:
+
+        char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+            evt.consume();
+        }
     }//GEN-LAST:event_textMontoKeyTyped
 
     private void productoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoSeleccionadoActionPerformed
@@ -332,6 +344,14 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void productoSeleccionadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productoSeleccionadoKeyPressed
         listP.setVisible(false);
     }//GEN-LAST:event_productoSeleccionadoKeyPressed
+
+    private void productoSeleccionadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productoSeleccionadoKeyTyped
+         char caracter = evt.getKeyChar();
+        
+        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+            evt.consume();
+        }  
+    }//GEN-LAST:event_productoSeleccionadoKeyTyped
     private void agregar(){
         SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
         dtm = (DefaultTableModel) tblDatos.getModel();

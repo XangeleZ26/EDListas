@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Library/iText-5.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/itextpdf-5.5.13.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Library/jbarcodebean-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -3,6 +3,7 @@ package View;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -50,11 +51,28 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Categoría:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
         add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("Nombre del producto:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        categoriatxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriatxtActionPerformed(evt);
+            }
+        });
+        categoriatxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                categoriatxtKeyTyped(evt);
+            }
+        });
         add(categoriatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -64,6 +82,11 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         stockInicialtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stockInicialtxtActionPerformed(evt);
+            }
+        });
+        stockInicialtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stockInicialtxtKeyTyped(evt);
             }
         });
         add(stockInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 170, -1));
@@ -79,6 +102,11 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         valorUnidadtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorUnidadtxtActionPerformed(evt);
+            }
+        });
+        valorUnidadtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                valorUnidadtxtKeyTyped(evt);
             }
         });
         add(valorUnidadtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 170, -1));
@@ -132,6 +160,42 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     private void valorUnidadtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorUnidadtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorUnidadtxtActionPerformed
+
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+          char caracter = evt.getKeyChar();
+        
+        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+            evt.consume();
+        }  
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void categoriatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriatxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoriatxtActionPerformed
+
+    private void categoriatxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoriatxtKeyTyped
+          char caracter = evt.getKeyChar();
+        
+        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+            evt.consume();
+        }  
+    }//GEN-LAST:event_categoriatxtKeyTyped
+
+    private void stockInicialtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stockInicialtxtKeyTyped
+        char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_stockInicialtxtKeyTyped
+
+    private void valorUnidadtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorUnidadtxtKeyTyped
+        char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_valorUnidadtxtKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
