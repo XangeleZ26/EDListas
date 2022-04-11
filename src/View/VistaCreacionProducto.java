@@ -182,11 +182,10 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_porcionestxtActionPerformed
 
     private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
-          char caracter = evt.getKeyChar();
-        
-        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+if( (evt.getKeyChar() != 32 )
+                && (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57 )  ){
             evt.consume();
-        }  
+        }
     }//GEN-LAST:event_nombretxtKeyTyped
 
     private void categoriatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriatxtActionPerformed
@@ -212,7 +211,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     private void porcionestxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_porcionestxtKeyTyped
         char caracter = evt.getKeyChar();
         
-        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+        if((caracter < '0' || caracter > '9')){
             evt.consume();
         }
     }//GEN-LAST:event_porcionestxtKeyTyped
@@ -222,7 +221,11 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_valorUnidadtxtActionPerformed
 
     private void valorUnidadtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorUnidadtxtKeyTyped
-        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+            evt.consume();
+        }
     }//GEN-LAST:event_valorUnidadtxtKeyTyped
 
 

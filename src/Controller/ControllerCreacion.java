@@ -42,9 +42,7 @@ public class ControllerCreacion {
                     imagencita = new ImageIcon(imagen.getScaledInstance(vista.imagenProductoimg.getWidth(), vista.imagenProductoimg.getHeight(), Image.SCALE_SMOOTH));
                     vista.imagenProductoimg.setIcon(imagencita);
                 }
-//                else{
-//                    JOptionPane.showMessageDialog(null, "Solo se admiten archivos en formato png o jpg.");
-//                }
+
             }
         });
 
@@ -55,6 +53,7 @@ public class ControllerCreacion {
                 if (datosLlenos()) {
 
                     SimpleDateFormat fechaVencimiento = new SimpleDateFormat("dd/MM/yyyy");
+                    
                     Producto NuevoProducto = new Producto(vista.nombretxt.getText().trim(),
                             vista.categoriatxt.getText().trim(), vista.descripciontxt.getText().trim(),
                             fechaVencimiento.format(vista.fechaVencimientotxt.getDate()),imagencita,
@@ -68,15 +67,15 @@ public class ControllerCreacion {
                             //GUARDAMOS AL VECTOR
                             Configuracion.arrProductos.agregar(NuevoProducto);
                             //GUARDAMOS AL ARCHIVO
-          
         try {
             Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-          
+            JOptionPane.showMessageDialog(null,"Producto agregado con éxito.");  
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
         }
-                            
+                          
                 } else {
                     JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
                 }
@@ -126,13 +125,14 @@ public class ControllerCreacion {
 //        vistaBoleta.lblCodigoBarras.setIcon(barras);
         return barras;
     }
-       
+   
     public boolean datosLlenos() {
         return (this.vista.nombretxt.getText().trim().length() != 0
                 && this.vista.categoriatxt.getText().trim().length() != 0
                 && this.vista.descripciontxt.getText().trim().length() != 0
                 && this.vista.fechaVencimientotxt.getDate() != null
                 && this.vista.stockInicialtxt.getText().trim().length() != 0
+                && this.vista.valorUnidadtxt.getText().trim().length() != 0
                 && this.vista.porcionestxt.getText().trim().length() != 0
                 && this.imagencita != null);
     }

@@ -1,13 +1,17 @@
-
 package View;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class vistaComprar extends javax.swing.JFrame {
+
     int xMouse, yMouse;
 
     public vistaComprar() {
         initComponents();
+          this.descripciontxt.setLineWrap(true); //para hacer salto de linea
+        this.descripciontxt.setWrapStyleWord(true); //para que no parta las palabras cuando hace salto de linea
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +37,7 @@ public class vistaComprar extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         costoUnitario = new javax.swing.JLabel();
-        cantidadCosto = new javax.swing.JTextField();
+        cantidad = new javax.swing.JTextField();
         btnPagar = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -50,6 +54,11 @@ public class vistaComprar extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -88,13 +97,13 @@ public class vistaComprar extends javax.swing.JFrame {
         jPanel1.add(categoriatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 210, 20));
 
         imagenLabel.setBackground(new java.awt.Color(255, 255, 255));
-        imagenLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(imagenLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 190, 160));
 
         nombre3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         nombre3.setText("Precio:");
         jPanel1.add(nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 50, 20));
 
+        descripciontxt.setEditable(false);
         descripciontxt.setColumns(20);
         descripciontxt.setRows(5);
         jScrollPane1.setViewportView(descripciontxt);
@@ -102,6 +111,11 @@ public class vistaComprar extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 476, 250, 100));
 
         jPanel2.setBackground(new java.awt.Color(255, 201, 93));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
@@ -115,15 +129,30 @@ public class vistaComprar extends javax.swing.JFrame {
         jLabel5.setText("Costo total:");
 
         costoUnitario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        costoUnitario.setText("jLabel");
 
-        cantidadCosto.setBackground(new java.awt.Color(255, 201, 93));
-        cantidadCosto.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cantidadCosto.setText("jTextField1");
-        cantidadCosto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cantidad.setBackground(new java.awt.Color(255, 201, 93));
+        cantidad.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cantidad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cantidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cantidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cantidadMousePressed(evt);
+            }
+        });
+        cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cantidadKeyTyped(evt);
+            }
+        });
 
         btnPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pagar.png"))); // NOI18N
         btnPagar.setText("jLabel6");
+        btnPagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnPagarMousePressed(evt);
+            }
+        });
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -131,7 +160,6 @@ public class vistaComprar extends javax.swing.JFrame {
         jLabel7.setText("Precio unitario:");
 
         costoTotal.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        costoTotal.setText("jLabel");
 
         agradecimientoLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/agradecimiento.png"))); // NOI18N
         agradecimientoLogo.setText("jLabel6");
@@ -165,7 +193,7 @@ public class vistaComprar extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cantidadCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -185,7 +213,7 @@ public class vistaComprar extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cantidadCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -310,6 +338,11 @@ public class vistaComprar extends javax.swing.JFrame {
 
     private void textMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseClicked
         this.setExtendedState(ICONIFIED);
+         if(!(this.cantidad.getText().isEmpty())){
+            this.costoTotal.setText(String.valueOf(Integer.parseInt(this.cantidad.getText()) * Double.parseDouble(this.costoUnitario.getText())));
+        }else{
+            this.costoTotal.setText("");
+        }
     }//GEN-LAST:event_textMiniMouseClicked
 
     private void textMiniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseEntered
@@ -323,6 +356,11 @@ public class vistaComprar extends javax.swing.JFrame {
 
     private void textSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseClicked
         dispose();
+        if(!(this.cantidad.getText().isEmpty())){
+            this.costoTotal.setText(String.valueOf(Integer.parseInt(this.cantidad.getText()) * Double.parseDouble(this.costoUnitario.getText())));
+        }else{
+            this.costoTotal.setText("");
+        }
     }//GEN-LAST:event_textSalirMouseClicked
 
     private void textSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseExited
@@ -344,15 +382,61 @@ public class vistaComprar extends javax.swing.JFrame {
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
+
+        this.cantidad.getCaret().setVisible(false);
+        
+        if(!(this.cantidad.getText().isEmpty())){
+            this.costoTotal.setText(String.valueOf(Integer.parseInt(this.cantidad.getText()) * Double.parseDouble(this.costoUnitario.getText())));
+        }else{
+            this.costoTotal.setText("");
+        }
+        
     }//GEN-LAST:event_BarraMousePressed
 
-  
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        this.cantidad.getCaret().setVisible(false);
+        
+         if(!(this.cantidad.getText().isEmpty())){
+            this.costoTotal.setText(String.valueOf(Integer.parseInt(this.cantidad.getText()) * Double.parseDouble(this.costoUnitario.getText())));
+        }else{
+            this.costoTotal.setText("");
+        }
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        this.cantidad.getCaret().setVisible(false);
+        
+        if(!(this.cantidad.getText().isEmpty())){
+            this.costoTotal.setText(String.valueOf(Integer.parseInt(this.cantidad.getText()) * Double.parseDouble(this.costoUnitario.getText())));
+        }else{
+            this.costoTotal.setText("");
+        }
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void cantidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cantidadMousePressed
+        this.cantidad.getCaret().setVisible(true);
+
+    }//GEN-LAST:event_cantidadMousePressed
+
+    private void cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadKeyTyped
+         char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_cantidadKeyTyped
+
+    private void btnPagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagarMousePressed
+    
+    }//GEN-LAST:event_btnPagarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Barra;
     private javax.swing.JLabel agradecimientoLogo;
     public javax.swing.JLabel btnPagar;
-    public javax.swing.JTextField cantidadCosto;
+    public javax.swing.JTextField cantidad;
     public javax.swing.JLabel categoriatxt;
     public javax.swing.JLabel costoTotal;
     public javax.swing.JLabel costoUnitario;

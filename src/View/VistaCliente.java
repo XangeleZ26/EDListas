@@ -5,6 +5,7 @@ import Controller.ControllerCreacion;
 import Model.Configuracion;
 import Model.Producto;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -37,7 +38,7 @@ int xMouse, yMouse;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("TODO EL CODIGO DE VISTA ESTÁ EN EL SOURCE DE ESTA CLASE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 390, 100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, 100));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,14 +180,25 @@ int xMouse, yMouse;
         int left = 0;
         int down = 0;
         int ImagesXFila = 0;
+        int imagenesMostradas=0;
+        int cantTotalImagesAUsar = 0;
+        //ESTO ES PARA SABER CON CUANTAS IMAGENES SE TRABAJARÁN DE ANTEMANO
         for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-
+            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VENCIDO"))){
+               cantTotalImagesAUsar++; 
+            }
+        }
+        
+        for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
+            
+            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VENCIDO"))){
+                
             JLabel imagenLabel = new JLabel();
             JLabel nombreLabel = new JLabel();
             JLabel precioLabel = new JLabel();
 
             imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[i].getImagen(), 240, 250));
-
+            
             nombreLabel.setText(Configuracion.arrProductos.getArregloP()[i].getNombreProducto());
             nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -200,13 +212,15 @@ int xMouse, yMouse;
                 public void mouseClicked(MouseEvent e) {
                     ControllerComprar controller = new ControllerComprar(datoProducto);
                     controller.run();
-//                            ControllerCreacion xd=new ControllerCreacion();
                 }
             });
 
             imagenLabel.setBounds(60 + left, 30 + down, 240, 250);
             nombreLabel.setBounds(60 + left, 245 + down, 240, 20);
             precioLabel.setBounds(60 + left, 265 + down, 240, 14);
+            
+            imagenLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            
             panelProducto.add(imagenLabel);
             panelProducto.add(nombreLabel);
             panelProducto.add(precioLabel);
@@ -214,15 +228,17 @@ int xMouse, yMouse;
 
             //ESTO ES PARA QUE SE FORME LAS SIGUIENTES FILAS CON 3 IMAGENES CADA UNA
             ImagesXFila++;
+            imagenesMostradas++;
             if (ImagesXFila >= 3) {
                 down += 270;
                 left = 0;
-                if (!(Configuracion.arrProductos.getIndice() % 3 == 0)) { //Si el indice de arrProducto no es multiplo de 3
+                //si NO ha llegado al final y el indice NO es multiplo de 3
+                if(!(imagenesMostradas==cantTotalImagesAUsar&&cantTotalImagesAUsar % 3 == 0)){
                     panelProducto.setPreferredSize(new Dimension(1010, 327 + down));
                 }
                 ImagesXFila = 0;
             }
-
+        }
         }
 
         add(panelBackground);
