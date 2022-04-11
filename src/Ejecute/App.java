@@ -29,8 +29,8 @@ public class App {
         }}
         
         
-//        ControllerViewLogin controller=new ControllerViewLogin();
-//        controller.run();
+        ControllerViewLogin controller=new ControllerViewLogin();
+        controller.run();
 //        
 //            PagVistaCliente xd=new PagVistaCliente();
 //            xd.setVisible(true);
