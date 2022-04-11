@@ -25,7 +25,7 @@ public class ControllerComprar {
                 System.out.println("xddd");
                 if (producto.getStock()>0) {
                     if(!(Integer.parseInt(vista.cantidad.getText())<1)){
-                        
+                        if(producto.getStock()>=Integer.parseInt(vista.cantidad.getText())){
                     vista.costoTotal.setText(String.valueOf(Integer.parseInt(vista.cantidad.getText()) * Double.parseDouble(vista.costoUnitario.getText())));
                     producto.setCantidadVendido(producto.getCantidadVendido() + Integer.parseInt(vista.cantidad.getText()));
                     producto.setStock(producto.getStock() - Integer.parseInt(vista.cantidad.getText()));
@@ -38,6 +38,9 @@ public class ControllerComprar {
                         JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
                     }
+                        }else{
+                      JOptionPane.showMessageDialog(null, "Su intento de compra excede el stock en almacén.\nStock disponible: "+producto.getStock());      
+                        }
                     }else{
                       JOptionPane.showMessageDialog(null,"No se admite '0' ni números negativos.");   
                       vista.cantidad.setText("");

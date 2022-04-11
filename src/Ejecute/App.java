@@ -29,7 +29,7 @@ public class App {
         }}
         
 //        Configuracion.arrProductos.getArregloP()[0].setPorciones(6);
-//        Configuracion.arrProductos.getArregloP()[1].setPorciones(8);
+//        Configuracion.arrProductos.getArregloP()[1].setStock(100);
 //        Configuracion.arrProductos.getArregloP()[2].setPorciones(6);
 //        Configuracion.arrProductos.getArregloP()[3].setPorciones(8);
 //        Configuracion.arrProductos.getArregloP()[4].setPorciones(8);
