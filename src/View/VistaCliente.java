@@ -24,7 +24,7 @@ public class VistaCliente extends javax.swing.JFrame {
     public VistaCliente() {
 //        initComponents();
         //modificacion de tamaño de JFrame
-        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setSize(1170, 800);
         //modificacion de paneles
 
         //panel Background
