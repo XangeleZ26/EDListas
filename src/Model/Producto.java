@@ -17,7 +17,9 @@ public class Producto implements Serializable {
     private int stockInicial; 
     private double valorXUnidad;
     private Icon imagenBarras;
+    private int porciones;
     
+    private int cantidadVendido; //esto varía segun las ventas
     private double valorTotalStock; //esto se añade solo
     private String estado; //esto se añade solo (según el relog)
     private int stock;  //esto se determina según las ventas
@@ -38,7 +40,8 @@ public class Producto implements Serializable {
         this.valorXUnidad = valorXUnidad;
         this.valorTotalStock = this.valorXUnidad*this.stockInicial;
     }
-       public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, Icon imagen, int stockInicial, double valorXUnidad) {
+        //ESTE CONSTRUCTOR ES EL VERÍDICO (EL QUE USAMOS HABITUALMENTE)
+       public Producto(String nombreProducto, String categoria, String descripcion, String fechaVencimiento, Icon imagen, int stockInicial, double valorXUnidad,int porciones) {
         this.nombreProducto = nombreProducto;
         this.categoria = categoria;
         this.descripcion = descripcion;
@@ -48,6 +51,7 @@ public class Producto implements Serializable {
         this.stock=stockInicial;
         this.valorXUnidad = valorXUnidad;
         this.valorTotalStock=this.valorXUnidad*this.stockInicial;
+        this.porciones=porciones;
         //agregar luego la etiqueta
     }
        
@@ -69,8 +73,24 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public int getCantidadVendido() {
+        return cantidadVendido;
+    }
+
+    public void setCantidadVendido(int cantidadVendido) {
+        this.cantidadVendido = cantidadVendido;
+    }
+    
     public Icon getImagen() {
         return imagen;
+    }
+
+    public int getPorciones() {
+        return porciones;
+    }
+
+    public void setPorciones(int porciones) {
+        this.porciones = porciones;
     }
 
     public void setImagen(Icon imagen) {

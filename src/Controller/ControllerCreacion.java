@@ -58,7 +58,7 @@ public class ControllerCreacion {
                     Producto NuevoProducto = new Producto(vista.nombretxt.getText().trim(),
                             vista.categoriatxt.getText().trim(), vista.descripciontxt.getText().trim(),
                             fechaVencimiento.format(vista.fechaVencimientotxt.getDate()),imagencita,
-                            Integer.parseInt(vista.stockInicialtxt.getText().trim()), Double.parseDouble(vista.valorUnidadtxt.getText().trim()));
+                            Integer.parseInt(vista.stockInicialtxt.getText().trim()), Double.parseDouble(vista.valorUnidadtxt.getText().trim()),Integer.parseInt(vista.porcionestxt.getText()));
                         //Agregamos estado del objeto
                         NuevoProducto.setEstado("VIGENTE");
                        //aqui pasamos a agregar un codigo
@@ -133,7 +133,7 @@ public class ControllerCreacion {
                 && this.vista.descripciontxt.getText().trim().length() != 0
                 && this.vista.fechaVencimientotxt.getDate() != null
                 && this.vista.stockInicialtxt.getText().trim().length() != 0
-                && this.vista.valorUnidadtxt.getText().trim().length() != 0
+                && this.vista.porcionestxt.getText().trim().length() != 0
                 && this.imagencita != null);
     }
 
