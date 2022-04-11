@@ -22,7 +22,7 @@ import javax.swing.*;
 public class VistaCliente extends javax.swing.JFrame {
 
     public VistaCliente() {
-
+//        initComponents();
         //modificacion de tamaño de JFrame
         this.setExtendedState(MAXIMIZED_BOTH);
         //modificacion de paneles
@@ -30,7 +30,7 @@ public class VistaCliente extends javax.swing.JFrame {
         //panel Background
         JPanel panelBackground = new JPanel();
         panelBackground.setLayout(null);
-        panelBackground.setBounds(0, 0, 100, 800);
+        panelBackground.setBounds(0, 0, 1170, 800);
         panelBackground.setBackground(Color.blue);
         
         //panel Banner
@@ -136,12 +136,14 @@ public class VistaCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("TODO EL CODIGO DE VISTA ESTÁ EN EL SOURCE DE ESTA CLASE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 390, 100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 390, 100));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 250, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,5 +197,6 @@ public class VistaCliente extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
