@@ -36,7 +36,7 @@ public class ArregloFacturas implements Serializable{
             SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
             tmp[i][3] = formateadorFecha.format(this.arregloF[i].getFechaVenta());
             tmp[i][4] = this.arregloF[i].getCantidad();
-            tmp[i][5] = this.arregloF[i].getMonto()*this.arregloF[i].getCantidad();
+            tmp[i][5] = this.arregloF[i].getMonto();
         }
         return tmp;
     }

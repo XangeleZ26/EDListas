@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Configuracion;
+import Model.Facturas;
 import Model.Producto;
 import View.vistaComprar;
 import java.awt.Image;
@@ -8,8 +9,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControllerComprar {
 
@@ -49,13 +54,32 @@ public class ControllerComprar {
                     JOptionPane.showMessageDialog(null, "¡Stock agotado! Vuelva a recargar la página."); 
                     vista.dispose();
                 }
-
+                llenarFactura();
             }
         });
 
     }
 
     ;
+    public void llenarFactura(){
+        Configuracion.arrFacturas.agregar(new Facturas(
+                "Cliente Basico",
+                (Integer.parseInt(Configuracion.arrFacturas.getArregloP()[Configuracion.arrFacturas.getIndice()-1].getCodigo())+1)+"",
+                producto.getNombreProducto(),
+                new Date(),
+                producto.getCantidadVendido(), 
+                (float) (producto.getCantidadVendido()*
+                        producto.getValorXUnidad())));
+                    
+        try{
+            Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
+            System.out.println(" Prueba"+Configuracion.arrFacturas+" "+(float) (producto.getCantidadVendido()*
+                        producto.getValorXUnidad()));
+        } catch (IOException ex) {
+            //F
+        }
+    }
+    
     public void llenarDatos() {
         vista.imagenLabel.setIcon(scaleImage((ImageIcon) producto.getImagen(), 190, 160));
         vista.nombretxt.setText(producto.getNombreProducto());
