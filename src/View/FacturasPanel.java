@@ -8,12 +8,14 @@ package View;
 import Model.ArregloFacturas;
 import Model.Configuracion;
 import Model.Facturas;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,6 +41,15 @@ public class FacturasPanel extends javax.swing.JPanel {
         String[] titulo = new String[]{"Nombre ","Codigo ","Producto","Cantidad ","Monto "};
         dtm.setColumnIdentifiers(titulo);
         tblDatos.setModel(dtm);
+        llenarProductos();
+    }
+    private void llenarProductos(){
+        int tamaño = Configuracion.arrProductos.getIndice();
+        String[] listData = new String[tamaño];
+        for(int i=0; i<tamaño; i++){
+            listData[i] = Configuracion.arrProductos.getArregloP()[i].getNombreProducto();
+        }
+        listProductos.setListData(listData);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,7 +84,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(950, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,21 +150,30 @@ public class FacturasPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 150, -1));
 
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 149, 11));
 
         jSeparator4.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 149, 15));
 
         jSeparator5.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 149, 15));
 
-        panelRegistrar.setBackground(new java.awt.Color(255, 204, 153));
+        panelRegistrar.setBackground(new java.awt.Color(204, 155, 64));
 
         textRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textRegistrar.setText("REGISTRAR");
         textRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textRegistrarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textRegistrarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textRegistrarMouseEntered(evt);
             }
         });
 
@@ -175,6 +195,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jSeparator6.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 149, 11));
 
         textMonto.setBorder(null);
@@ -241,13 +262,13 @@ public class FacturasPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(363, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -265,7 +286,7 @@ public class FacturasPanel extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(34, 34, 34)
                 .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -352,6 +373,14 @@ public class FacturasPanel extends javax.swing.JPanel {
             evt.consume();
         }  
     }//GEN-LAST:event_productoSeleccionadoKeyTyped
+
+    private void textRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseEntered
+        panelRegistrar.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_textRegistrarMouseEntered
+
+    private void textRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseExited
+         panelRegistrar.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_textRegistrarMouseExited
     private void agregar(){
         SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
         dtm = (DefaultTableModel) tblDatos.getModel();
