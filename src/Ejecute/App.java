@@ -44,11 +44,11 @@ public class App {
         ControllerViewLogin controller=new ControllerViewLogin();
         controller.run();
 
-//    VistaCliente vista=new VistaCliente();
-//    vista.setVisible(true);
-//    vista.setLocationRelativeTo(null);
+//    VistaCliente VistaCliente=new VistaCliente();
+//    VistaCliente.setVisible(true);
+//    VistaCliente.setLocationRelativeTo(null);
 //    
-    vista xd=new vista();
+    VistaCliente xd=new VistaCliente();
     xd.setVisible(true);
     xd.setLocationRelativeTo(null);
     }
