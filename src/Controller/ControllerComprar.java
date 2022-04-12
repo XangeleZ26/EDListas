@@ -40,6 +40,7 @@ public class ControllerComprar {
                     producto.setCantidadVendido(producto.getCantidadVendido() + Integer.parseInt(vista.cantidad.getText()));
                     producto.setStock(producto.getStock() - Integer.parseInt(vista.cantidad.getText()));
                     JOptionPane.showMessageDialog(null, "Compra realizada con éxito!");
+                    llenarFactura();
                     vista.dispose();
                     try {
                         Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
@@ -67,7 +68,7 @@ public class ControllerComprar {
                     JOptionPane.showMessageDialog(null, "¡Stock agotado! Vuelva a recargar la página."); 
                     vista.dispose();
                 }
-                llenarFactura();
+                
             }
         });
 
@@ -76,18 +77,18 @@ public class ControllerComprar {
     ;
     public void llenarFactura(){
         Configuracion.arrFacturas.agregar(new Facturas(
-                "Cliente Basico",
+                vista.nombreP.getText(),
                 (Integer.parseInt(Configuracion.arrFacturas.getArregloP()[Configuracion.arrFacturas.getIndice()-1].getCodigo())+1)+"",
                 producto.getNombreProducto(),
                 new Date(),
-                producto.getCantidadVendido(), 
-                (float) (producto.getCantidadVendido()*
+                Integer.parseInt(vista.cantidad.getText()), 
+                (float) (Float.parseFloat(vista.cantidad.getText())*
                         producto.getValorXUnidad())));
                     
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
-            System.out.println(" Prueba"+Configuracion.arrFacturas+" "+(float) (producto.getCantidadVendido()*
-                        producto.getValorXUnidad()));
+            System.out.println(" Prueba"+Configuracion.arrFacturas+" "+Float.parseFloat(vista.cantidad.getText())*
+                        producto.getValorXUnidad());
         } catch (IOException ex) {
             //F
         }
