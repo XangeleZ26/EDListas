@@ -31,7 +31,12 @@ public class ControllerComprar {
                 if (producto.getStock()>0) {
                     if(!(Integer.parseInt(vista.cantidad.getText())<1)){
                         if(producto.getStock()>=Integer.parseInt(vista.cantidad.getText())){
-                    vista.costoTotal.setText(String.valueOf(Integer.parseInt(vista.cantidad.getText()) * Double.parseDouble(vista.costoUnitario.getText())));
+                            
+                            vista.costoTotal.setText(String.valueOf(Integer.parseInt(vista.cantidad.getText()) * Double.parseDouble(vista.costoUnitario.getText())));
+                        
+                            if(vista.verificarEmail()){  
+                         if(vista.verificarValidezDNI()){   
+                    
                     producto.setCantidadVendido(producto.getCantidadVendido() + Integer.parseInt(vista.cantidad.getText()));
                     producto.setStock(producto.getStock() - Integer.parseInt(vista.cantidad.getText()));
                     JOptionPane.showMessageDialog(null, "Compra realizada con éxito!");
@@ -43,6 +48,14 @@ public class ControllerComprar {
                         JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
                     }
+                        }else{
+                         JOptionPane.showMessageDialog(null,"Dni inválido, debe contener 8 dígitos."); 
+                         vista.dniP.setText("");
+                         }
+                        }else{
+                       JOptionPane.showMessageDialog(null,"Correo inválido, escriba correctamente."); 
+                       vista.emailP.setText("");
+                        }
                         }else{
                       JOptionPane.showMessageDialog(null, "Su intento de compra excede el stock en almacén.\nStock disponible: "+producto.getStock());      
                         }
@@ -112,7 +125,6 @@ public class ControllerComprar {
     }
 
     public void run() {
-        this.vista.cantidad.getCaret().setVisible(true);
         llenarDatos();
         this.vista.setVisible(true);
         this.vista.setLocationRelativeTo(null);
