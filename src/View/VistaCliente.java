@@ -161,6 +161,7 @@ int xMouse, yMouse;
         pruebaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         panelPresentacion.add(pruebaTitulo);
         panelPresentacion.add(panelBarra);
+        
         //panel Productos
         JPanel panelProducto = new JPanel();
         panelProducto.setLayout(null);
@@ -177,6 +178,7 @@ int xMouse, yMouse;
         panelBackground.add(scrollPane);
 
         //Inicio de colocacion de imagenes
+        
         int left = 0;
         int down = 0;
         int ImagesXFila = 0;
