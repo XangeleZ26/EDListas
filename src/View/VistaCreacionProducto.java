@@ -3,6 +3,7 @@ package View;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -12,6 +13,8 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
     public VistaCreacionProducto() {
         initComponents();
+        this.descripciontxt.setLineWrap(true); //para hacer salto de linea
+        this.descripciontxt.setWrapStyleWord(true); //para que no parta las palabras cuando hace salto de linea
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +30,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         stockInicialtxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        valorUnidadtxt = new javax.swing.JTextField();
+        porcionestxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         descripciontxt = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
@@ -40,6 +43,8 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         btnSelectImage = new javax.swing.JButton();
         fechaVencimientotxt = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
+        valorUnidadtxt = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,11 +55,28 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Categoría:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+
+        nombretxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombretxtKeyTyped(evt);
+            }
+        });
         add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("Nombre del producto:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        categoriatxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriatxtActionPerformed(evt);
+            }
+        });
+        categoriatxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                categoriatxtKeyTyped(evt);
+            }
+        });
         add(categoriatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -66,6 +88,11 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
                 stockInicialtxtActionPerformed(evt);
             }
         });
+        stockInicialtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                stockInicialtxtKeyTyped(evt);
+            }
+        });
         add(stockInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -74,20 +101,25 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("Fecha de vencimiento:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
-        valorUnidadtxt.addActionListener(new java.awt.event.ActionListener() {
+        porcionestxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorUnidadtxtActionPerformed(evt);
+                porcionestxtActionPerformed(evt);
             }
         });
-        add(valorUnidadtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 170, -1));
+        porcionestxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                porcionestxtKeyTyped(evt);
+            }
+        });
+        add(porcionestxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 170, -1));
 
         descripciontxt.setColumns(20);
         descripciontxt.setRows(5);
         jScrollPane1.setViewportView(descripciontxt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 240, 130));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 240, 130));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Imagen:");
@@ -102,7 +134,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Descripción del producto:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
         jTextPane1.setEditable(false);
         jTextPane1.setBorder(null);
@@ -122,16 +154,79 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         btnSelectImage.setText("Seleccionar imagen");
         add(btnSelectImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, 30));
-        add(fechaVencimientotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 170, -1));
+        add(fechaVencimientotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 170, -1));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setText("Cantidad de porciones:");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 150, -1));
+
+        valorUnidadtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorUnidadtxtActionPerformed(evt);
+            }
+        });
+        valorUnidadtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                valorUnidadtxtKeyTyped(evt);
+            }
+        });
+        add(valorUnidadtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void stockInicialtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockInicialtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stockInicialtxtActionPerformed
 
+    private void porcionestxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcionestxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_porcionestxtActionPerformed
+
+    private void nombretxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombretxtKeyTyped
+if( (evt.getKeyChar() != 32 )
+                && (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57 )  ){
+            evt.consume();
+        }
+    }//GEN-LAST:event_nombretxtKeyTyped
+
+    private void categoriatxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriatxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoriatxtActionPerformed
+
+    private void categoriatxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoriatxtKeyTyped
+          char caracter = evt.getKeyChar();
+        
+        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+            evt.consume();
+        }  
+    }//GEN-LAST:event_categoriatxtKeyTyped
+
+    private void stockInicialtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stockInicialtxtKeyTyped
+        char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_stockInicialtxtKeyTyped
+
+    private void porcionestxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_porcionestxtKeyTyped
+        char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_porcionestxtKeyTyped
+
     private void valorUnidadtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorUnidadtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorUnidadtxtActionPerformed
+
+    private void valorUnidadtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorUnidadtxtKeyTyped
+         char caracter = evt.getKeyChar();
+        
+        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_valorUnidadtxtKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -143,6 +238,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     public javax.swing.JLabel imagenProductoimg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -155,6 +251,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextPane jTextPane1;
     public javax.swing.JTextField nombretxt;
+    public javax.swing.JTextField porcionestxt;
     public javax.swing.JTextField stockInicialtxt;
     public javax.swing.JTextField valorUnidadtxt;
     // End of variables declaration//GEN-END:variables
