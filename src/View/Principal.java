@@ -5,6 +5,8 @@ import Controller.ControllerFacturasPanel;
 import Controller.ControllerProductoPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 
 /**
@@ -18,7 +20,7 @@ public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
-        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,new Color(191,142,51)));
+        setIconImage(getIconImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -305,7 +307,11 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Images/SegundoLogo.png"));
+        return retValue;
+    }
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
         reset(0);
         opciones[0] = false;

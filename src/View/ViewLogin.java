@@ -24,9 +24,9 @@ public class ViewLogin extends javax.swing.JFrame {
      */
     public ViewLogin() {
         initComponents();
-         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,new Color(191,142,51)));
         TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
         this.imagenOcultarContra.setVisible(false);
+        setIconImage(getIconImage());
 //        contraseniaText.setText("●●●●●●");
     contraseniaText.setEchoChar('●');
     }
