@@ -70,7 +70,7 @@ public class ControllerCreacion {
         try {
             Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
             JOptionPane.showMessageDialog(null,"Producto agregado con éxito.");  
-            
+            vaciarDatos();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
@@ -86,7 +86,16 @@ public class ControllerCreacion {
     public void run() {
         this.vista.setVisible(true);
     }
-
+    public void vaciarDatos(){
+        this.vista.imagenProductoimg.setIcon(new ImageIcon(getClass().getResource("/Images/sinImagen.png")));
+        this.vista.categoriatxt.setText("");
+        this.vista.descripciontxt.setText("");
+        this.vista.fechaVencimientotxt.setDate(null);
+        this.vista.nombretxt.setText("");
+        this.vista.porcionestxt.setText("");
+        this.vista.stockInicialtxt.setText("");
+        this.vista.valorUnidadtxt.setText("");
+    }
     public String codigoAleatorio() {
         //AQUI TIENE QUE IR EL METODO QUE DEVUELVE UN CODIGO DIFERENTE DE CUALQUIER OTRO CREADO 
         int aleatorio = 0;

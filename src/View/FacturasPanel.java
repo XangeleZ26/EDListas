@@ -31,7 +31,6 @@ public class FacturasPanel extends javax.swing.JPanel {
      */
     public FacturasPanel() {
         initComponents();
-        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
         iniciarFactura();
     }
     

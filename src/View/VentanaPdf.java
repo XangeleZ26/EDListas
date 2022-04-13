@@ -3,11 +3,13 @@ package View;
 
 import Model.Facturas;
 import Model.Plantilla;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,7 @@ public class VentanaPdf extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     public VentanaPdf() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,Color.BLACK));
         facturas = new ArrayList<>();
         modeloTabla = (DefaultTableModel) tablaDatos.getModel();
     }

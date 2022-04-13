@@ -10,8 +10,10 @@ import Model.Producto;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -29,8 +31,15 @@ public class VistaCliente extends javax.swing.JFrame {
      */
     public VistaCliente() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,Color.BLACK));
+        setIconImage(getIconImage());
         codigoAgregado();
             
+    }
+     @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Images/SegundoLogo.png"));
+        return retValue;
     }
 
     /**

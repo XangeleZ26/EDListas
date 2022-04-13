@@ -28,7 +28,7 @@ public class ModificarProducto extends javax.swing.JPanel {
     }
     public ModificarProducto(Object obj[]) {
         initComponents();
-        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
+        
         this.obj = obj;
         llenarDatos();
     }

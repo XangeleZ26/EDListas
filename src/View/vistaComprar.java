@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 public class vistaComprar extends javax.swing.JFrame {
@@ -12,6 +13,7 @@ public class vistaComprar extends javax.swing.JFrame {
 
     public vistaComprar() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,new Color(191,142,51)));
         this.cantidad.getCaret().setVisible(false);
         this.direccionP.getCaret().setVisible(false);
         this.nombreP.getCaret().setVisible(false);
