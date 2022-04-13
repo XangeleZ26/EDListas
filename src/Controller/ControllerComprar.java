@@ -30,9 +30,10 @@ public class ControllerComprar {
                 System.out.println("xddd");
                 if (producto.getStock()>0) {
                     if(!(Integer.parseInt(vista.cantidad.getText())<1)){
+                        
+                         vista.costoTotal.setText(String.valueOf(Integer.parseInt(vista.cantidad.getText()) * Double.parseDouble(vista.costoUnitario.getText())));
+                         
                         if(producto.getStock()>=Integer.parseInt(vista.cantidad.getText())){
-                            
-                            vista.costoTotal.setText(String.valueOf(Integer.parseInt(vista.cantidad.getText()) * Double.parseDouble(vista.costoUnitario.getText())));
                         
                             if(vista.verificarEmail()){  
                          if(vista.verificarValidezDNI()){   
@@ -42,13 +43,15 @@ public class ControllerComprar {
                     JOptionPane.showMessageDialog(null, "Compra realizada con éxito!");
                     llenarFactura();
                     vista.dispose();
-                    try {
-                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-
-                    }
+                    //COMENTÉ EL CODIGO DEL ARCHIVO PARA QUE SE HAGAN PRUEBAS SIN MODIFICARLO
+                    
+//                    try {
+//                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+//
+//                    } catch (Exception ex) {
+//                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+//
+//                    }
                         }else{
                          JOptionPane.showMessageDialog(null,"Dni inválido, debe contener 8 dígitos."); 
                          vista.dniP.setText("");
@@ -59,6 +62,7 @@ public class ControllerComprar {
                         }
                         }else{
                       JOptionPane.showMessageDialog(null, "Su intento de compra excede el stock en almacén.\nStock disponible: "+producto.getStock());      
+                        vista.cantidad.setText("");
                         }
                     }else{
                       JOptionPane.showMessageDialog(null,"No se admite '0' ni números negativos.");   
