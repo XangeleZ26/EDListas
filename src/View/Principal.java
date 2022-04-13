@@ -5,6 +5,7 @@ import Controller.ControllerFacturasPanel;
 import Controller.ControllerProductoPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,new Color(191,142,51)));
     }
 
     @SuppressWarnings("unchecked")
@@ -304,44 +306,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_textSalirMouseClicked
-
-    private void textSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseExited
-        panelSalir.setBackground(Color.white);
-        textSalir.setForeground(Color.black);
-    }//GEN-LAST:event_textSalirMouseExited
-
-    private void textSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseEntered
-        panelSalir.setBackground(Color.red);
-        textSalir.setForeground(Color.white);
-    }//GEN-LAST:event_textSalirMouseEntered
-
-    private void textMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseClicked
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_textMiniMouseClicked
-
-    private void textMiniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseExited
-        panelMini.setBackground(Color.white);
-        textMini.setForeground(Color.black);
-    }//GEN-LAST:event_textMiniMouseExited
-
-    private void textMiniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseEntered
-        panelMini.setBackground(new Color(235, 235, 235));
-    }//GEN-LAST:event_textMiniMouseEntered
-
-    private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_BarraMouseDragged
-
-    private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_BarraMousePressed
-
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
         reset(0);
         opciones[0] = false;
@@ -428,6 +392,44 @@ public class Principal extends javax.swing.JFrame {
         panelCambiante.revalidate();
         panelCambiante.repaint();
     }//GEN-LAST:event_panelFacturaMouseClicked
+
+    private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_BarraMousePressed
+
+    private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_BarraMouseDragged
+
+    private void textSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseEntered
+        panelSalir.setBackground(Color.red);
+        textSalir.setForeground(Color.white);
+    }//GEN-LAST:event_textSalirMouseEntered
+
+    private void textSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseExited
+        panelSalir.setBackground(Color.white);
+        textSalir.setForeground(Color.black);
+    }//GEN-LAST:event_textSalirMouseExited
+
+    private void textSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_textSalirMouseClicked
+
+    private void textMiniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseExited
+        panelMini.setBackground(Color.white);
+        textMini.setForeground(Color.black);
+    }//GEN-LAST:event_textMiniMouseExited
+
+    private void textMiniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseEntered
+        panelMini.setBackground(new Color(235, 235, 235));
+    }//GEN-LAST:event_textMiniMouseEntered
+
+    private void textMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseClicked
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_textMiniMouseClicked
 
     public void reset(int opcion) {
         for (int i = 0; i < 4; i++) {

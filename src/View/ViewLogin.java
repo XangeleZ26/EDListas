@@ -7,6 +7,7 @@ package View;
 import Controller.ControllerPrincipal;
 import java.awt.Color;
 import java.awt.Image;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class ViewLogin extends javax.swing.JFrame {
      */
     public ViewLogin() {
         initComponents();
+         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4,new Color(191,142,51)));
         TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
         this.imagenOcultarContra.setVisible(false);
 //        contraseniaText.setText("●●●●●●");

@@ -4,17 +4,23 @@
  */
 package View;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author GIGABYTE
  */
 public class VistaDetalles extends javax.swing.JFrame {
-
+int xMouse, yMouse;
     /**
      * Creates new form VistaDetalles
      */
     public VistaDetalles() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
+        this.descripciontxt.setLineWrap(true); 
+        this.descripciontxt.setWrapStyleWord(true);
     }
 
     /**
@@ -29,25 +35,278 @@ public class VistaDetalles extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        Barra = new javax.swing.JPanel();
+        panelSalir = new javax.swing.JPanel();
+        textSalir = new javax.swing.JLabel();
+        panelMini = new javax.swing.JPanel();
+        textMini = new javax.swing.JLabel();
+        barrastxt = new javax.swing.JLabel();
+        imagentxt = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        nombretxt = new javax.swing.JLabel();
+        codigotxt = new javax.swing.JLabel();
+        categoriatxt = new javax.swing.JLabel();
+        porcionestxt = new javax.swing.JLabel();
+        vencimientotxt = new javax.swing.JLabel();
+        precioUnitariotxt = new javax.swing.JLabel();
+        stockinicialtxt = new javax.swing.JLabel();
+        valorInicialtxt = new javax.swing.JLabel();
+        cantidadVendidatxt = new javax.swing.JLabel();
+        stockActualtxt = new javax.swing.JLabel();
+        valorActualDeStocktxt = new javax.swing.JLabel();
+        gananciatxt = new javax.swing.JLabel();
+        estadotxt = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripciontxt = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        btnRefrescar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 790, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 790, 20));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 20, 530));
+        jSeparator3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 40, 520));
+
+        Barra.setBackground(new java.awt.Color(255, 255, 255));
+        Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                BarraMouseDragged(evt);
+            }
+        });
+        Barra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BarraMousePressed(evt);
+            }
+        });
+        Barra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelSalir.setBackground(new java.awt.Color(255, 255, 255));
+
+        textSalir.setBackground(new java.awt.Color(255, 255, 255));
+        textSalir.setFont(new java.awt.Font("Dubai", 0, 30)); // NOI18N
+        textSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textSalir.setText("X");
+        textSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textSalirMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textSalirMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textSalirMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSalirLayout = new javax.swing.GroupLayout(panelSalir);
+        panelSalir.setLayout(panelSalirLayout);
+        panelSalirLayout.setHorizontalGroup(
+            panelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(textSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelSalirLayout.setVerticalGroup(
+            panelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSalirLayout.createSequentialGroup()
+                .addComponent(textSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Barra.add(panelSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, -1, -1));
+
+        panelMini.setBackground(new java.awt.Color(255, 255, 255));
+
+        textMini.setFont(new java.awt.Font("Eras Medium ITC", 1, 30)); // NOI18N
+        textMini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textMini.setText("--");
+        textMini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textMiniMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textMiniMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textMiniMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMiniLayout = new javax.swing.GroupLayout(panelMini);
+        panelMini.setLayout(panelMiniLayout);
+        panelMiniLayout.setHorizontalGroup(
+            panelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMiniLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(textMini, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelMiniLayout.setVerticalGroup(
+            panelMiniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMiniLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(textMini, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        Barra.add(panelMini, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, -1, -1));
+
+        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 40));
+
+        barrastxt.setText("barras");
+        jPanel1.add(barrastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 220, 70));
+
+        imagentxt.setText("imagen");
+        jPanel1.add(imagentxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 220, 200));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel6.setText("Stock actual:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 370, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setText("Porciones por producto:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel8.setText("Categoría:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("Fecha de vencimiento:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setText("Precio unitario:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 250, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setText("Valor actual de stock:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setText("Valor inicial de stock:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 310, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel13.setText("Stock inicial:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 280, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel14.setText("Ganancia actual:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel15.setText("Descripción:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel17.setText("Código de etiqueta:");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 130, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel18.setText("Estado:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel19.setText("Cantidad vendida:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 340, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel20.setText("Producto:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
+
+        nombretxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        nombretxt.setText("Producto:");
+        jPanel1.add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 230, -1));
+
+        codigotxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        codigotxt.setText("Producto:");
+        jPanel1.add(codigotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 230, -1));
+
+        categoriatxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        categoriatxt.setText("Producto:");
+        jPanel1.add(categoriatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 230, -1));
+
+        porcionestxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        porcionestxt.setText("Producto:");
+        jPanel1.add(porcionestxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 230, -1));
+
+        vencimientotxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        vencimientotxt.setText("Producto:");
+        jPanel1.add(vencimientotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 230, -1));
+
+        precioUnitariotxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        precioUnitariotxt.setText("Producto:");
+        jPanel1.add(precioUnitariotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 230, -1));
+
+        stockinicialtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        stockinicialtxt.setText("Producto:");
+        jPanel1.add(stockinicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 230, -1));
+
+        valorInicialtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        valorInicialtxt.setText("Producto:");
+        jPanel1.add(valorInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 230, -1));
+
+        cantidadVendidatxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cantidadVendidatxt.setText("Producto:");
+        jPanel1.add(cantidadVendidatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 230, -1));
+
+        stockActualtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        stockActualtxt.setText("Producto:");
+        jPanel1.add(stockActualtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 230, -1));
+
+        valorActualDeStocktxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        valorActualDeStocktxt.setText("Producto:");
+        jPanel1.add(valorActualDeStocktxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 230, -1));
+
+        gananciatxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        gananciatxt.setText("Producto:");
+        jPanel1.add(gananciatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 230, -1));
+
+        estadotxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        estadotxt.setText("Producto:");
+        jPanel1.add(estadotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 230, -1));
+
+        descripciontxt.setEditable(false);
+        descripciontxt.setColumns(20);
+        descripciontxt.setRows(5);
+        jScrollPane1.setViewportView(descripciontxt);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 180, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jLabel2.setText("Detalles de stock");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, 30));
+
+        btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refrescar.png"))); // NOI18N
+        btnRefrescar.setText("jLabel1");
+        btnRefrescar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnRefrescar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,44 +316,90 @@ public class VistaDetalles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseClicked
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_textMiniMouseClicked
+
+    private void textMiniMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseEntered
+        panelMini.setBackground(new Color(235, 235, 235));
+    }//GEN-LAST:event_textMiniMouseEntered
+
+    private void textMiniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseExited
+        panelMini.setBackground(Color.white);
+        textMini.setForeground(Color.black);
+    }//GEN-LAST:event_textMiniMouseExited
+
+    private void textSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseClicked
+       dispose();
+    }//GEN-LAST:event_textSalirMouseClicked
+
+    private void textSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseExited
+        panelSalir.setBackground(Color.white);
+        textSalir.setForeground(Color.black);
+    }//GEN-LAST:event_textSalirMouseExited
+
+    private void textSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSalirMouseEntered
+        panelSalir.setBackground(Color.red);
+        textSalir.setForeground(Color.white);
+    }//GEN-LAST:event_textSalirMouseEntered
+
+    private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_BarraMouseDragged
+
+    private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_BarraMousePressed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaDetalles().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Barra;
+    public javax.swing.JLabel barrastxt;
+    public javax.swing.JLabel btnRefrescar;
+    public javax.swing.JLabel cantidadVendidatxt;
+    public javax.swing.JLabel categoriatxt;
+    public javax.swing.JLabel codigotxt;
+    public javax.swing.JTextArea descripciontxt;
+    public javax.swing.JLabel estadotxt;
+    public javax.swing.JLabel gananciatxt;
+    public javax.swing.JLabel imagentxt;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    public javax.swing.JLabel nombretxt;
+    private javax.swing.JPanel panelMini;
+    private javax.swing.JPanel panelSalir;
+    public javax.swing.JLabel porcionestxt;
+    public javax.swing.JLabel precioUnitariotxt;
+    public javax.swing.JLabel stockActualtxt;
+    public javax.swing.JLabel stockinicialtxt;
+    private javax.swing.JLabel textMini;
+    private javax.swing.JLabel textSalir;
+    public javax.swing.JLabel valorActualDeStocktxt;
+    public javax.swing.JLabel valorInicialtxt;
+    public javax.swing.JLabel vencimientotxt;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +31,7 @@ public class FacturasPanel extends javax.swing.JPanel {
      */
     public FacturasPanel() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
         iniciarFactura();
     }
     

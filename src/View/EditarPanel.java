@@ -5,6 +5,9 @@
  */
 package View;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author usuario
@@ -16,6 +19,7 @@ public class EditarPanel extends javax.swing.JPanel {
      */
     public EditarPanel() {
         initComponents();
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
     }
 
     /**

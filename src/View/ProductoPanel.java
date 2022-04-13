@@ -13,9 +13,11 @@ import java.awt.Image;
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+import Controller.*;
+import javax.swing.BorderFactory;
 /**
  *
  * @author usuario
@@ -29,6 +31,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public ProductoPanel() {
         habilitadoMod = true;
         initComponents();
+       
         this.panelModificar.setVisible(false);
         btnCancelarBusqueda.setVisible(false);
         this.filtroCategoriastxt.setVisible(false);
@@ -109,8 +112,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         tableProducto = new javax.swing.JTable();
         panelMod = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        panelDetalles = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -409,7 +412,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad de productos: ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
 
         radioAscendente.setText("menor a mayor");
         jPanel2.add(radioAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
@@ -490,8 +493,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel2.add(Buscadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 242, 30));
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cantidadProductos.setText("jLabel1");
-        jPanel2.add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 60, 40));
+        cantidadProductos.setText("2");
+        jPanel2.add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 60, 40));
 
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -550,11 +553,11 @@ public class ProductoPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelModMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelModMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelModMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelModMouseExited(evt);
             }
         });
 
@@ -564,50 +567,54 @@ public class ProductoPanel extends javax.swing.JPanel {
         panelMod.setLayout(panelModLayout);
         panelModLayout.setHorizontalGroup(
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelModLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         panelModLayout.setVerticalGroup(
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(panelMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 91, 37));
+        jPanel2.add(panelMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 100, 37));
         panelMod.getAccessibleContext().setAccessibleName("");
 
-        btnAgregar.setBackground(new java.awt.Color(204, 155, 64));
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelDetalles.setBackground(new java.awt.Color(204, 155, 64));
+        panelDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelDetalles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseExited(evt);
+                panelDetallesMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseEntered(evt);
+                panelDetallesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelDetallesMouseExited(evt);
             }
         });
 
-        jLabel14.setText("Agregar");
+        jLabel15.setText("Más detalles");
 
-        javax.swing.GroupLayout btnAgregarLayout = new javax.swing.GroupLayout(btnAgregar);
-        btnAgregar.setLayout(btnAgregarLayout);
-        btnAgregarLayout.setHorizontalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAgregarLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel14)
-                .addContainerGap(23, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelDetallesLayout = new javax.swing.GroupLayout(panelDetalles);
+        panelDetalles.setLayout(panelDetallesLayout);
+        panelDetallesLayout.setHorizontalGroup(
+            panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(22, 22, 22))
         );
-        btnAgregarLayout.setVerticalGroup(
-            btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+        panelDetallesLayout.setVerticalGroup(
+            panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 91, 37));
+        jPanel2.add(panelDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 110, 37));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 600));
     }// </editor-fold>//GEN-END:initComponents
@@ -789,7 +796,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textValorStockKeyTyped
 
     private void panelModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseClicked
-        DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
+     DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
         panelMod.setBackground(new Color(204,155,64));
         int index=0;
         try{
@@ -811,6 +818,7 @@ public class ProductoPanel extends javax.swing.JPanel {
             
             
         } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "¡Primero debe seleccionar un stock de inventario!");
         }
     }//GEN-LAST:event_panelModMouseClicked
     private void llenarComponentes(){
@@ -832,23 +840,34 @@ public class ProductoPanel extends javax.swing.JPanel {
             panelMod.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_panelModMouseExited
 
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarMouseClicked
+    private void panelDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDetallesMouseClicked
+        this.panelDetalles.setBackground(new Color(204,155,64));
+        int seleccionado = this.tableProducto.getSelectedRow();
+        if (seleccionado != -1) {
+            
+            String codigo = tableProducto.getValueAt(seleccionado, 0).toString();
+            int ubicacionProducto=Configuracion.arrProductos.buscar(codigo);
+            ControllerDetalles controller=new ControllerDetalles(Configuracion.arrProductos.getArregloP()[ubicacionProducto]);
+            controller.run();
+        }else{
+          JOptionPane.showMessageDialog(null, "¡Primero debe seleccionar un stock de inventario!");  
+        }
+        
+        
+    }//GEN-LAST:event_panelDetallesMouseClicked
 
-    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        btnAgregar.setBackground(new Color(210, 168, 89));
-    }//GEN-LAST:event_btnAgregarMouseEntered
+    private void panelDetallesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDetallesMouseExited
+        panelMod.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_panelDetallesMouseExited
 
-    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
-        btnAgregar.setBackground(new Color(204,155,64));
-    }//GEN-LAST:event_btnAgregarMouseExited
+    private void panelDetallesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDetallesMouseEntered
+        panelMod.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_panelDetallesMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
     public javax.swing.JRadioButton RadioElimSelect;
     public javax.swing.JRadioButton RadioElimVencido;
-    private javax.swing.JPanel btnAgregar;
     public javax.swing.JButton btnAplicarCambios;
     public javax.swing.JLabel btnCancelarBusqueda;
     public javax.swing.JLabel btnElim;
@@ -865,7 +884,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -888,6 +907,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelStockInicial;
     private javax.swing.JLabel labelVencimiento;
     private javax.swing.JPanel panelCancelar;
+    private javax.swing.JPanel panelDetalles;
     private javax.swing.JPanel panelGuardar;
     private javax.swing.JPanel panelMod;
     private javax.swing.JPanel panelModificar;
