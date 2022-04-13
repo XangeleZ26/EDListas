@@ -7,6 +7,7 @@ package View;
 import Controller.ControllerPrincipal;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -22,10 +23,16 @@ public class ViewLogin extends javax.swing.JFrame {
      */
     public ViewLogin() {
         initComponents();
+        setIconImage(getIconImage());
         TamanioDinamico("/Images/LoginPicture.png", fondoInicio);
         this.imagenOcultarContra.setVisible(false);
 //        contraseniaText.setText("●●●●●●");
     contraseniaText.setEchoChar('●');
+    }
+    @Override
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Images/SegundoLogo.png"));
+        return retValue;
     }
     private void TamanioDinamico(String direccion, javax.swing.JLabel Borde){
         ImageIcon imagen = new ImageIcon(getClass().getResource(direccion));
@@ -63,6 +70,7 @@ public class ViewLogin extends javax.swing.JFrame {
         imagenVerContra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -185,7 +193,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel2.setText("CONTRASEÑA");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
-        usuarioText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usuarioText.setForeground(new java.awt.Color(204, 204, 204));
         usuarioText.setText("Ingrese su nombre de usuario");
         usuarioText.setBorder(null);
@@ -210,7 +217,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel3.setText("USUARIO ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
-        contraseniaText.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         contraseniaText.setForeground(new java.awt.Color(204, 204, 204));
         contraseniaText.setBorder(null);
         contraseniaText.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,11 +248,11 @@ public class ViewLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textEntrarMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                textEntrarMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 textEntrarMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textEntrarMouseEntered(evt);
             }
         });
 
