@@ -23,6 +23,8 @@ public class App {
         try {
             ArregloFacturas extra2 = (ArregloFacturas) Configuracion.serial.deserializar("facturas.txt");
             Configuracion.arrFacturas = extra2;
+            if (Configuracion.arrFacturas == null)
+                Configuracion.arrFacturas = new ArregloFacturas();
             System.out.println(Configuracion.arrFacturas);
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
