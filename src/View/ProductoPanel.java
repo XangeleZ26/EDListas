@@ -732,14 +732,15 @@ public class ProductoPanel extends javax.swing.JPanel {
         textNombre.setForeground(new Color(204,204,204));
         textCategoria.setText((String) obj[2]);
         textCategoria.setForeground(new Color(204,204,204));
-        textValor.setText(""+(Double) obj[5]);
+        textValor.setText(""+(Double) obj[3]);
         textValor.setForeground(new Color(204,204,204));
-        textValorStock.setText(""+(Double) obj[6]);
+        textValorStock.setText(""+(((Double) obj[3])*((Integer) obj[4])));
         textValorStock.setForeground(new Color(204,204,204));
         labelCodigo.setText("Codigo: "+(String) obj[0]);
-        labelStockInicial.setText("Stock Inicial: "+(Integer) obj[3]);
-        labelStockActual.setText("Stock Actual: "+(Integer) obj[4]);
-        labelVencimiento.setText("Fecha de Vencimiento: "+(String) obj[7]);
+        labelStockInicial.setText("Stock Inicial: "+(Integer) obj[4]);
+        labelStockActual.setText("Stock Actual: "+(Integer) obj[5]);
+        labelVencimiento.setText("Fecha de Vencimiento: "+
+                Configuracion.arrProductos.getArregloP()[tableProducto.getSelectedRow()].getFechaVencimiento());
         labelEstado.setText("Estado: "+(String) obj[8]);
     }
     private void iniciarModificacion(){
