@@ -80,9 +80,15 @@ public class ControllerComprar {
 
     ;
     public void llenarFactura(){
+        int auxiliar;
+        if(Configuracion.arrFacturas.getIndice()==0){
+            auxiliar = 1;
+        }else{
+            auxiliar = (Integer.parseInt(Configuracion.arrFacturas.getArregloP()[Configuracion.arrFacturas.getIndice()-1].getCodigo())+1);
+        }
         Configuracion.arrFacturas.agregar(new Facturas(
                 vista.nombreP.getText(),
-                (Integer.parseInt(Configuracion.arrFacturas.getArregloP()[Configuracion.arrFacturas.getIndice()-1].getCodigo())+1)+"",
+                auxiliar+"",
                 producto.getNombreProducto(),
                 new Date(),
                 Integer.parseInt(vista.cantidad.getText()), 
