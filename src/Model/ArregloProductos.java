@@ -22,7 +22,7 @@ public class ArregloProductos implements Serializable {
         tmp[3] = "Stock inicial";
         tmp[4] = "Stock actual";
         tmp[5] = "Valor c/u(S/.)";
-        tmp[6] = "Valor stock(S/.)";
+        tmp[6] = "Valor stock(S/.)"; //este es el q debo de cambiar en el ordenamiento
         tmp[7] = "Vencimiento";
         tmp[8] = "Estado";
         return tmp;

@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Controller.*;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author usuario
@@ -29,9 +30,12 @@ public class ProductoPanel extends javax.swing.JPanel {
      * Creates new form ProductoPanel
      */
     public ProductoPanel() {
-        habilitadoMod = true;
+        
         initComponents();
-       
+       llenarListaCategoria();
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
+        habilitadoMod = true;
         this.panelModificar.setVisible(false);
         btnCancelarBusqueda.setVisible(false);
         this.filtroCategoriastxt.setVisible(false);
@@ -89,25 +93,27 @@ public class ProductoPanel extends javax.swing.JPanel {
         labelCodigo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        RadioElimSelect = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         radioAscendente = new javax.swing.JRadioButton();
         btnRefrescar = new javax.swing.JLabel();
-        RadioElimVencido = new javax.swing.JRadioButton();
         btnLupa = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         radioDescendente = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
-        btnAplicarCambios = new javax.swing.JButton();
         filtroCategoriastxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboFiltro = new javax.swing.JComboBox<>();
         comboOrdenar = new javax.swing.JComboBox<>();
+        RadioElimSelect = new javax.swing.JRadioButton();
+        RadioElimVencido = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
+        scrollCategoria = new javax.swing.JScrollPane();
+        listaCategoria = new javax.swing.JList<>();
+        btnElim = new javax.swing.JLabel();
+        btnAplicarCambios = new javax.swing.JButton();
         Buscadortxt = new javax.swing.JTextField();
         cantidadProductos = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
-        btnElim = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducto = new javax.swing.JTable();
         panelMod = new javax.swing.JPanel();
@@ -406,10 +412,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel2.setPreferredSize(new java.awt.Dimension(950, 600));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RadioElimSelect.setText("Por selección");
-        RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 400, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad de productos: ");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
@@ -421,10 +423,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnRefrescar.setText("jLabel1");
         btnRefrescar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnRefrescar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 40, 30));
-
-        RadioElimVencido.setText("Productos vencidos");
-        RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 430, -1, -1));
 
         btnLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupita.png"))); // NOI18N
         btnLupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -439,16 +437,17 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAplicarCambios.setText("Aplicar cambios");
-        btnAplicarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 30));
-
         filtroCategoriastxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         filtroCategoriastxt.setForeground(new java.awt.Color(204, 204, 204));
         filtroCategoriastxt.setText("Ingrese categoría");
         filtroCategoriastxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 filtroCategoriastxtMousePressed(evt);
+            }
+        });
+        filtroCategoriastxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filtroCategoriastxtKeyPressed(evt);
             }
         });
         jPanel1.add(filtroCategoriastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 130, 30));
@@ -466,7 +465,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -475,11 +474,36 @@ public class ProductoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 28));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 150, 300));
+        RadioElimSelect.setText("Por selección");
+        RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        RadioElimVencido.setText("Productos vencidos");
+        RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Eliminar:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, 50, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 50, 30));
+
+        listaCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaCategoriaMouseClicked(evt);
+            }
+        });
+        scrollCategoria.setViewportView(listaCategoria);
+
+        jPanel1.add(scrollCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, 80));
+
+        btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
+        btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+
+        btnAplicarCambios.setText("Aplicar cambios");
+        btnAplicarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 110, 30));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 150, 490));
 
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
@@ -499,10 +523,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnCancelarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 30, 30));
-
-        btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
-        btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, 60, 50));
 
         tableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -620,6 +640,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscadortxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscadortxtMousePressed
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
         if (Buscadortxt.getText().equals("Ingrese nombre del producto")) {
             Buscadortxt.setText("");
             Buscadortxt.setForeground(Color.black);
@@ -629,6 +651,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BuscadortxtMousePressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+      this.scrollCategoria.setVisible(false);
+      this.btnAplicarCambios.setVisible(true);
         if (Buscadortxt.getText().isEmpty()) {
             Buscadortxt.setText("Ingrese nombre del producto");
             Buscadortxt.setForeground(Color.gray);
@@ -643,6 +667,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formMousePressed
 
     private void tableProductoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductoMousePressed
+       this.scrollCategoria.setVisible(false);
+       this.btnAplicarCambios.setVisible(true);
         if (Buscadortxt.getText().isEmpty()) {
             Buscadortxt.setText("Ingrese nombre del producto");
             Buscadortxt.setForeground(Color.gray);
@@ -658,11 +684,14 @@ public class ProductoPanel extends javax.swing.JPanel {
             filtroCategoriastxt.setForeground(Color.black);
         }
         filtroCategoriastxt.getCaret().setVisible(true);
+        this.scrollCategoria.setVisible(true);
+        this.btnAplicarCambios.setVisible(false);
         tableProducto.clearSelection();
     }//GEN-LAST:event_filtroCategoriastxtMousePressed
 
     private void comboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFiltroActionPerformed
-
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
         if (this.comboFiltro.getSelectedIndex() == 1) {
             filtroCategoriastxt.setText("Ingrese categoría");
             filtroCategoriastxt.setForeground(Color.gray);
@@ -676,6 +705,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_comboFiltroActionPerformed
 
     private void comboOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrdenarActionPerformed
+       this.scrollCategoria.setVisible(false);
+       this.btnAplicarCambios.setVisible(true);
         if (this.comboOrdenar.getSelectedIndex() != 0) {
             this.radioAscendente.setVisible(true);
             this.radioDescendente.setVisible(true);
@@ -797,6 +828,8 @@ public class ProductoPanel extends javax.swing.JPanel {
 
     private void panelModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseClicked
      DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
+     this.scrollCategoria.setVisible(false);
+     this.btnAplicarCambios.setVisible(true);
         panelMod.setBackground(new Color(204,155,64));
         int index=0;
         try{
@@ -842,6 +875,8 @@ public class ProductoPanel extends javax.swing.JPanel {
 
     private void panelDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDetallesMouseClicked
         this.panelDetalles.setBackground(new Color(204,155,64));
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
         int seleccionado = this.tableProducto.getSelectedRow();
         if (seleccionado != -1) {
             
@@ -864,6 +899,40 @@ public class ProductoPanel extends javax.swing.JPanel {
         panelMod.setBackground(new Color(210, 168, 89));
     }//GEN-LAST:event_panelDetallesMouseEntered
 
+    private void filtroCategoriastxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filtroCategoriastxtKeyPressed
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
+    }//GEN-LAST:event_filtroCategoriastxtKeyPressed
+
+    private void listaCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaCategoriaMouseClicked
+   this.filtroCategoriastxt.setText(this.listaCategoria.getSelectedValue());
+        this.scrollCategoria.setVisible(false);
+        this.btnAplicarCambios.setVisible(true);
+    }//GEN-LAST:event_listaCategoriaMouseClicked
+
+    
+        public void llenarListaCategoria() {
+        DefaultListModel agregarElementos = new DefaultListModel();
+
+        boolean esRepetido=false;
+
+        for (int i = 0; i <Configuracion.arrProductos.getIndice(); i++) {
+            esRepetido=false;
+         if(agregarElementos.isEmpty()){
+             agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
+         }else{
+             for(int j=0;j<agregarElementos.getSize();j++){
+                 if(Configuracion.arrProductos.getArregloP()[i].getCategoria().equals(agregarElementos.get(j))){
+                    esRepetido=true;
+                 }
+             }
+               if(esRepetido==false){
+                      agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
+                 }
+         }
+        }
+        this.listaCategoria.setModel(agregarElementos);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
     public javax.swing.JRadioButton RadioElimSelect;
@@ -906,6 +975,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelStockActual;
     private javax.swing.JLabel labelStockInicial;
     private javax.swing.JLabel labelVencimiento;
+    private javax.swing.JList<String> listaCategoria;
     private javax.swing.JPanel panelCancelar;
     private javax.swing.JPanel panelDetalles;
     private javax.swing.JPanel panelGuardar;
@@ -913,6 +983,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelModificar;
     public javax.swing.JRadioButton radioAscendente;
     public javax.swing.JRadioButton radioDescendente;
+    private javax.swing.JScrollPane scrollCategoria;
     public javax.swing.JTable tableProducto;
     private javax.swing.JTextField textCategoria;
     private javax.swing.JTextField textNombre;

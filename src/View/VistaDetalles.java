@@ -171,11 +171,7 @@ int xMouse, yMouse;
         Barra.add(panelMini, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, -1, -1));
 
         jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 40));
-
-        barrastxt.setText("barras");
         jPanel1.add(barrastxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 220, 70));
-
-        imagentxt.setText("imagen");
         jPanel1.add(imagentxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 220, 200));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N

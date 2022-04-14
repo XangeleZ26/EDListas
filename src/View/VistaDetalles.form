@@ -193,9 +193,6 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="barrastxt">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="barras"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -206,9 +203,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="imagentxt">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="imagen"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
