@@ -18,7 +18,7 @@ public class Relog implements Runnable {
     private int mesActual;
     private int anioActual;
     private Thread hilo;
-    
+
     public Relog() {
         fecha();
         this.hilo = new Thread(this);
@@ -83,24 +83,28 @@ public class Relog implements Runnable {
         Thread ex = Thread.currentThread();
         while (ex == hilo) {
             hora();
-            
+
             if (this.horaActual.equalsIgnoreCase("00:00")) {
                 fecha();
             }
             for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
                 if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
-                    if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
-                        Configuracion.arrProductos.getArregloP()[i].setEstado("VENCIDO");
-                        
-                        try {
-                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
-                        } catch (IOException xd) {
-                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-
+                        if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
+                            Configuracion.arrProductos.getArregloP()[i].setEstado("CADUCADO");
                         }
-                        
+                        if (Configuracion.arrProductos.getArregloP()[i].getStock() == 0) {
+                            Configuracion.arrProductos.getArregloP()[i].setEstado("AGOTADO");
+                        }
+        
+                    try {
+                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                    } catch (IOException xd) {
+                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
                     }
+
                 }
             }
             try {

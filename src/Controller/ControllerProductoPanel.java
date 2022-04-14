@@ -32,7 +32,7 @@ public class ControllerProductoPanel {
         this.frmProducto.btnLupa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+              
                 if (frmProducto.Buscadortxt.getText().isEmpty() || frmProducto.Buscadortxt.getText().equalsIgnoreCase("Ingrese nombre del producto")) {
                     //if el boton aplicar cambios esta siendo usado en filtro u ordenamiento,
                     //entonces que esto no suceda
@@ -96,7 +96,7 @@ public class ControllerProductoPanel {
                         filtroStocksVigentes();
                         break;
                     }
-                    case 4: { //stocks acabados
+                    case 4: { //stocks agotados (acabados)
                         filtroStocksAcabados();
                         break;
                     }
@@ -123,7 +123,7 @@ public class ControllerProductoPanel {
                             break;
                         }
                         case 2: { //valor inicial de stock
-                            ordenarValorStock(esAscendente);
+                            ordenarPorGanancia(esAscendente);
                             break;
                         }
                         case 3: { //cantidad inicial de stock
@@ -201,12 +201,12 @@ public class ControllerProductoPanel {
                     }
                 }
                 //opcion de eliminar todos los productos vencidos
-                if (frmProducto.RadioElimVencido.isSelected()) {
-                    System.out.println(Configuracion.arrProductos.getIndice());
-                    int xd = JOptionPane.showOptionDialog(null, "¿Está seguro que desea eliminar\n los stocks de inventario vacíos?", null, 0, 0, null, opciones, opciones[0]);
+                if (frmProducto.RadioElimVencidos.isSelected()) {
+                    
+                    int xd = JOptionPane.showOptionDialog(null, "¿Está seguro que desea eliminar\n los stocks de inventario caducados?", null, 0, 0, null, opciones, opciones[0]);
                     if (xd == 0) {
 
-                        Configuracion.arrProductos.colocarEliminandoParaVencidos();
+                        Configuracion.arrProductos.colocarEliminandoParaCaducados();
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                         try {
@@ -225,7 +225,30 @@ public class ControllerProductoPanel {
                         frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
                     }
                 }
+                if(frmProducto.RadioElimAgotados.isSelected()){
+  
+                    int xd = JOptionPane.showOptionDialog(null, "¿Está seguro que desea eliminar\n los stocks de inventario agotados?", null, 0, 0, null, opciones, opciones[0]);
+                    if (xd == 0) {
 
+                        Configuracion.arrProductos.colocarEliminandoParaAgotados();
+                        concretarElim();
+                        JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
+                        try {
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                        }
+                        frmProducto.Buscadortxt.getCaret().setVisible(false);
+                        frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
+                        frmProducto.Buscadortxt.setForeground(Color.gray);
+                        frmProducto.btnCancelarBusqueda.setVisible(false);
+                        Productos = Configuracion.arrProductos;
+                        llenarTabla();
+                        frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                    }
+                }
             }
         });
         this.frmProducto.btnRefrescar.addMouseListener(new MouseAdapter() {
@@ -286,7 +309,7 @@ public class ControllerProductoPanel {
     public void filtroStocksVencidos() {
         ArregloProductos extra = new ArregloProductos();
         for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getEstado().equals("VENCIDO")) {
+            if (Productos.getArregloP()[i].getEstado().equals("CADUCADO")) {
                 extra.agregar(Productos.getArregloP()[i]);
             }
         }
@@ -317,8 +340,8 @@ public class ControllerProductoPanel {
         this.Productos = this.Productos.ordenarPorNombre(ascendente);
     }
 
-    void ordenarValorStock(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorValorStock(ascendente);
+    void ordenarPorGanancia(boolean ascendente) {
+        this.Productos = this.Productos.ordenarPorGanancia(ascendente);
     }
 
     void ordenarMayoresVentas(boolean ascendente) {

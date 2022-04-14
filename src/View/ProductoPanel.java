@@ -43,7 +43,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         this.radioDescendente.setVisible(false);
 
         this.grupoBtnEliminar.add(this.RadioElimSelect);
-        this.grupoBtnEliminar.add(this.RadioElimVencido);
+        this.grupoBtnEliminar.add(this.RadioElimVencidos);
+        this.grupoBtnEliminar.add(this.RadioElimAgotados);
         this.RadioElimSelect.setSelected(true);
 
         this.grupoBtnOrdenar.add(this.radioDescendente);
@@ -94,23 +95,24 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        radioAscendente = new javax.swing.JRadioButton();
         btnRefrescar = new javax.swing.JLabel();
         btnLupa = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        radioDescendente = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         filtroCategoriastxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboFiltro = new javax.swing.JComboBox<>();
         comboOrdenar = new javax.swing.JComboBox<>();
         RadioElimSelect = new javax.swing.JRadioButton();
-        RadioElimVencido = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
+        btnElim = new javax.swing.JLabel();
         scrollCategoria = new javax.swing.JScrollPane();
         listaCategoria = new javax.swing.JList<>();
-        btnElim = new javax.swing.JLabel();
         btnAplicarCambios = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        radioAscendente = new javax.swing.JRadioButton();
+        radioDescendente = new javax.swing.JRadioButton();
+        RadioElimAgotados = new javax.swing.JRadioButton();
+        RadioElimVencidos = new javax.swing.JRadioButton();
         Buscadortxt = new javax.swing.JTextField();
         cantidadProductos = new javax.swing.JLabel();
         btnCancelarBusqueda = new javax.swing.JLabel();
@@ -416,9 +418,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel4.setText("Cantidad de productos: ");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
 
-        radioAscendente.setText("menor a mayor");
-        jPanel2.add(radioAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
-
         btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refrescar.png"))); // NOI18N
         btnRefrescar.setText("jLabel1");
         btnRefrescar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -426,14 +425,12 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         btnLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupita.png"))); // NOI18N
         btnLupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLupa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLupaMouseClicked(evt);
+            }
+        });
         jPanel2.add(btnLupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 40, 30));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Ordenar por:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, -1, 30));
-
-        radioDescendente.setText("mayor a menor");
-        jPanel2.add(radioDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -456,7 +453,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel6.setText("Filtro:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 50, 30));
 
-        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Por categoría", "Stocks vencidos", "Stocks vigentes", "Stocks acabados", "Stocks  activos" }));
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Por categoría", "Stocks caducados", "Stocks vigentes", "Stocks agotados", "Stocks  activos" }));
         comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,7 +462,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Valor inicial de stock", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Ganancias", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,15 +473,15 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         RadioElimSelect.setText("Por selección");
         RadioElimSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
-
-        RadioElimVencido.setText("Productos vencidos");
-        RadioElimVencido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(RadioElimVencido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+        jPanel1.add(RadioElimSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Eliminar:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 50, 30));
+
+        btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
+        btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
         listaCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -495,15 +492,29 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jPanel1.add(scrollCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, 80));
 
-        btnElim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/basureroZ.png"))); // NOI18N
-        btnElim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
-
-        btnAplicarCambios.setText("Aplicar cambios");
+        btnAplicarCambios.setText("Aplicar");
         btnAplicarCambios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 110, 30));
+        jPanel1.add(btnAplicarCambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 150, 490));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Ordenar por:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+
+        radioAscendente.setText("menor a mayor");
+        jPanel1.add(radioAscendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        radioDescendente.setText("mayor a menor");
+        jPanel1.add(radioDescendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        RadioElimAgotados.setText("Productos agotados");
+        RadioElimAgotados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(RadioElimAgotados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 413, -1, 30));
+
+        RadioElimVencidos.setText("Productos vencidos");
+        RadioElimVencidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(RadioElimVencidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 383, -1, 30));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 160, 520));
 
         Buscadortxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         Buscadortxt.setForeground(new java.awt.Color(204, 204, 204));
@@ -684,7 +695,9 @@ public class ProductoPanel extends javax.swing.JPanel {
             filtroCategoriastxt.setForeground(Color.black);
         }
         filtroCategoriastxt.getCaret().setVisible(true);
-        this.scrollCategoria.setVisible(true);
+        if(!(Configuracion.arrProductos.getIndice()==0)){
+            this.scrollCategoria.setVisible(true);
+        }
         this.btnAplicarCambios.setVisible(false);
         tableProducto.clearSelection();
     }//GEN-LAST:event_filtroCategoriastxtMousePressed
@@ -698,7 +711,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             filtroCategoriastxt.setVisible(true);
             filtroCategoriastxt.getCaret().setVisible(false);
         } else {
-            Buscadortxt.setForeground(Color.gray);
             filtroCategoriastxt.setVisible(false);
         }
         tableProducto.clearSelection();
@@ -849,7 +861,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             panelModificar.setVisible(true);
             limpiarComponentes();
             
-            
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "¡Primero debe seleccionar un stock de inventario!");
         }
@@ -910,6 +921,10 @@ public class ProductoPanel extends javax.swing.JPanel {
         this.btnAplicarCambios.setVisible(true);
     }//GEN-LAST:event_listaCategoriaMouseClicked
 
+    private void btnLupaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLupaMouseClicked
+    
+    }//GEN-LAST:event_btnLupaMouseClicked
+
     
         public void llenarListaCategoria() {
         DefaultListModel agregarElementos = new DefaultListModel();
@@ -935,8 +950,9 @@ public class ProductoPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField Buscadortxt;
+    public javax.swing.JRadioButton RadioElimAgotados;
     public javax.swing.JRadioButton RadioElimSelect;
-    public javax.swing.JRadioButton RadioElimVencido;
+    public javax.swing.JRadioButton RadioElimVencidos;
     public javax.swing.JButton btnAplicarCambios;
     public javax.swing.JLabel btnCancelarBusqueda;
     public javax.swing.JLabel btnElim;

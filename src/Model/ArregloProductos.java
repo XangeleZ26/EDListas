@@ -19,11 +19,11 @@ public class ArregloProductos implements Serializable {
         tmp[0] = "Código";
         tmp[1] = "Nombre";
         tmp[2] = "Categoria";
-        tmp[3] = "Stock inicial";
-        tmp[4] = "Stock actual";
-        tmp[5] = "Valor c/u(S/.)";
-        tmp[6] = "Valor stock(S/.)"; //este es el q debo de cambiar en el ordenamiento
-        tmp[7] = "Vencimiento";
+        tmp[3] = "Valor c/u(S/.)";
+        tmp[4] = "Cant. inicial";
+        tmp[5] = "Cant. actual";
+        tmp[6] = "Cant. ventas"; 
+        tmp[7] = "Ganancias(S/.)";
         tmp[8] = "Estado";
         return tmp;
     }
@@ -34,11 +34,11 @@ public class ArregloProductos implements Serializable {
             tmp[i][0] = this.arregloP[i].getNumberEtiqueta();
             tmp[i][1] = this.arregloP[i].getNombreProducto();
             tmp[i][2] = this.arregloP[i].getCategoria();
-            tmp[i][3] = this.arregloP[i].getStockInicial();
-            tmp[i][4] = this.arregloP[i].getStock();
-            tmp[i][5] = this.arregloP[i].getValorXUnidad();
-            tmp[i][6] = this.arregloP[i].getValorTotalStock();
-            tmp[i][7] = this.arregloP[i].getFechaVencimiento();
+            tmp[i][3] = this.arregloP[i].getValorXUnidad();
+            tmp[i][4] = this.arregloP[i].getStockInicial();
+            tmp[i][5] = this.arregloP[i].getStock();
+            tmp[i][6] = this.arregloP[i].getCantidadVendido();
+            tmp[i][7] = this.arregloP[i].getCantidadVendido()*this.arregloP[i].getValorXUnidad();
             tmp[i][8] = this.arregloP[i].getEstado();
         }
         return tmp;
@@ -67,41 +67,24 @@ public class ArregloProductos implements Serializable {
 //        }
 //        return resultado;
 //    }
-    public void colocarEliminandoParaVencidos() {
+    public void colocarEliminandoParaCaducados() {
 
         for (int i = 0; i < this.indice; i++) {
-            if (this.arregloP[i].getEstado().equals("VENCIDO")) {
-//              System.out.println(i+" "+this.arregloP[i].getNumberEtiqueta()+" "+this.arregloP[i].getEstado());
+            if (this.arregloP[i].getEstado().equals("CADUCADO")) {
                 this.arregloP[i].setEstado("ELIMINANDO");
             }
         }
 
-//      int indiceExtra=0;
-//      Producto productoExtra[]=new Producto[5];
-//      for(int i=0;i<this.indice;i++){
-//          if(this.arregloP[i]!=null){
-//              
-//          }
-//      }
-        //Primero se debe encontrar el orden del objeto en el arreglo
-//        for(int i=0; i<this.indice && orden==-1 ;i++){
-//            if(producto == this.arregloP[i]){
-//                orden=i;
-//                result = true; //LOS PRODUCTOS VENCIDOS PASAN CORRECTAMENTE A ESTE METODO
-//                System.out.println(i+" "+producto.getNumberEtiqueta()+" "+producto.getEstado());
-//            }
-//        }
-        //Una vez ubicado el orden del objeto, se borra copiando los objetos de adelante hacia atrás
-//        if(result==true){
-//        for(int i=orden; i<this.indice-1; i++){
-//            this.arregloP[i] = this.arregloP[i+1];
-//        } 
-//        //Se borra el espacio en memoria sobrante y se modifica la cantidad y el orden de objetos
-//        this.arregloP[this.indice-1] = null;
-//        this.indice--;
-//        }
     }
+    public void colocarEliminandoParaAgotados() {
 
+        for (int i = 0; i < this.indice; i++) {
+            if (this.arregloP[i].getEstado().equals("AGOTADO")) {
+                this.arregloP[i].setEstado("ELIMINANDO");
+            }
+        }
+
+    }
     public void eliminarPorCodigo(String codigo) {
         boolean result = false;
         int orden = -1;
@@ -263,7 +246,7 @@ public class ArregloProductos implements Serializable {
         return extra;
     }
     
-    public ArregloProductos ordenarPorValorStock(boolean ascendente) {    
+    public ArregloProductos ordenarPorGanancia(boolean ascendente) {    
         int n = this.indice;//this.arregloP.length-1;
         Producto[] arr = this.arregloP.clone();
         ArregloProductos extra = new ArregloProductos();
@@ -273,14 +256,14 @@ public class ArregloProductos implements Serializable {
                 Producto temp = arr[i];
                 int j = i-1;                
                 if (ascendente) { // orden ascendente
-                    while ( j >= 0 && (temp.getValorTotalStock() < arr[j].getValorTotalStock()) ) {
+                    while ( j >= 0 && (temp.getValorXUnidad()*temp.getCantidadVendido() < arr[j].getCantidadVendido()*arr[j].getValorXUnidad()) ) {
                         //System.out.println("valorstock: " + temp.getValorTotalStock() );
                         arr[j+1] = arr[j];
                         j--;
                     }
                 }
                 else { // orden descendente                    
-                    while ( j >= 0 && temp.getValorTotalStock() > arr[j].getValorTotalStock() ) {
+                    while ( j >= 0 && temp.getValorXUnidad()*temp.getCantidadVendido() > arr[j].getCantidadVendido()*arr[j].getValorXUnidad() ) {
                         arr[j+1] = arr[j];
                         j--;
                     }
@@ -291,7 +274,7 @@ public class ArregloProductos implements Serializable {
 //            this.arregloP = arr;
         }
          catch(Exception ex) {            
-            System.out.println("Error valorstock: " +ex.toString()); 
+            System.out.println("Error ganancia: " +ex.toString()); 
         } 
         return extra;
     }
@@ -308,15 +291,15 @@ public class ArregloProductos implements Serializable {
                     Producto temp = arr[i];
                     j = i;
                     if (ascendente) {                        
-                        while ( j >= intervalo && 
-                                (temp.getStockInicial()-temp.getStock() ) < ( arr[j - intervalo].getStockInicial()- arr[j - intervalo].getStock() ) ) {
+                        while ( j >= intervalo && //aqui hago un breve cambio
+                                (temp.getCantidadVendido() ) < ( arr[j - intervalo].getCantidadVendido()) ) {
                             arr[j] = arr[j - intervalo];
                             j -= intervalo;
                         }
                     }
                     else { // descendente
                         while ( j >= intervalo && 
-                                (temp.getStockInicial()-temp.getStock() ) > ( arr[j - intervalo].getStockInicial()- arr[j - intervalo].getStock() ) ) {
+                                (temp.getCantidadVendido() ) > ( arr[j - intervalo].getCantidadVendido() ) ) {
                             arr[j] = arr[j - intervalo];
                             j -= intervalo;
                         }

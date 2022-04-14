@@ -29,7 +29,7 @@ public class ControllerCreacion {
             public void actionPerformed(ActionEvent e) {
                 String url = "";
                 JFileChooser buscarImage = new JFileChooser();
-                
+
                 //para solo admitir imagenes png o jpg
                 FileNameExtensionFilter filtrado = new FileNameExtensionFilter(".jpg o .png", "jpg", "png");
                 buscarImage.setFileFilter(filtrado);
@@ -49,33 +49,33 @@ public class ControllerCreacion {
         this.vista.btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 if (datosLlenos()) {
 
                     SimpleDateFormat fechaVencimiento = new SimpleDateFormat("dd/MM/yyyy");
-                    
-                    Producto NuevoProducto = new Producto(vista.nombretxt.getText().trim(),
-                            vista.categoriatxt.getText().trim(), vista.descripciontxt.getText().trim(),
-                            fechaVencimiento.format(vista.fechaVencimientotxt.getDate()),imagencita,
-                            Integer.parseInt(vista.stockInicialtxt.getText().trim()), Double.parseDouble(vista.valorUnidadtxt.getText().trim()),Integer.parseInt(vista.porcionestxt.getText()));
-                        //Agregamos estado del objeto
-                        NuevoProducto.setEstado("VIGENTE");
-                       //aqui pasamos a agregar un codigo
-                            NuevoProducto.setNumberEtiqueta(codigoAleatorio());
-                       //pasamos a agregar la imagen de codigo de barras
-                            NuevoProducto.setImagenBarras(generarBarras(NuevoProducto.getNumberEtiqueta()));              
-                            //GUARDAMOS AL VECTOR
-                            Configuracion.arrProductos.agregar(NuevoProducto);
-                            //GUARDAMOS AL ARCHIVO
-        try {
-            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-            JOptionPane.showMessageDialog(null,"Producto agregado con éxito.");  
-            vaciarDatos();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 
-        }
-                          
+                    Producto NuevoProducto = new Producto(AgregarMayusPrimeraLetra(vista.nombretxt.getText().trim()),
+                            AgregarMayusPrimeraLetra(vista.categoriatxt.getText().trim()), vista.descripciontxt.getText().trim(),
+                            fechaVencimiento.format(vista.fechaVencimientotxt.getDate()), imagencita,
+                            Integer.parseInt(vista.stockInicialtxt.getText().trim()), Double.parseDouble(vista.valorUnidadtxt.getText().trim()), Integer.parseInt(vista.porcionestxt.getText().trim()));
+                    //Agregamos estado del objeto
+                    NuevoProducto.setEstado("VIGENTE");
+                    //aqui pasamos a agregar un codigo
+                    NuevoProducto.setNumberEtiqueta(codigoAleatorio());
+                    //pasamos a agregar la imagen de codigo de barras
+                    NuevoProducto.setImagenBarras(generarBarras(NuevoProducto.getNumberEtiqueta()));
+                    //GUARDAMOS AL VECTOR
+                    Configuracion.arrProductos.agregar(NuevoProducto);
+                    //GUARDAMOS AL ARCHIVO
+                    try {
+                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+                        JOptionPane.showMessageDialog(null, "Producto agregado con éxito.");
+                        vaciarDatos();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
                 }
@@ -86,7 +86,8 @@ public class ControllerCreacion {
     public void run() {
         this.vista.setVisible(true);
     }
-    public void vaciarDatos(){
+
+    public void vaciarDatos() {
         this.vista.imagenProductoimg.setIcon(new ImageIcon(getClass().getResource("/Images/sinImagen.png")));
         this.vista.categoriatxt.setText("");
         this.vista.descripciontxt.setText("");
@@ -96,6 +97,7 @@ public class ControllerCreacion {
         this.vista.stockInicialtxt.setText("");
         this.vista.valorUnidadtxt.setText("");
     }
+
     public String codigoAleatorio() {
         //AQUI TIENE QUE IR EL METODO QUE DEVUELVE UN CODIGO DIFERENTE DE CUALQUIER OTRO CREADO 
         int aleatorio = 0;
@@ -104,22 +106,23 @@ public class ControllerCreacion {
         boolean repite;
         String codigoCadena;
         do {
-            repite=false;
+            repite = false;
             r = new Random();
             aleatorio = (int) (r.nextInt());
             codigoPosi = Math.abs(aleatorio);
             codigoCadena = String.valueOf(codigoPosi);
-            
-            for(int i=0;i<Configuracion.arrProductos.getIndice();i++){
-                if(codigoCadena.equalsIgnoreCase(Configuracion.arrProductos.getArregloP()[i].getNumberEtiqueta())){
-                    repite=true;
+
+            for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
+                if (codigoCadena.equalsIgnoreCase(Configuracion.arrProductos.getArregloP()[i].getNumberEtiqueta())) {
+                    repite = true;
                 }
             }
         } while (repite);
-        
+
         return codigoCadena;
     }
-       public Icon generarBarras(String codigo) {
+
+    public Icon generarBarras(String codigo) {
 
         String codigoCadena = codigo;
 
@@ -134,7 +137,18 @@ public class ControllerCreacion {
 //        vistaBoleta.lblCodigoBarras.setIcon(barras);
         return barras;
     }
-   
+
+    public String AgregarMayusPrimeraLetra(String cadena) {
+
+        String primeraLetra = cadena.substring(0, 1);
+        String restoDeLetras = cadena.substring(1, cadena.length());
+
+        primeraLetra = primeraLetra.toUpperCase();
+        restoDeLetras = restoDeLetras.toLowerCase();
+        cadena = primeraLetra + restoDeLetras;
+        return cadena;
+    }
+
     public boolean datosLlenos() {
         return (this.vista.nombretxt.getText().trim().length() != 0
                 && this.vista.categoriatxt.getText().trim().length() != 0

@@ -119,8 +119,8 @@ public class vistaComprar extends javax.swing.JFrame {
         jPanel1.add(imagenLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 190, 160));
 
         nombre3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        nombre3.setText("Precio:");
-        jPanel1.add(nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 50, 20));
+        nombre3.setText("Precio (S/.):");
+        jPanel1.add(nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 80, 20));
 
         descripciontxt.setEditable(false);
         descripciontxt.setColumns(20);
@@ -145,7 +145,7 @@ public class vistaComprar extends javax.swing.JFrame {
         jLabel4.setText("Cantidad a comprar:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setText("Costo total:");
+        jLabel5.setText("Costo total (S/.):");
 
         costoUnitario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -176,7 +176,7 @@ public class vistaComprar extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("Precio unitario:");
+        jLabel7.setText("Precio unitario (S/.):");
 
         costoTotal.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -286,9 +286,9 @@ public class vistaComprar extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)

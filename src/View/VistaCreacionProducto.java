@@ -271,8 +271,10 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     }//GEN-LAST:event_categoriatxtKeyPressed
 
     private void categoriatxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriatxtMouseClicked
-        sCrollCategoria.setVisible(true);
 
+        if(!(Configuracion.arrProductos.getIndice()==0)){
+            sCrollCategoria.setVisible(true);
+        }
     }//GEN-LAST:event_categoriatxtMouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
