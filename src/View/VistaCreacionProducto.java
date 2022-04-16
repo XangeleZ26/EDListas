@@ -1,6 +1,7 @@
 package View;
 
 import Model.Configuracion;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -27,7 +28,6 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -35,8 +35,6 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         imagenProductoimg = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnSelectImage = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         sCrollCategoria = new javax.swing.JScrollPane();
         listaCategorias = new javax.swing.JList<>();
@@ -54,6 +52,12 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         porcionestxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         fechaVencimientotxt = new com.toedter.calendar.JDateChooser();
+        jLabel12 = new javax.swing.JLabel();
+        btnSelectImage = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -62,9 +66,6 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
             }
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Aqui colocar el logo o algo decorativo xd");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 22, 234, 40));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Imagen:");
@@ -92,15 +93,9 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         imagenProductoimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sinImagen.png"))); // NOI18N
         imagenProductoimg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(imagenProductoimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 270, 190));
+        add(imagenProductoimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 270, 190));
 
-        btnGuardar.setText("Guardar");
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, -1, 30));
-
-        btnSelectImage.setText("Seleccionar imagen");
-        add(btnSelectImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, 30));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 221, 158));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         listaCategorias.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -166,8 +161,8 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jPanel1.add(stockInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("Valor por unidad:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        jLabel7.setText("Valor por producto:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 190, -1, -1));
 
         valorUnidadtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,8 +183,8 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 240, 130));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel11.setText("Cantidad de porciones:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 150, -1));
+        jLabel11.setText("                por producto:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 150, 20));
 
         porcionestxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +203,82 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
         jPanel1.add(fechaVencimientotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 170, -1));
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setText("Porciones o unidades");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 140, 20));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 520));
+
+        btnSelectImage.setBackground(new java.awt.Color(204, 155, 64));
+        btnSelectImage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSelectImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSelectImageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSelectImageMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSelectImageMouseExited(evt);
+            }
+        });
+
+        jLabel13.setText("Seleccionar imagen");
+
+        javax.swing.GroupLayout btnSelectImageLayout = new javax.swing.GroupLayout(btnSelectImage);
+        btnSelectImage.setLayout(btnSelectImageLayout);
+        btnSelectImageLayout.setHorizontalGroup(
+            btnSelectImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSelectImageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        btnSelectImageLayout.setVerticalGroup(
+            btnSelectImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSelectImageLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(btnSelectImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 140, -1));
+
+        btnGuardar.setBackground(new java.awt.Color(204, 155, 64));
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
+            }
+        });
+
+        jLabel14.setText("Guardar");
+
+        javax.swing.GroupLayout btnGuardarLayout = new javax.swing.GroupLayout(btnGuardar);
+        btnGuardar.setLayout(btnGuardarLayout);
+        btnGuardarLayout.setHorizontalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnGuardarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel14)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        btnGuardarLayout.setVerticalGroup(
+            btnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGuardarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, 110, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BannerExtendido.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 80));
     }// </editor-fold>//GEN-END:initComponents
 
     private void stockInicialtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockInicialtxtActionPerformed
@@ -286,6 +356,31 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         sCrollCategoria.setVisible(false);
     }//GEN-LAST:event_listaCategoriasMouseClicked
 
+    private void btnSelectImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectImageMouseClicked
+ 
+    }//GEN-LAST:event_btnSelectImageMouseClicked
+
+    private void btnSelectImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectImageMouseEntered
+        btnSelectImage.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_btnSelectImageMouseEntered
+
+    private void btnSelectImageMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectImageMouseExited
+
+        btnSelectImage.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_btnSelectImageMouseExited
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarMouseExited
+
     public void llenarListaCategoria() {
         DefaultListModel agregarElementos = new DefaultListModel();
 
@@ -310,15 +405,18 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnGuardar;
-    public javax.swing.JButton btnSelectImage;
+    public javax.swing.JPanel btnGuardar;
+    public javax.swing.JPanel btnSelectImage;
     public javax.swing.JTextField categoriatxt;
     public javax.swing.JTextArea descripciontxt;
     public com.toedter.calendar.JDateChooser fechaVencimientotxt;
     public javax.swing.JLabel imagenProductoimg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

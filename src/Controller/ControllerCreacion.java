@@ -6,6 +6,8 @@ import View.VistaCreacionProducto;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Random;
@@ -23,11 +25,10 @@ public class ControllerCreacion {
 
     public ControllerCreacion() {
         this.vista = new VistaCreacionProducto();
-
-        this.vista.btnSelectImage.addActionListener(new ActionListener() {
+        this.vista.btnSelectImage.addMouseListener(new MouseAdapter(){
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String url = "";
+            public void mouseClicked(MouseEvent e){
+                   String url = "";
                 JFileChooser buscarImage = new JFileChooser();
 
                 //para solo admitir imagenes png o jpg
@@ -45,12 +46,10 @@ public class ControllerCreacion {
 
             }
         });
-
-        this.vista.btnGuardar.addActionListener(new ActionListener() {
+        this.vista.btnGuardar.addMouseListener(new MouseAdapter(){
             @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (datosLlenos()) {
+            public void mouseClicked(MouseEvent e){
+                  if (datosLlenos()) {
 
                     SimpleDateFormat fechaVencimiento = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -81,6 +80,7 @@ public class ControllerCreacion {
                 }
             }
         });
+
     }
 
     public void run() {
@@ -129,8 +129,8 @@ public class ControllerCreacion {
         barcode.setCodeType(new Interleaved25());
         barcode.setCode(codigoCadena);
         barcode.setCheckDigit(true);
-        barcode.setBackground(new Color(121, 127, 139));
-        barcode.setBarcodeBackground(new Color(121, 127, 139));
+        barcode.setBackground(new Color(255, 255, 255)); //engloba el codigo y las barras
+        barcode.setBarcodeBackground(new Color(255, 255, 255)); //engloba las barras
         imagenBarras = barcode.draw(new BufferedImage(180, 230, BufferedImage.TYPE_INT_RGB));
         ImageIcon barras = new ImageIcon(imagenBarras);
         //ESTO VA EN LA PROXIMA VISTA QUE CREARÉ, RESPECTO A MÁS INFO

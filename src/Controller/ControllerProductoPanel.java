@@ -56,10 +56,10 @@ public class ControllerProductoPanel {
         });
 
         //BOTON APLICAR CAMBIOS DE FILTRO Y ORDENAMIENTO
-        this.frmProducto.btnAplicarCambios.addActionListener(new ActionListener() {
+        this.frmProducto.btnAplicarCambios.addMouseListener(new MouseAdapter(){
             @Override
-            public void actionPerformed(ActionEvent e) {
-                puedeOrdenar = true;
+            public void mouseClicked(MouseEvent e){
+                        puedeOrdenar = true;
                 // 2° PRIORIDAD: FILTRO
 
                 //ES NECESARIO QUE CONSIDERE LOS VALORES DE LA BUSQUEDA EN CASO SE QUIERA REVERTIR UN FILTRO/ORDENAMIENTO
@@ -100,10 +100,10 @@ public class ControllerProductoPanel {
                         filtroStocksAcabados();
                         break;
                     }
-                    case 5: { //stocks activos
-                        filtroStocksActivos();
-                        break;
-                    }
+//                    case 5: { //stocks activos
+//                        filtroStocksActivos();
+//                        break;
+//                    }
                 }
                 // 3° PRIORIDAD: ORDENAMIENTO
                 if (puedeOrdenar) {
@@ -148,6 +148,7 @@ public class ControllerProductoPanel {
                 frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
             }
         });
+
 
         //BOTON DE CANCELAR BUSQUEDA
         this.frmProducto.btnCancelarBusqueda.addMouseListener(new MouseAdapter() {
@@ -325,16 +326,16 @@ public class ControllerProductoPanel {
         }
         Productos = extra;
     }
-
-    public void filtroStocksActivos() {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getStock() > 0) {
-                extra.agregar(Productos.getArregloP()[i]);
-            }
-        }
-        Productos = extra;
-    }
+//
+//    public void filtroStocksActivos() {
+//        ArregloProductos extra = new ArregloProductos();
+//        for (int i = 0; i < Productos.getIndice(); i++) {
+//            if (Productos.getArregloP()[i].getStock() > 0) {
+//                extra.agregar(Productos.getArregloP()[i]);
+//            }
+//        }
+//        Productos = extra;
+//    }
 
     void ordenarNombre(boolean ascendente) {
         this.Productos = this.Productos.ordenarPorNombre(ascendente);

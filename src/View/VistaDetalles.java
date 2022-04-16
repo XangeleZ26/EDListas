@@ -77,7 +77,7 @@ int xMouse, yMouse;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 221, 158));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
@@ -283,6 +283,7 @@ int xMouse, yMouse;
         jPanel1.add(estadotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 230, -1));
 
         descripciontxt.setEditable(false);
+        descripciontxt.setBackground(new java.awt.Color(255, 221, 158));
         descripciontxt.setColumns(20);
         descripciontxt.setRows(5);
         jScrollPane1.setViewportView(descripciontxt);
@@ -291,7 +292,7 @@ int xMouse, yMouse;
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel2.setText("Detalles de stock");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, 40));
 
         btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refrescar.png"))); // NOI18N
         btnRefrescar.setText("jLabel1");
