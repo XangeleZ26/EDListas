@@ -76,7 +76,7 @@ public class vistaComprar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 221, 158));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
@@ -123,11 +123,12 @@ public class vistaComprar extends javax.swing.JFrame {
         jPanel1.add(nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 80, 20));
 
         descripciontxt.setEditable(false);
+        descripciontxt.setBackground(new java.awt.Color(255, 221, 158));
         descripciontxt.setColumns(20);
         descripciontxt.setRows(5);
         jScrollPane1.setViewportView(descripciontxt);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 476, 250, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 476, 240, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 201, 93));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {

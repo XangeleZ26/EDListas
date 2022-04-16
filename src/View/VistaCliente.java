@@ -61,14 +61,20 @@ public class VistaCliente extends javax.swing.JFrame {
         textSalir = new javax.swing.JLabel();
         panelMini = new javax.swing.JPanel();
         textMini = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 221, 158));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelProducto.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panelProductoLayout = new javax.swing.GroupLayout(panelProducto);
         panelProducto.setLayout(panelProductoLayout);
@@ -85,7 +91,7 @@ public class VistaCliente extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 156, 1030, 600));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel3.setBackground(new java.awt.Color(191, 142, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Barra.setBackground(new java.awt.Color(255, 255, 255));
@@ -183,7 +189,24 @@ public class VistaCliente extends javax.swing.JFrame {
 
         jPanel3.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 40));
 
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Encantos");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 126, 30));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 110, 14));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 110));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 3, 16)); // NOI18N
+        jLabel2.setText("Contamos con los siguientes productos:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 330, 20));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondoCliente (1) (1) (1).png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 114, 1120, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -370,9 +393,13 @@ public class VistaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Barra;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelMini;
     private javax.swing.JPanel panelProducto;
     private javax.swing.JPanel panelSalir;
