@@ -21,6 +21,15 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         setIconImage(getIconImage());
+        reset(0);
+        opciones[0] = false;
+        PrincipalPanel Pp = new PrincipalPanel();
+        Pp.setSize(800, 600);
+        Pp.setLocation(0, 0);
+        panelCambiante.removeAll();
+        panelCambiante.add(Pp, BorderLayout.CENTER);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
     }
 
     @SuppressWarnings("unchecked")
