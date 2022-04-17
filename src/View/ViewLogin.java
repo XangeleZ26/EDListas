@@ -388,24 +388,23 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BarraMousePressed
 
     private void panelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEntrarMouseClicked
- /*       String usuario = usuarioText.getText();
+        String usuario = usuarioText.getText();
         String paswd = contraseniaText.getText();
         
         if(usuario.isEmpty() || paswd.isEmpty()){
             JOptionPane.showMessageDialog(null, "Digite ambos campos");
             
         }else{
-             if(usuario.equals("Administrador") && paswd.equals("1234")){
-*/        
+             if(usuario.equals("Administrador") && paswd.equals("1234")){        
                  ControllerPrincipal controller=new ControllerPrincipal();
                  controller.run();
                  this.dispose();
- /*                                 
+                                 
              }else{
                  JOptionPane.showMessageDialog(null,"Usuario y/o contraseña incorrecto");
              }
         }
- */
+
     }//GEN-LAST:event_panelEntrarMouseClicked
 
     private void fondoInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoInicioMousePressed
