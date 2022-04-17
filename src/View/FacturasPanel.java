@@ -474,7 +474,7 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        Plantilla plantilla = new Plantilla("Prueba",
+        Plantilla plantilla = new Plantilla("ReporteBoletas",
                new Date().toString(),
                "src/Images/pasteleria (1).jpg",
                Configuracion.arrFacturas.getArregloP());
@@ -482,7 +482,7 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        abrir("Prueba");
+        abrir("ReporteBoletas");
     }                                        
 
     public void abrir(String nombreOperador) {
