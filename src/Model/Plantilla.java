@@ -22,7 +22,7 @@ public class Plantilla {
     String nombreOperador;
     String fecha;
     String rutaImagen;
-    List<Facturas> facturas;
+    Facturas[] facturas;
     
     Document documento;
     FileOutputStream archivo;
@@ -31,7 +31,7 @@ public class Plantilla {
     public Plantilla(String nombreOperador,
             String fecha,
             String rutaImagen,
-            List<Facturas> facturas)
+            Facturas[] facturas)
     {
         this.nombreOperador = nombreOperador;
         this.fecha = fecha;

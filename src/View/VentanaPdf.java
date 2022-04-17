@@ -1,6 +1,7 @@
 
 package View;
 
+import Model.Configuracion;
 import Model.Facturas;
 import Model.Plantilla;
 import java.awt.Color;
@@ -264,7 +265,7 @@ public class VentanaPdf extends javax.swing.JFrame {
         Plantilla plantilla = new Plantilla(operador.getText(),
                new Date().toString(),
                "src/Images/pasteleria (1).jpg",
-               this.facturas);
+               Configuracion.arrFacturas.getArregloP());
         plantilla.crearPlantilla();
     }//GEN-LAST:event_jButton2ActionPerformed
 
