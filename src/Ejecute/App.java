@@ -17,7 +17,7 @@ public class App {
         } catch (Exception ex) {
             System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
         }}
-    
+       
         File archivoFacturas = new File("facturas.txt");
         if(archivoFacturas.exists()){
         try {
