@@ -236,14 +236,14 @@ public class VistaCliente extends javax.swing.JFrame {
         int cantTotalImagesAUsar = 0;
         //ESTO ES PARA SABER CON CUANTAS IMAGENES SE TRABAJARÁN DE ANTEMANO
         for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VENCIDO"))){
+            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("CADUCADO"))){
                cantTotalImagesAUsar++; 
             }
         }
         
         for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
             
-            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VENCIDO"))){
+            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("CADUCADO"))){
                 
             JLabel imagenLabel = new JLabel();
             JLabel nombreLabel = new JLabel();

@@ -70,6 +70,7 @@ public class ControllerCreacion {
                         Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
                         JOptionPane.showMessageDialog(null, "Producto agregado con éxito.");
                         vaciarDatos();
+                        vista.llenarListaCategoria();
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
 

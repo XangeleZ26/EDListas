@@ -355,7 +355,7 @@ public class FacturasPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel4)
@@ -503,7 +503,8 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8MouseExited
     
     private void agregar(){
-        SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+        if(datosLlenos()){
+           SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
         dtm = (DefaultTableModel) tblDatos.getModel();
         dtm.addRow(new Object[] {
             textNombre.getText(),
@@ -528,9 +529,18 @@ public class FacturasPanel extends javax.swing.JPanel {
             System.out.println(" Prueba"+Configuracion.arrFacturas);
         } catch (IOException ex) {
             //F
+        }  
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe llenar todos los campos.");
         }
+       
     }
-
+       public boolean datosLlenos() {
+        return (this.textNombre.getText().trim().length() != 0
+                && this.textCantidad.getText().trim().length() != 0
+                && this.productoSeleccionado.getText().trim().length() != 0
+                && this.textMonto.getText().trim().length() != 0);
+    }
     private void borrarCampos(){
         textNombre.setText("");
         productoSeleccionado.setText("");
