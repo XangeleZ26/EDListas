@@ -249,11 +249,11 @@ public class ViewLogin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textEntrarMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                textEntrarMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 textEntrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textEntrarMouseExited(evt);
             }
         });
 
@@ -261,13 +261,17 @@ public class ViewLogin extends javax.swing.JFrame {
         panelEntrar.setLayout(panelEntrarLayout);
         panelEntrarLayout.setHorizontalGroup(
             panelEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textEntrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntrarLayout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(textEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         panelEntrarLayout.setVerticalGroup(
             panelEntrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntrarLayout.createSequentialGroup()
-                .addComponent(textEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelEntrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textEntrar)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel1.add(panelEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 170, 50));
@@ -364,10 +368,22 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseniaTextMousePressed
 
     private void textEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textEntrarMouseClicked
-        ControllerPrincipal controller=new ControllerPrincipal();
-        controller.run();
-       
-        dispose();
+              String usuario = usuarioText.getText().trim();
+        String paswd = String.valueOf(contraseniaText.getPassword()).trim();
+        
+        if(usuario.isEmpty() || paswd.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Digite ambos campos");
+            
+        }else{
+             if(usuario.equals("Administrador") && paswd.equals("1234")){        
+                 ControllerPrincipal controller=new ControllerPrincipal();
+                 controller.run();
+                 this.dispose();
+                                 
+             }else{
+                 JOptionPane.showMessageDialog(null,"Usuario y/o contraseña incorrecto");
+             }
+        }
 
     }//GEN-LAST:event_textEntrarMouseClicked
 
@@ -388,8 +404,8 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BarraMousePressed
 
     private void panelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEntrarMouseClicked
-        String usuario = usuarioText.getText();
-        String paswd = contraseniaText.getText();
+        String usuario = usuarioText.getText().trim();
+        String paswd = String.valueOf(contraseniaText.getPassword()).trim();
         
         if(usuario.isEmpty() || paswd.isEmpty()){
             JOptionPane.showMessageDialog(null, "Digite ambos campos");
