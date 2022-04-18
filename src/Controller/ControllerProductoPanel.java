@@ -337,24 +337,26 @@ public class ControllerProductoPanel {
 //        Productos = extra;
 //    }
 
-    void ordenarNombre(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorNombre(ascendente);
+    //el valor predeterminado de esAscendente es TRUE (ordenamiento ascendente)
+    //a menos que se indique que se desea un ordenamiento descendente
+    void ordenarNombre(boolean esAscendente) { 
+        this.Productos = this.Productos.ordenarPorNombre(esAscendente);
     }
 
-    void ordenarPorGanancia(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorGanancia(ascendente);
+    void ordenarPorGanancia(boolean esAscendente) {
+        this.Productos = this.Productos.ordenarPorGanancia(esAscendente);
     }
 
-    void ordenarMayoresVentas(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorMayoresVentas(ascendente);
+    void ordenarMayoresVentas(boolean esAscendente) {
+        this.Productos = this.Productos.ordenarPorMayoresVentas(esAscendente);
     }
 
-    void ordenarStockActual(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorStockActual(ascendente);
+    void ordenarStockActual(boolean esAscendente) {
+        this.Productos = this.Productos.ordenarPorStockActual(esAscendente);
     }
 
-    void ordenarStockInicial(boolean ascendente) {
-        this.Productos = this.Productos.ordenarPorStockInicial(ascendente);
+    void ordenarStockInicial(boolean esAscendente) {
+        this.Productos = this.Productos.ordenarPorStockInicial(esAscendente);
     }
 
     public void paraBuscar(String dato) {

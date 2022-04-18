@@ -170,7 +170,6 @@ public class ArregloProductos implements Serializable {
                 }            
             }     
             extra.setArregloP(arr);
-//            this.arregloP = arr;
         }
         catch(Exception ex) {
             System.out.println("Error burbuja: " +ex.getMessage()); 
@@ -206,7 +205,6 @@ public class ArregloProductos implements Serializable {
                 }            
             }   
             extra.setArregloP(arr);
-//            this.arregloP = arr;
         }
         catch(Exception ex) {            
             System.out.println("Error shell2: " + ex.toString());
@@ -215,7 +213,7 @@ public class ArregloProductos implements Serializable {
     }
     
     public ArregloProductos ordenarPorStockInicial(boolean ascendente) { // método por inserción       
-        int n = this.indice; //this.arregloP.length-1;
+        int n = this.indice;
         Producto[] arr = this.arregloP.clone();  
         ArregloProductos extra = new ArregloProductos();
         extra.setIndice(n);
@@ -238,7 +236,6 @@ public class ArregloProductos implements Serializable {
                 arr[j+1] = temp;            
             }
             extra.setArregloP(arr);
-//            this.arregloP = arr;
         }
          catch(Exception ex) {            
             System.out.println("Error insercion: " +ex.toString()); 
@@ -246,8 +243,8 @@ public class ArregloProductos implements Serializable {
         return extra;
     }
     
-    public ArregloProductos ordenarPorGanancia(boolean ascendente) {    
-        int n = this.indice;//this.arregloP.length-1;
+    public ArregloProductos ordenarPorGanancia(boolean ascendente) { // método por inserción    
+        int n = this.indice;
         Producto[] arr = this.arregloP.clone();
         ArregloProductos extra = new ArregloProductos();
         extra.setIndice(n);
@@ -256,14 +253,13 @@ public class ArregloProductos implements Serializable {
                 Producto temp = arr[i];
                 int j = i-1;                
                 if (ascendente) { // orden ascendente
-                    while ( j >= 0 && (temp.getValorXUnidad()*temp.getCantidadVendido() < arr[j].getCantidadVendido()*arr[j].getValorXUnidad()) ) {
-                        //System.out.println("valorstock: " + temp.getValorTotalStock() );
+   while( j >= 0 && (temp.getValorXUnidad()*temp.getCantidadVendido() < arr[j].getCantidadVendido()*arr[j].getValorXUnidad())){
                         arr[j+1] = arr[j];
                         j--;
                     }
                 }
                 else { // orden descendente                    
-                    while ( j >= 0 && temp.getValorXUnidad()*temp.getCantidadVendido() > arr[j].getCantidadVendido()*arr[j].getValorXUnidad() ) {
+   while( j >= 0 && temp.getValorXUnidad()*temp.getCantidadVendido() > arr[j].getCantidadVendido()*arr[j].getValorXUnidad()){
                         arr[j+1] = arr[j];
                         j--;
                     }
@@ -271,7 +267,6 @@ public class ArregloProductos implements Serializable {
                 arr[j+1] = temp;            
             }
             extra.setArregloP(arr);
-//            this.arregloP = arr;
         }
          catch(Exception ex) {            
             System.out.println("Error ganancia: " +ex.toString()); 
@@ -308,7 +303,6 @@ public class ArregloProductos implements Serializable {
                 }            
             }            
             extra.setArregloP(arr);
-//            this.arregloP = arr;
         }
         catch(Exception ex) {            
             System.out.println("Error mayores ventas: " + ex.toString());
