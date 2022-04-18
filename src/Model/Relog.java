@@ -87,8 +87,9 @@ public class Relog implements Runnable {
             if (this.horaActual.equalsIgnoreCase("00:00")) {
                 fecha();
             }
-            for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-                if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
+            try {
+                for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
+                    if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
 
                         if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
                             Configuracion.arrProductos.getArregloP()[i].setEstado("CADUCADO");
@@ -96,21 +97,24 @@ public class Relog implements Runnable {
                         if (Configuracion.arrProductos.getArregloP()[i].getStock() == 0) {
                             Configuracion.arrProductos.getArregloP()[i].setEstado("AGOTADO");
                         }
-        
-                    try {
-                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
-                    } catch (IOException xd) {
-                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+                        try {
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                        } catch (IOException xd) {
+                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                        }
 
                     }
-
                 }
-            }
-            try {
-                Thread.sleep(3 * 1000);
+                try {
+                    Thread.sleep(3 * 1000);
 
-            } catch (InterruptedException e) {
+                } catch (InterruptedException e) {
+                }
+            } catch (Exception ex1) {
+                System.out.println("Fallo en relog");
             }
         }
     }
