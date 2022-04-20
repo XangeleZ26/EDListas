@@ -48,7 +48,6 @@ public class Principal extends javax.swing.JFrame {
         productotxt = new javax.swing.JLabel();
         panelFactura = new javax.swing.JPanel();
         editartxt = new javax.swing.JLabel();
-        textUsuario = new javax.swing.JLabel();
         Barra = new javax.swing.JPanel();
         panelMini = new javax.swing.JPanel();
         textMini = new javax.swing.JLabel();
@@ -197,12 +196,6 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel2.add(panelFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 190, 60));
-
-        textUsuario.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        textUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        textUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        textUsuario.setText("Usuario");
-        jPanel2.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 520, 190, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 640));
 
@@ -488,6 +481,5 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JLabel productotxt;
     private javax.swing.JLabel textMini;
     private javax.swing.JLabel textSalir;
-    private javax.swing.JLabel textUsuario;
     // End of variables declaration//GEN-END:variables
 }
