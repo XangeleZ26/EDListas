@@ -394,11 +394,10 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textCantidadKeyTyped
 
     private void textNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNombreKeyTyped
-         char caracter = evt.getKeyChar();
-        
-        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+           if ((evt.getKeyChar() != 32)
+                && (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
             evt.consume();
-        }     
+        }
     }//GEN-LAST:event_textNombreKeyTyped
 
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
