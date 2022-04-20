@@ -409,6 +409,7 @@ public class FacturasPanel extends javax.swing.JPanel {
                 aux[i].setCantidadVendido(Integer.parseInt(textCantidad.getText())+aux[i].getCantidadVendido());
             }
         }
+        Configuracion.arrProductos.setArregloP(aux);
         agregar();
         borrarCampos();
     }//GEN-LAST:event_textRegistrarMouseClicked
