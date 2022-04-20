@@ -92,7 +92,8 @@ public class Plantilla {
             tabla.addCell(producto);
             tabla.addCell(monto);
             
-            for(Facturas factura: this.facturas){
+            for(int i =0; i<Configuracion.arrFacturas.getIndice(); i++){
+                Facturas factura = facturas[i];
                 tabla.addCell(factura.getNombre());                
                 tabla.addCell(factura.getCantidad()+"");
                 tabla.addCell(factura.getCodigo());
