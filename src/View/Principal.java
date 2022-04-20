@@ -182,7 +182,7 @@ public class Principal extends javax.swing.JFrame {
         editartxt.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         editartxt.setForeground(new java.awt.Color(255, 255, 255));
         editartxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        editartxt.setText("Facturas");
+        editartxt.setText("Ventas");
 
         javax.swing.GroupLayout panelFacturaLayout = new javax.swing.GroupLayout(panelFactura);
         panelFactura.setLayout(panelFacturaLayout);

@@ -9,6 +9,7 @@ import Model.ArregloFacturas;
 import Model.Configuracion;
 import Model.Facturas;
 import Model.Plantilla;
+import Model.Producto;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -117,7 +118,7 @@ public class FacturasPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NUEVA FACTURA");
+        jLabel1.setText("NUEVO REGISTRO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 162, 26));
 
         textNombre.setBorder(null);
@@ -264,7 +265,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         textFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel4.setText("FACTURAS");
+        jLabel4.setText("VENTAS");
 
         panelGenerar.setBackground(new java.awt.Color(204, 155, 64));
         panelGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -334,11 +335,11 @@ public class FacturasPanel extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(103, 103, 103)
                                 .addComponent(jLabel4)
-                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
@@ -401,16 +402,14 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textNombreKeyTyped
 
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
-//        String nombre = textNombre.getText();
-//        String productoFactura = productoSeleccionado.getText();
-//        int cantidadP = Integer.parseInt(textCantidad.getText());
-//        float montoP = Float.parseFloat(textMonto.getText());
-//        Facturas registro = new Facturas(nombre, new String(),productoFactura, new Date(), cantidadP, montoP);
-        /*try {
-            registro.guardarFactura();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FacturasPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        Producto[] aux = Configuracion.arrProductos.getArregloP();
+        for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
+            if(aux[i].getNombreProducto() == textNombre.getText()){
+                aux[i].setStock(aux[i].getStock()-Integer.parseInt(textCantidad.getText()));
+                aux[i].setCantidadVendido(Integer.parseInt(textCantidad.getText())+aux[i].getCantidadVendido());
+            }
+        }
+        Configuracion.arrProductos.setArregloP(aux);
         agregar();
         borrarCampos();
     }//GEN-LAST:event_textRegistrarMouseClicked

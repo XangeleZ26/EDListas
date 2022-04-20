@@ -48,7 +48,7 @@ public class PrincipalPanel extends javax.swing.JPanel {
         int cont = 0;
         for(int i=0; i<index; i++){
             if("CADUCADO".equals(aux[i].getEstado()) && cont<=5){
-                textCaduco[cont].setText(aux[0].getNombreProducto()+"   "+aux[0].getFechaVencimiento());
+                textCaduco[cont].setText(aux[i].getNombreProducto()+"   "+aux[i].getFechaVencimiento());
                 cont++;
             } else {
             }
