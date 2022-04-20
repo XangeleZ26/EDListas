@@ -406,6 +406,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
             if(aux[i].getNombreProducto() == textNombre.getText()){
                 aux[i].setStock(aux[i].getStock()-Integer.parseInt(textCantidad.getText()));
+                aux[i].setCantidadVendido(Integer.parseInt(textCantidad.getText())+aux[i].getCantidadVendido());
             }
         }
         agregar();
