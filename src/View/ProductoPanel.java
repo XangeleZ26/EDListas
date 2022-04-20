@@ -638,9 +638,9 @@ public class ProductoPanel extends javax.swing.JPanel {
         panelModLayout.setHorizontalGroup(
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelModLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel13)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         panelModLayout.setVerticalGroup(
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,10 +672,10 @@ public class ProductoPanel extends javax.swing.JPanel {
         panelDetalles.setLayout(panelDetallesLayout);
         panelDetallesLayout.setHorizontalGroup(
             panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+            .addGroup(panelDetallesLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel15)
-                .addGap(19, 19, 19))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         panelDetallesLayout.setVerticalGroup(
             panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

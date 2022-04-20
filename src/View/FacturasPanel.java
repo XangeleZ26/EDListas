@@ -403,7 +403,7 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
         Producto[] aux = Configuracion.arrProductos.getArregloP();
         for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
-            if(aux[i].getNombreProducto() == textNombre.getText()){
+            if(aux[i].getNombreProducto().equals(productoSeleccionado.getText())){
                 aux[i].setStock(aux[i].getStock()-Integer.parseInt(textCantidad.getText()));
                 aux[i].setCantidadVendido(Integer.parseInt(textCantidad.getText())+aux[i].getCantidadVendido());
             }
@@ -416,6 +416,13 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
         productoSeleccionado.setText(listProductos.getSelectedValue());
         listP.setVisible(false);
+        Producto[] aux = Configuracion.arrProductos.getArregloP();
+        for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
+            if(aux[i].getNombreProducto().equals(productoSeleccionado.getText())){
+                textMonto.setText(aux[i].getValorXUnidad()+"");
+            }
+        }
+        
     }//GEN-LAST:event_listProductosMouseClicked
 
     private void textMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMontoActionPerformed
