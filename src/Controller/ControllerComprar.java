@@ -27,7 +27,7 @@ public class ControllerComprar {
         this.vista.btnPagar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("xddd");
+           
                 if (producto.getStock()>0) {
                     if(!(Integer.parseInt(vista.cantidad.getText())<1)){
                         
@@ -97,8 +97,6 @@ public class ControllerComprar {
                     
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
-            System.out.println(" Prueba"+Configuracion.arrFacturas+" "+Float.parseFloat(vista.cantidad.getText())*
-                        producto.getValorXUnidad());
         } catch (IOException ex) {
             //F
         }

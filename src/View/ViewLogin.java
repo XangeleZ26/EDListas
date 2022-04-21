@@ -69,6 +69,8 @@ public class ViewLogin extends javax.swing.JFrame {
         textEntrar = new javax.swing.JLabel();
         imagenOcultarContra = new javax.swing.JLabel();
         imagenVerContra = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -291,6 +293,12 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(imagenVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, -1, -1));
+
+        jLabel4.setText("Contraseña: 1234");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 600, -1, -1));
+
+        jLabel5.setText("Usuario: Administrador");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -541,6 +549,8 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

@@ -112,7 +112,7 @@ public class ControllerProductoPanel {
                         esAscendente = true;  //se ordenará en ascendente
                     } else {
                         esAscendente = false; //se ordenará en descendente
-                        System.out.println("descendente"); //PRUEBA DE QUE FUNCIONA HASTA AQUI
+                     
                     }
                     switch (frmProducto.comboOrdenar.getSelectedIndex()) {
                         case 0: { //sin ordenar

@@ -792,7 +792,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         Configuracion.arrProductos.setArregloP(arreglo);
         try{
             Configuracion.serial.serializar("archivoProductos.dat",Configuracion.arrProductos); 
-            System.out.println(" Prueba"+Configuracion.arrProductos);
+            
         } catch (IOException ex) {
             //F
         }
