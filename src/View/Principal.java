@@ -78,11 +78,11 @@ public class Principal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelPrincipalMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelPrincipalMouseExited(evt);
             }
         });
 
@@ -314,28 +314,6 @@ public class Principal extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Images/SegundoLogo.png"));
         return retValue;
     }
-    private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
-        reset(0);
-        opciones[0] = false;
-        PrincipalPanel Pp = new PrincipalPanel();
-        Pp.setSize(800, 600);
-        Pp.setLocation(0, 0);
-        panelCambiante.removeAll();
-        panelCambiante.add(Pp, BorderLayout.CENTER);
-        panelCambiante.revalidate();
-        panelCambiante.repaint();
-    }//GEN-LAST:event_panelPrincipalMouseClicked
-
-    private void panelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseEntered
-        if (opciones[0])
-            panelPrincipal.setBackground(new Color(210, 168, 89));
-    }//GEN-LAST:event_panelPrincipalMouseEntered
-
-    private void panelPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseExited
-        if (opciones[0])
-            panelPrincipal.setBackground(new Color(204,155,64));
-    }//GEN-LAST:event_panelPrincipalMouseExited
-
     private void panelAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAgregarMouseEntered
         if (opciones[1])
             panelAgregar.setBackground(new Color(210, 168, 89));
@@ -439,6 +417,28 @@ public class Principal extends javax.swing.JFrame {
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_textMiniMouseClicked
 
+    private void panelPrincipalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseExited
+        if (opciones[0])
+        panelPrincipal.setBackground(new Color(204,155,64));
+    }//GEN-LAST:event_panelPrincipalMouseExited
+
+    private void panelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseEntered
+        if (opciones[0])
+        panelPrincipal.setBackground(new Color(210, 168, 89));
+    }//GEN-LAST:event_panelPrincipalMouseEntered
+
+    private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
+        reset(0);
+        opciones[0] = false;
+        PrincipalPanel Pp = new PrincipalPanel();
+        Pp.setSize(800, 600);
+        Pp.setLocation(0, 0);
+        panelCambiante.removeAll();
+        panelCambiante.add(Pp, BorderLayout.CENTER);
+        panelCambiante.revalidate();
+        panelCambiante.repaint();
+    }//GEN-LAST:event_panelPrincipalMouseClicked
+
     public void reset(int opcion) {
         for (int i = 0; i < 4; i++) {
             opciones[i] = true;
@@ -474,10 +474,10 @@ public class Principal extends javax.swing.JFrame {
     public javax.swing.JPanel panelCambiante;
     public javax.swing.JPanel panelFactura;
     private javax.swing.JPanel panelMini;
-    public javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelPrincipal;
     public javax.swing.JPanel panelProducto;
     private javax.swing.JPanel panelSalir;
-    public javax.swing.JLabel principaltxt;
+    private javax.swing.JLabel principaltxt;
     public javax.swing.JLabel productotxt;
     private javax.swing.JLabel textMini;
     private javax.swing.JLabel textSalir;

@@ -26,7 +26,7 @@ public class PrincipalPanel extends javax.swing.JPanel {
     public PrincipalPanel() {
         initComponents();
         iniciarCaducar();
-        iniciarCaducos();
+//        iniciarCaducos();
 
     }
     void iniciarCaducar(){
@@ -45,65 +45,65 @@ public class PrincipalPanel extends javax.swing.JPanel {
         Producto[] aux = Configuracion.arrProductos.getArregloP();
         int index = Configuracion.arrProductos.getIndice();
         int cont = 0;
-        for(int i=0; i<index; i++){
-            if("CADUCADO".equals(aux[i].getEstado()) && cont<=5){
-                textCaduco[cont].setText(aux[i].getNombreProducto()+"   "+aux[i].getFechaVencimiento());
-                cont++;
-            } else {
-            }
-        }
+//        for(int i=0; i<index; i++){
+//            if("CADUCADO".equals(aux[i].getEstado()) && cont<=5){
+//                textCaduco[cont].setText(aux[i].getNombreProducto()+"   "+aux[i].getFechaVencimiento());
+//                cont++;
+//            } else {
+//            }
+//        }
         if( textCaduco[0].getText()==""){
             textCaduco[0].setText("No hay productos caducados");
         }
     }
-    void iniciarCaducos(){
-        try{
-            textCaducar1.setText("");
-            textCaducar2.setText("");
-            textCaducar3.setText("");
-            textCaducar4.setText("");
-            textCaducar5.setText("");
-            textCaducar = new javax.swing.JLabel[] {
-                textCaducar1,
-                textCaducar2,
-                textCaducar3,
-                textCaducar4,
-                textCaducar5
-            };
-            Producto[] aux = Configuracion.arrProductos.getArregloP();
-            int index = Configuracion.arrProductos.getIndice();
-            boolean[] estado = new boolean[index];
-            int cont = 0;
-            SimpleDateFormat formato = new SimpleDateFormat("MM/dd/yyyy");
-            Date hoy = new Date();
-           
-            long mayor=0;
-            int indM=0;
-            for(int i=0; i<index; i++){
-                estado[i]=false;
-            }
-            for(int i=0; i<5; i++){
-                mayor = -1;
-                for(int j=0; j<index; j++){
-                    if(mayor<formato.parse(aux[j].getFechaVencimiento()).getTime() 
-                            && !estado[j]
-                            && !("CADUCADO".equals(aux[j].getEstado()))){
-                        mayor = formato.parse(aux[j].getFechaVencimiento()).getTime();
-                        indM = j;
-                    }
-                }
-                estado[indM]=true;
-                if(!(mayor == -1))
-                    textCaducar[i].setText(aux[indM].getNombreProducto()+"  "+aux[indM].getFechaVencimiento());
-            }
-            if("".equals(textCaducar[0].getText())){
-                textCaducar[0].setText("No hay productos disponibles");
-            }
-        }catch(Exception e){
-            
-        }
-        
-    }
+//    void iniciarCaducos(){
+//        try{
+//            textCaducar1.setText("");
+//            textCaducar2.setText("");
+//            textCaducar3.setText("");
+//            textCaducar4.setText("");
+//            textCaducar5.setText("");
+//            textCaducar = new javax.swing.JLabel[] {
+//                textCaducar1,
+//                textCaducar2,
+//                textCaducar3,
+//                textCaducar4,
+//                textCaducar5
+//            };
+//            Producto[] aux = Configuracion.arrProductos.getArregloP();
+//            int index = Configuracion.arrProductos.getIndice();
+//            boolean[] estado = new boolean[index];
+//            int cont = 0;
+//            SimpleDateFormat formato = new SimpleDateFormat("MM/dd/yyyy");
+//            Date hoy = new Date();
+//           
+//            long mayor=0;
+//            int indM=0;
+//            for(int i=0; i<index; i++){
+//                estado[i]=false;
+//            }
+//            for(int i=0; i<5; i++){
+//                mayor = -1;
+//                for(int j=0; j<index; j++){
+//                    if(mayor<formato.parse(aux[j].getFechaVencimiento()).getTime() 
+//                            && !estado[j]
+//                            && !("CADUCADO".equals(aux[j].getEstado()))){
+//                        mayor = formato.parse(aux[j].getFechaVencimiento()).getTime();
+//                        indM = j;
+//                    }
+//                }
+//                estado[indM]=true;
+//                if(!(mayor == -1))
+//                    textCaducar[i].setText(aux[indM].getNombreProducto()+"  "+aux[indM].getFechaVencimiento());
+//            }
+//            if("".equals(textCaducar[0].getText())){
+//                textCaducar[0].setText("No hay productos disponibles");
+//            }
+//        }catch(Exception e){
+//            
+//        }
+//        
+//    }
  
 
 
@@ -136,7 +136,7 @@ public class PrincipalPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pasteleria (1).jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, -1, 154));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, 154));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Productos Caducos:");

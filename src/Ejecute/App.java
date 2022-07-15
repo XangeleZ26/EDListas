@@ -16,6 +16,9 @@ public class App {
             try {
                 ArregloProductos extra = (ArregloProductos) Configuracion.serial.deserializar("archivoProductos.dat");
                 Configuracion.arrProductos = extra;
+                if(Configuracion.arrProductos == null){
+                    Configuracion.arrProductos = new ArregloProductos();
+                }
             } catch (Exception ex) {
                 System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
             }
@@ -33,11 +36,15 @@ public class App {
                 System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
             }
         }
-
+        try{
+            Configuracion.relog=new Relog(); 
+        }catch(Exception ex){
+            System.out.println("error en relog"); 
+        }
         System.out.println("PROYECTO REALIZADO USANDO JDK 15");
         ControllerViewLogin controller = new ControllerViewLogin();
         controller.run();
-
+        
         VistaCliente xd = new VistaCliente();
         xd.setVisible(true);
         xd.setLocationRelativeTo(null);

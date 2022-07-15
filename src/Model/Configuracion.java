@@ -8,7 +8,7 @@ public class Configuracion {
     public static Serializacion serial=new Serializacion();
     public static ArregloProductos arrProductos=new ArregloProductos();
     public static ArregloFacturas arrFacturas = new ArregloFacturas();
-    public static Relog relog=new Relog();
+    public static Relog relog;
     
  
     
