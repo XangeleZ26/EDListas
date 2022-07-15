@@ -120,7 +120,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducto = new javax.swing.JTable();
         panelMod = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        btnModif = new javax.swing.JLabel();
         panelDetalles = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -631,7 +631,7 @@ public class ProductoPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel13.setText("Modificar");
+        btnModif.setText("Modificar");
 
         javax.swing.GroupLayout panelModLayout = new javax.swing.GroupLayout(panelMod);
         panelMod.setLayout(panelModLayout);
@@ -639,14 +639,14 @@ public class ProductoPanel extends javax.swing.JPanel {
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelModLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel13)
+                .addComponent(btnModif)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         panelModLayout.setVerticalGroup(
             panelModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelModLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnModif, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel2.add(panelMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 100, 37));
@@ -1007,6 +1007,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JLabel btnCancelarBusqueda;
     public javax.swing.JLabel btnElim;
     public javax.swing.JLabel btnLupa;
+    private javax.swing.JLabel btnModif;
     public javax.swing.JLabel btnRefrescar;
     public javax.swing.JLabel cantidadProductos;
     public javax.swing.JComboBox<String> comboFiltro;
@@ -1018,7 +1019,6 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;

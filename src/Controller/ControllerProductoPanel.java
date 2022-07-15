@@ -20,6 +20,7 @@ public class ControllerProductoPanel {
 
     public ControllerProductoPanel() {
         this.frmProducto = new ProductoPanel();
+        this.frmProducto.Buscadortxt.getCaret().setVisible(false);
         this.Productos = Configuracion.arrProductos;
         this.extraProductosFO = Configuracion.arrProductos;
         Object[] opciones = {"Aceptar", "Cancelar"};
