@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Controller.*;
+import Model.Nodo_Producto;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 /**
@@ -734,7 +735,7 @@ public class ProductoPanel extends javax.swing.JPanel {
             filtroCategoriastxt.setForeground(Color.black);
         }
         filtroCategoriastxt.getCaret().setVisible(true);
-        if(!(Configuracion.arrProductos.getIndice()==0)){
+        if(!(Configuracion.arrProductos.Contar()==0)){
             this.scrollCategoria.setVisible(true);
         }
         this.btnAplicarCambios.setVisible(false);
@@ -767,6 +768,10 @@ public class ProductoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_comboOrdenarActionPerformed
     private void llenarDatos(){
+    Nodo_Producto aux= Configuracion.arrProductos.getPrimero();
+        for(int i=0;i<tableProducto.getSelectedRow();i++){
+            aux=aux.getSiguiente();
+        }
         textNombre.setText((String) obj[1]);
         textNombre.setForeground(new Color(204,204,204));
         textCategoria.setText((String) obj[2]);
@@ -779,17 +784,15 @@ public class ProductoPanel extends javax.swing.JPanel {
         labelStockInicial.setText("Stock Inicial: "+(Integer) obj[4]);
         labelStockActual.setText("Stock Actual: "+(Integer) obj[5]);
         labelVencimiento.setText("Fecha de Vencimiento: "+
-                Configuracion.arrProductos.getArregloP()[tableProducto.getSelectedRow()].getFechaVencimiento());
+                aux.getContenido().getFechaVencimiento());
         labelEstado.setText("Estado: "+(String) obj[8]);
     }
     private void iniciarModificacion(){
-        int index = Configuracion.arrProductos.buscar((String) this.obj[0]);
-        Producto[] arreglo = Configuracion.arrProductos.getArregloP();
-        arreglo[index].setNombreProducto(textNombre.getText());
-        arreglo[index].setCategoria(textCategoria.getText());
-        arreglo[index].setValorXUnidad(Float.parseFloat(textValor.getText()));
-        arreglo[index].setValorTotalStock(Float.parseFloat(textValorStock.getText()));
-        Configuracion.arrProductos.setArregloP(arreglo);
+        Nodo_Producto aux = Configuracion.arrProductos.Buscar((String) this.obj[0]);
+        aux.getContenido().setNombreProducto(textNombre.getText());
+        aux.getContenido().setCategoria(textCategoria.getText());
+        aux.getContenido().setValorXUnidad(Float.parseFloat(textValor.getText()));
+        aux.getContenido().setValorTotalStock(Float.parseFloat(textValorStock.getText()));
         try{
             Configuracion.serial.serializar("archivoProductos.dat",Configuracion.arrProductos); 
             
@@ -947,8 +950,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         if (seleccionado != -1) {
             
             String codigo = tableProducto.getValueAt(seleccionado, 0).toString();
-            int ubicacionProducto=Configuracion.arrProductos.buscar(codigo);
-            ControllerDetalles controller=new ControllerDetalles(Configuracion.arrProductos.getArregloP()[ubicacionProducto]);
+            Nodo_Producto ubicacionProducto =Configuracion.arrProductos.Buscar(codigo);
+            ControllerDetalles controller=new ControllerDetalles(ubicacionProducto.getContenido());
             controller.run();
         }else{
           JOptionPane.showMessageDialog(null, "¡Primero debe seleccionar un stock de inventario!");  
@@ -980,21 +983,22 @@ public class ProductoPanel extends javax.swing.JPanel {
         DefaultListModel agregarElementos = new DefaultListModel();
 
         boolean esRepetido=false;
-
-        for (int i = 0; i <Configuracion.arrProductos.getIndice(); i++) {
-            esRepetido=false;
-         if(agregarElementos.isEmpty()){
-             agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
-         }else{
+        Nodo_Producto pos =Configuracion.arrProductos.getPrimero() ;
+        while(pos!=null){
+        esRepetido=false;
+        if(agregarElementos.isEmpty()){
+             agregarElementos.addElement(pos.getContenido().getCategoria());
+        }else{
              for(int j=0;j<agregarElementos.getSize();j++){
-                 if(Configuracion.arrProductos.getArregloP()[i].getCategoria().equals(agregarElementos.get(j))){
+                 if(pos.getContenido().getCategoria().equals(agregarElementos.get(j))){
                     esRepetido=true;
                  }
              }
                if(esRepetido==false){
-                      agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
+                      agregarElementos.addElement(pos.getContenido().getCategoria());
                  }
-         }
+         }    
+        pos=pos.getSiguiente();
         }
         this.listaCategoria.setModel(agregarElementos);
     }

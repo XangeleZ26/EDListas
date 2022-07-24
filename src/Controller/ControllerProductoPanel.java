@@ -12,8 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class ControllerProductoPanel {
 
-    private ArregloProductos Productos;
-    private ArregloProductos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
+    private Lista_Doble_Productos Productos;
+    private Lista_Doble_Productos extraProductosFO; //almacenará el valor de Productos para que este sea usado en los filtros y ordenamiento
     private ProductoPanel frmProducto;
     private boolean puedeOrdenar;
     private boolean esAscendente;
@@ -51,7 +51,7 @@ public class ControllerProductoPanel {
                 frmProducto.comboFiltro.setSelectedIndex(0); //para que vuelva a apuntar a "Sin filtro"
                 frmProducto.comboOrdenar.setSelectedIndex(0); //para que vuelva a apuntar a "Sin ordenar"
                 llenarTabla();
-                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
 
             }
         });
@@ -146,7 +146,7 @@ public class ControllerProductoPanel {
 
                 //Procede a llenar tabla
                 llenarTabla();
-                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
             }
         });
 
@@ -164,7 +164,7 @@ public class ControllerProductoPanel {
                 frmProducto.comboFiltro.setSelectedIndex(0); //para que vuelva a apuntar a "Sin filtro"
                 frmProducto.comboOrdenar.setSelectedIndex(0); //para que vuelva a apuntar a "Sin ordenar"
                 llenarTabla();
-                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
             }
         });
 
@@ -180,7 +180,7 @@ public class ControllerProductoPanel {
                         int xd = JOptionPane.showOptionDialog(null, "¿Está seguro que desea eliminar este stock?", null, 0, 0, null, opciones, opciones[0]);
                         if (xd == 0) {
                             String codigo = frmProducto.tableProducto.getValueAt(seleccionado, 0).toString();
-                            Configuracion.arrProductos.eliminarPorCodigo(codigo);
+                            Configuracion.arrProductos.Elimina_Nodo(Configuracion.arrProductos.Buscar(codigo));
                             JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
                             try {
                                 Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
@@ -196,7 +196,7 @@ public class ControllerProductoPanel {
                             Productos = Configuracion.arrProductos;
 
                             llenarTabla();
-                            frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                            frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "¡Primero debe seleccionar un stock de inventario!");
@@ -224,7 +224,7 @@ public class ControllerProductoPanel {
                         frmProducto.btnCancelarBusqueda.setVisible(false);
                         Productos = Configuracion.arrProductos;
                         llenarTabla();
-                        frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                        frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
                     }
                 }
                 if(frmProducto.RadioElimAgotados.isSelected()){
@@ -248,7 +248,7 @@ public class ControllerProductoPanel {
                         frmProducto.btnCancelarBusqueda.setVisible(false);
                         Productos = Configuracion.arrProductos;
                         llenarTabla();
-                        frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                        frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
                     }
                 }
             }
@@ -257,18 +257,21 @@ public class ControllerProductoPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 llenarTabla();
-                frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+                frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
 
             }
         });
     }
 
     public void concretarElim() {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-            if (!Configuracion.arrProductos.getArregloP()[i].getEstado().equals("ELIMINANDO")) {
-                extra.agregar(Configuracion.arrProductos.getArregloP()[i]);
-            }
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto aux ;
+        aux = Configuracion.arrProductos.getPrimero();
+        while(aux != null){
+            if (!aux.getContenido().getEstado().equals("ELIMINANDO")) {
+                    extra.Insertar_Ultimo(aux);
+                }
+        aux=aux.getSiguiente();
         }
         Configuracion.arrProductos = extra;
         this.Productos = Configuracion.arrProductos;
@@ -276,54 +279,66 @@ public class ControllerProductoPanel {
     }
 
     public void filtroCategoria() {
-
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
-                extra.agregar(Productos.getArregloP()[i]);
-            }
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto aux ;
+        aux = Productos.getPrimero();
+        while(aux != null){
+            if (!aux.getContenido().getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
+                    extra.Insertar_Ultimo(aux);
+                }
+        aux=aux.getSiguiente();
         }
         Productos = extra;
     }
 
     public boolean existeCategoria() {
-        boolean result = false;  //usando busqueda secuencial
-        for (int i = 0; i < Productos.getIndice(); i++) {
-
-            if (Productos.getArregloP()[i].getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
-                return true;
-            }
+        Nodo_Producto aux ;
+        aux = Productos.getPrimero();
+        while(aux != null){
+            if (!aux.getContenido().getCategoria().equalsIgnoreCase(this.frmProducto.filtroCategoriastxt.getText().trim())) {
+                    return true;
+                }
+        aux=aux.getSiguiente();
         }
-
         return false;
+        
     }
 
     public void filtroStocksVigentes() {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getEstado().equals("VIGENTE")) {
-                extra.agregar(Productos.getArregloP()[i]);
-            }
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto aux ;
+        aux = Configuracion.arrProductos.getPrimero();
+        while(aux != null){
+            if (!aux.getContenido().getEstado().equals("VIGENTE")) {
+                    extra.Insertar_Ultimo(aux);
+                }
+        aux=aux.getSiguiente();
         }
         Productos = extra;
     }
 
     public void filtroStocksVencidos() {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getEstado().equals("CADUCADO")) {
-                extra.agregar(Productos.getArregloP()[i]);
-            }
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto aux ;
+        aux = Configuracion.arrProductos.getPrimero();
+        while(aux != null){
+            if (!aux.getContenido().getEstado().equals("CADUCADO")) {
+                    extra.Insertar_Ultimo(aux);
+                }
+        aux=aux.getSiguiente();
         }
         Productos = extra;
     }
 
     public void filtroStocksAcabados() {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Productos.getIndice(); i++) {
-            if (Productos.getArregloP()[i].getStock() == 0) {
-                extra.agregar(Productos.getArregloP()[i]);
-            }
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto aux ;
+        aux = Configuracion.arrProductos.getPrimero();
+        while(aux != null){
+            if (aux.getContenido().getStock()==0) {
+                    extra.Insertar_Ultimo(aux);
+                }
+        aux=aux.getSiguiente();
         }
         Productos = extra;
     }
@@ -341,38 +356,40 @@ public class ControllerProductoPanel {
     //el valor predeterminado de esAscendente es TRUE (ordenamiento ascendente)
     //a menos que se indique que se desea un ordenamiento descendente
     void ordenarNombre(boolean esAscendente) { 
-        this.Productos = this.Productos.ordenarPorNombre(esAscendente);
+        this.Productos.Ordenar_Por_Nombre();
     }
 
     void ordenarPorGanancia(boolean esAscendente) {
-        this.Productos = this.Productos.ordenarPorGanancia(esAscendente);
+        this.Productos.Ordenar_Por_Ganancia();
     }
 
     void ordenarMayoresVentas(boolean esAscendente) {
-        this.Productos = this.Productos.ordenarPorMayoresVentas(esAscendente);
+        this.Productos.Ordenar_Por_Ventas();
     }
 
     void ordenarStockActual(boolean esAscendente) {
-        this.Productos = this.Productos.ordenarPorStockActual(esAscendente);
+        this.Productos.Ordenar_Por_Stock();
     }
 
     void ordenarStockInicial(boolean esAscendente) {
-        this.Productos = this.Productos.ordenarPorStockInicial(esAscendente);
+        this.Productos.Ordenar_Por_Stock_Inicial();
     }
 
     public void paraBuscar(String dato) {
-        ArregloProductos extra = new ArregloProductos();
-        for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-            //Esto es para que se filtren nombres con un tamaño de cadena mayor o igual que el dato a buscar
-            if (Configuracion.arrProductos.getArregloP()[i].getNombreProducto().length() >= dato.length()) {
-
-                //Esto es para comparar el dato a buscar con los nombres de los productos    
-                if (dato.equalsIgnoreCase(Configuracion.arrProductos.getArregloP()[i].getNombreProducto().substring(0, dato.length()))) {
-                    extra.agregar(Configuracion.arrProductos.getArregloP()[i]);
+        Lista_Doble_Productos extra = new Lista_Doble_Productos();
+        Nodo_Producto pos = Configuracion.arrProductos.getPrimero();
+        Nodo_Producto extraNodo=new Nodo_Producto();
+        while(pos!=null){
+            if(pos.getContenido().getNombreProducto().length()>= dato.length()){
+                if (dato.equalsIgnoreCase(pos.getContenido().getNombreProducto().substring(0, dato.length()))) {
+                    //extraNodo.setContenido(pos.getContenido());
+                    //extra.Insertar_Ultimo(extraNodo);
+                    extra.Insertar_Ultimo(pos);
                 }
             }
-
+        pos=pos.getSiguiente();
         }
+
         Productos = extra;
     }
 
@@ -383,17 +400,25 @@ public class ControllerProductoPanel {
 
     public void run() {
         llenarTabla();
-        frmProducto.cantidadProductos.setText(Integer.toString(Productos.getIndice()));
+        frmProducto.cantidadProductos.setText(Integer.toString(Productos.Contar()));
         this.frmProducto.setVisible(true);
 
     }
 
-    public ArregloProductos getArrProductos() {
+    public Lista_Doble_Productos getProductos() {
         return Productos;
     }
 
-    public void setArrProductos(ArregloProductos arrProductos) {
-        this.Productos = arrProductos;
+    public void setProductos(Lista_Doble_Productos Productos) {
+        this.Productos = Productos;
+    }
+
+    public Lista_Doble_Productos getExtraProductosFO() {
+        return extraProductosFO;
+    }
+
+    public void setExtraProductosFO(Lista_Doble_Productos extraProductosFO) {
+        this.extraProductosFO = extraProductosFO;
     }
 
     public ProductoPanel getFrmProducto() {
@@ -402,6 +427,22 @@ public class ControllerProductoPanel {
 
     public void setFrmProducto(ProductoPanel frmProducto) {
         this.frmProducto = frmProducto;
+    }
+
+    public boolean isPuedeOrdenar() {
+        return puedeOrdenar;
+    }
+
+    public void setPuedeOrdenar(boolean puedeOrdenar) {
+        this.puedeOrdenar = puedeOrdenar;
+    }
+
+    public boolean isEsAscendente() {
+        return esAscendente;
+    }
+
+    public void setEsAscendente(boolean esAscendente) {
+        this.esAscendente = esAscendente;
     }
 
 }

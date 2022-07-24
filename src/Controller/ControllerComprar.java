@@ -2,19 +2,16 @@ package Controller;
 
 import Model.Configuracion;
 import Model.Facturas;
+import Model.Nodo_Factura;
 import Model.Producto;
 import View.vistaComprar;
 import java.awt.Image;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class ControllerComprar {
 
@@ -43,15 +40,14 @@ public class ControllerComprar {
                     JOptionPane.showMessageDialog(null, "Compra realizada con éxito!");
                     llenarFactura();
                     vista.dispose();
-                    //COMENTÉ EL CODIGO DEL ARCHIVO PARA QUE SE HAGAN PRUEBAS SIN MODIFICARLO
-                    
-//                    try {
-//                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-//
-//                    } catch (Exception ex) {
-//                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-//
-//                    }
+             
+                    try {
+                        Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                    }
                         }else{
                          JOptionPane.showMessageDialog(null,"Dni inválido, debe contener 8 dígitos."); 
                          vista.dniP.setText("");
@@ -81,20 +77,20 @@ public class ControllerComprar {
     ;
     public void llenarFactura(){
         int auxiliar;
-        if(Configuracion.arrFacturas.getIndice()==0){
+        if(Configuracion.arrFacturas.getPrimero()==null){
             auxiliar = 1;
         }else{
-            auxiliar = (Integer.parseInt(Configuracion.arrFacturas.getArregloP()[Configuracion.arrFacturas.getIndice()-1].getCodigo())+1);
+            auxiliar = (Integer.parseInt(Configuracion.arrFacturas.getUltimo().getContenido().getCodigo())+1);
         }
-        Configuracion.arrFacturas.agregar(new Facturas(
-                vista.nombreP.getText(),
-                auxiliar+"",
-                producto.getNombreProducto(),
-                new Date(),
-                Integer.parseInt(vista.cantidad.getText()), 
-                (float) (Float.parseFloat(vista.cantidad.getText())*
-                        producto.getValorXUnidad())));
-                    
+        Configuracion.arrFacturas.Insertar_Ultimo(new Nodo_Factura(new Facturas(
+                    vista.nombreP.getText(),
+                    auxiliar+"",
+                    producto.getNombreProducto(),
+                    new Date(),
+                    Integer.parseInt(vista.cantidad.getText()),
+                    Float.parseFloat(vista.costoTotal.getText())
+        
+        )));
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
         } catch (IOException ex) {

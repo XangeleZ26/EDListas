@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class ControllerFacturasPanel {
-    ArregloFacturas arrFacturas;
+    Lista_Doble_Facturas arrFacturas;
     FacturasPanel frmFactura;
 
     public ControllerFacturasPanel() {
@@ -28,11 +28,11 @@ public class ControllerFacturasPanel {
 
     }
 
-    public ArregloFacturas getArrFacturas() {
+    public Lista_Doble_Facturas getArrFacturas() {
         return arrFacturas;
     }
 
-    public void setArrFacturas(ArregloFacturas arrFacturas) {
+    public void setArrFacturas(Lista_Doble_Facturas arrFacturas) {
         this.arrFacturas = arrFacturas;
     }
 

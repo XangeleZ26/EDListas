@@ -22,7 +22,7 @@ public class Plantilla {
     String nombreOperador;
     String fecha;
     String rutaImagen;
-    Facturas[] facturas;
+    Lista_Doble_Productos facturas;
     
     Document documento;
     FileOutputStream archivo;
@@ -31,7 +31,7 @@ public class Plantilla {
     public Plantilla(String nombreOperador,
             String fecha,
             String rutaImagen,
-            Facturas[] facturas)
+            Lista_Doble_Productos facturas)
     {
         this.nombreOperador = nombreOperador;
         this.fecha = fecha;
@@ -91,15 +91,17 @@ public class Plantilla {
             tabla.addCell(codigo);
             tabla.addCell(producto);
             tabla.addCell(monto);
-            
-            for(int i =0; i<Configuracion.arrFacturas.getIndice(); i++){
-                Facturas factura = facturas[i];
-                tabla.addCell(factura.getNombre());                
-                tabla.addCell(factura.getCantidad()+"");
-                tabla.addCell(factura.getCodigo());
-                tabla.addCell(factura.getProducto());  
-                tabla.addCell(String.valueOf(factura.getMonto()));
+            Nodo_Factura apoyo ;
+            apoyo = Configuracion.arrFacturas.primero;
+            while(apoyo !=null){
+                tabla.addCell(apoyo.getContenido().getNombre());                
+                tabla.addCell(apoyo.getContenido().getCantidad()+"");
+                tabla.addCell(apoyo.getContenido().getCodigo());
+                tabla.addCell(apoyo.getContenido().getProducto());  
+                tabla.addCell(String.valueOf(apoyo.getContenido().getMonto()));
+            apoyo=apoyo.getSiguiente();
             }
+
             documento.add(tabla);          
             documento.add(Chunk.NEWLINE);
             documento.add(new Paragraph("Fecha: " + fecha));

@@ -14,10 +14,10 @@ public class App {
         File archivoProductos = new File("archivoProductos.dat");
         if (archivoProductos.exists()) {
             try {
-                ArregloProductos extra = (ArregloProductos) Configuracion.serial.deserializar("archivoProductos.dat");
+                Lista_Doble_Productos extra = (Lista_Doble_Productos) Configuracion.serial.deserializar("archivoProductos.dat");
                 Configuracion.arrProductos = extra;
                 if(Configuracion.arrProductos == null){
-                    Configuracion.arrProductos = new ArregloProductos();
+                    Configuracion.arrProductos = new Lista_Doble_Productos();
                 }
             } catch (Exception ex) {
                 System.out.println("archivo vacio, primer guardado y/o archivo inexistente");
@@ -27,10 +27,10 @@ public class App {
         File archivoFacturas = new File("facturas.txt");
         if (archivoFacturas.exists()) {
             try {
-                ArregloFacturas extra2 = (ArregloFacturas) Configuracion.serial.deserializar("facturas.txt");
+                Lista_Doble_Facturas extra2 = (Lista_Doble_Facturas) Configuracion.serial.deserializar("facturas.txt");
                 Configuracion.arrFacturas = extra2;
                 if (Configuracion.arrFacturas == null) {
-                    Configuracion.arrFacturas = new ArregloFacturas();
+                    Configuracion.arrFacturas = new Lista_Doble_Facturas();
                 }
             } catch (Exception ex) {
                 System.out.println("archivo vacio, primer guardado y/o archivo inexistente");

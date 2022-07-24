@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Configuracion;
+import Model.Nodo_Producto;
 import Model.Producto;
 import View.VistaCreacionProducto;
 import java.awt.*;
@@ -64,7 +65,7 @@ public class ControllerCreacion {
                     //pasamos a agregar la imagen de codigo de barras
                     NuevoProducto.setImagenBarras(generarBarras(NuevoProducto.getNumberEtiqueta()));
                     //GUARDAMOS AL VECTOR
-                    Configuracion.arrProductos.agregar(NuevoProducto);
+                    Configuracion.arrProductos.Insertar_Ultimo(new Nodo_Producto(NuevoProducto));
                     //GUARDAMOS AL ARCHIVO
                     try {
                         Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
@@ -112,11 +113,11 @@ public class ControllerCreacion {
             aleatorio = (int) (r.nextInt());
             codigoPosi = Math.abs(aleatorio);
             codigoCadena = String.valueOf(codigoPosi);
-
-            for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-                if (codigoCadena.equalsIgnoreCase(Configuracion.arrProductos.getArregloP()[i].getNumberEtiqueta())) {
-                    repite = true;
-                }
+            Nodo_Producto pos = Configuracion.arrProductos.getPrimero();
+            while(pos!=null){
+               if (codigoCadena.equalsIgnoreCase(pos.getContenido().getNumberEtiqueta())){ 
+               repite = true;}
+               pos=pos.getSiguiente();
             }
         } while (repite);
 

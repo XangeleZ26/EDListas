@@ -25,7 +25,7 @@ public class Facturas implements Serializable {
         this.Cantidad = Cantidad;
         this.monto = monto;
     }
-
+    
 
     /*
     public void guardarFactura() throws ClassNotFoundException{
@@ -86,6 +86,7 @@ public class Facturas implements Serializable {
         }
         return codigo;
     }*/
+    
     public String getNombre() {
         return nombre;
     }

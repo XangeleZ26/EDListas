@@ -6,6 +6,7 @@ package View;
 
 import Controller.ControllerComprar;
 import Model.Configuracion;
+import Model.Nodo_Producto;
 import Model.Producto;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -235,29 +236,33 @@ public class VistaCliente extends javax.swing.JFrame {
         int imagenesMostradas=0;
         int cantTotalImagesAUsar = 0;
         //ESTO ES PARA SABER CON CUANTAS IMAGENES SE TRABAJARÁN DE ANTEMANO
-        for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("CADUCADO"))){
-               cantTotalImagesAUsar++; 
-            }
+        Nodo_Producto pos =Configuracion.arrProductos.getPrimero() ;
+        while(pos!=null){
+        if(pos.getContenido().getStock()>0&&!(pos.getContenido().getEstado().equals("CADUCADO"))){
+               cantTotalImagesAUsar++; }    
+            
+        pos=pos.getSiguiente();
         }
         
-        for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-            
-            if(Configuracion.arrProductos.getArregloP()[i].getStock()>0&&!(Configuracion.arrProductos.getArregloP()[i].getEstado().equals("CADUCADO"))){
+        pos = Configuracion.arrProductos.getPrimero();
+        
+        while(pos!=null){
+                      
+            if(pos.getContenido().getStock()>0&&!(pos.getContenido().getEstado().equals("CADUCADO"))){
                 
             JLabel imagenLabel = new JLabel();
             JLabel nombreLabel = new JLabel();
             JLabel precioLabel = new JLabel();
 
-            imagenLabel.setIcon(scaleImage((ImageIcon) Configuracion.arrProductos.getArregloP()[i].getImagen(), 240, 250));
+            imagenLabel.setIcon(scaleImage((ImageIcon) pos.getContenido().getImagen(), 240, 250));
             
-            nombreLabel.setText(Configuracion.arrProductos.getArregloP()[i].getNombreProducto());
+            nombreLabel.setText(pos.getContenido().getNombreProducto());
             nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-            precioLabel.setText("S/. " + String.valueOf(Configuracion.arrProductos.getArregloP()[i].getValorXUnidad()));
+            precioLabel.setText("S/. " + String.valueOf(pos.getContenido().getValorXUnidad()));
             precioLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-            Producto datoProducto = Configuracion.arrProductos.getArregloP()[i];
+            Producto datoProducto = pos.getContenido();
             //MOUSE LISTENER
             imagenLabel.addMouseListener(new MouseAdapter() {
                 @Override
@@ -290,7 +295,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 }
                 ImagesXFila = 0;
             }
-        }
+        }  
+            
+            
+        pos=pos.getSiguiente();
         }
     }
     private void textMiniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textMiniMouseClicked

@@ -87,14 +87,17 @@ public class Relog implements Runnable {
                 fecha();
             }
             try {
-                for (int i = 0; i < Configuracion.arrProductos.getIndice(); i++) {
-                    if (Configuracion.arrProductos.getArregloP()[i].getEstado().equals("VIGENTE")) {
+                Nodo_Producto apoyo;
+                apoyo = Configuracion.arrProductos.primero;
 
-                        if (comparacionFechas(Configuracion.arrProductos.getArregloP()[i].getFechaVencimiento())) {
-                            Configuracion.arrProductos.getArregloP()[i].setEstado("CADUCADO");
+                while (apoyo != null) {
+                    if (apoyo.getContenido().getEstado().equals("VIGENTE")) {
+
+                        if (comparacionFechas(apoyo.getContenido().getFechaVencimiento())) {
+                            apoyo.getContenido().setEstado("CADUCADO");
                         }
-                        if (Configuracion.arrProductos.getArregloP()[i].getStock() == 0) {
-                            Configuracion.arrProductos.getArregloP()[i].setEstado("AGOTADO");
+                        if (apoyo.getContenido().getStock() == 0) {
+                            apoyo.getContenido().setEstado("AGOTADO");
                         }
 
                         try {
@@ -102,13 +105,12 @@ public class Relog implements Runnable {
 
                         } catch (IOException xd) {
                             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-
                         }
-
                     }
+                    apoyo = apoyo.siguiente;
                 }
                 try {
-                    Thread.sleep(10*1000); //se ejecuta dsps de pasado un tiempo
+                    Thread.sleep(10 * 1000); //se ejecuta dsps de pasado un tiempo
                 } catch (InterruptedException e) {
                 }
             } catch (Exception ex1) {

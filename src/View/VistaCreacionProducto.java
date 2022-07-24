@@ -1,6 +1,7 @@
 package View;
 
 import Model.Configuracion;
+import Model.Nodo_Producto;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -84,7 +85,6 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
         jTextPane1.setEditable(false);
         jTextPane1.setBorder(null);
-        jTextPane1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         jTextPane1.setText("La imagen seleccionada será mostrada ante el público general.");
         jTextPane1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTextPane1);
@@ -161,8 +161,8 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
         jPanel1.add(stockInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("Valor por producto:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 190, -1, -1));
+        jLabel7.setText("Valor por producto (S/.):");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 190, 160, -1));
 
         valorUnidadtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +342,7 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
     private void categoriatxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriatxtMouseClicked
 
-        if(!(Configuracion.arrProductos.getIndice()==0)){
+        if(!(Configuracion.arrProductos.Contar()==0)){
             sCrollCategoria.setVisible(true);
         }
     }//GEN-LAST:event_categoriatxtMouseClicked
@@ -383,23 +383,23 @@ public class VistaCreacionProducto extends javax.swing.JPanel {
 
     public void llenarListaCategoria() {
         DefaultListModel agregarElementos = new DefaultListModel();
-
         boolean esRepetido=false;
-
-        for (int i = 0; i <Configuracion.arrProductos.getIndice(); i++) {
-            esRepetido=false;
-         if(agregarElementos.isEmpty()){
-             agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
-         }else{
+        Nodo_Producto pos =Configuracion.arrProductos.getPrimero() ;
+        while(pos!=null){
+        esRepetido=false;
+        if(agregarElementos.isEmpty()){
+             agregarElementos.addElement(pos.getContenido().getCategoria());
+        }else{
              for(int j=0;j<agregarElementos.getSize();j++){
-                 if(Configuracion.arrProductos.getArregloP()[i].getCategoria().equals(agregarElementos.get(j))){
+                 if(pos.getContenido().getCategoria().equals(agregarElementos.get(j))){
                     esRepetido=true;
                  }
              }
                if(esRepetido==false){
-                      agregarElementos.addElement(Configuracion.arrProductos.getArregloP()[i].getCategoria());
+                      agregarElementos.addElement(pos.getContenido().getCategoria());
                  }
-         }
+         }    
+        pos=pos.getSiguiente();
         }
         listaCategorias.setModel(agregarElementos);
     }

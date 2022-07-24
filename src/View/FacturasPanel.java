@@ -5,9 +5,12 @@
  */
 package View;
 
-import Model.ArregloFacturas;
+import Model.Lista_Doble_Facturas;
 import Model.Configuracion;
 import Model.Facturas;
+import Model.Lista_Doble_Productos;
+import Model.Nodo_Factura;
+import Model.Nodo_Producto;
 import Model.Plantilla;
 import Model.Producto;
 import java.awt.Color;
@@ -50,10 +53,15 @@ public class FacturasPanel extends javax.swing.JPanel {
         llenarProductos();
     }
     private void llenarProductos(){
-        int tamaño = Configuracion.arrProductos.getIndice();
+        int tamaño = Configuracion.arrProductos.Contar();
+        Nodo_Factura pos;
+        int i =0;
+        pos=Configuracion.arrFacturas.getPrimero();
         String[] listData = new String[tamaño];
-        for(int i=0; i<tamaño; i++){
-            listData[i] = Configuracion.arrProductos.getArregloP()[i].getNombreProducto();
+        while(pos != null){
+            listData[i] = pos.getContenido().getNombre();
+        pos=pos.getSiguiente();
+        i++;
         }
         listProductos.setListData(listData);
     }
@@ -401,14 +409,16 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textNombreKeyTyped
 
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
-        Producto[] aux = Configuracion.arrProductos.getArregloP();
-        for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
-            if(aux[i].getNombreProducto().equals(productoSeleccionado.getText())){
-                aux[i].setStock(aux[i].getStock()-Integer.parseInt(textCantidad.getText()));
-                aux[i].setCantidadVendido(Integer.parseInt(textCantidad.getText())+aux[i].getCantidadVendido());
+        Lista_Doble_Productos aux = Configuracion.arrProductos;
+        Nodo_Producto pos ;
+        pos=Configuracion.arrProductos.getPrimero();
+        while(pos != null){
+            if(pos.getContenido().getNombreProducto().equals(productoSeleccionado.getText())){
+                pos.getContenido().setStock(pos.getContenido().getStock()-Integer.parseInt(textCantidad.getText()));
+                pos.getContenido().setCantidadVendido(Integer.parseInt(textCantidad.getText())+pos.getContenido().getCantidadVendido());
             }
-        }
-        Configuracion.arrProductos.setArregloP(aux);
+        pos= pos.getSiguiente();}
+        Configuracion.setArrProductos(aux);
         agregar();
         borrarCampos();
     }//GEN-LAST:event_textRegistrarMouseClicked
@@ -416,13 +426,13 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
         productoSeleccionado.setText(listProductos.getSelectedValue());
         listP.setVisible(false);
-        Producto[] aux = Configuracion.arrProductos.getArregloP();
-        for(int i=0; i<Configuracion.arrProductos.getIndice(); i++){
-            if(aux[i].getNombreProducto().equals(productoSeleccionado.getText())){
-                textMonto.setText(aux[i].getValorXUnidad()+"");
+        Nodo_Producto aux = Configuracion.arrProductos.getPrimero();
+        while(aux!=null){
+            if(aux.getContenido().getNombreProducto().equals(productoSeleccionado.getText())){
+                textMonto.setText(aux.getContenido().getValorXUnidad()+"");
             }
-        }
-        
+        aux=aux.getSiguiente();
+        }  
     }//GEN-LAST:event_listProductosMouseClicked
 
     private void textMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMontoActionPerformed
@@ -482,7 +492,7 @@ public class FacturasPanel extends javax.swing.JPanel {
         Plantilla plantilla = new Plantilla("ReporteBoletas",
                new Date().toString(),
                "src/Images/pasteleria (1).jpg",
-               Configuracion.arrFacturas.getArregloP());
+               Configuracion.getArrProductos());
         plantilla.crearPlantilla();
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -520,14 +530,14 @@ public class FacturasPanel extends javax.swing.JPanel {
             Integer.parseInt(textCantidad.getText())
                     *Float.parseFloat(textMonto.getText())});
         
-        Configuracion.arrFacturas.agregar(new Facturas(
+        Configuracion.arrFacturas.Insertar_Ultimo(new Nodo_Factura(new Facturas(
                 textNombre.getText(),
                 ""+(dtm.getRowCount()-1),
                 productoSeleccionado.getText(),
                 new Date(),
                 Integer.parseInt(textCantidad.getText()),
                 Float.parseFloat(textMonto.getText())*
-                        Integer.parseInt(textCantidad.getText())));
+                        Integer.parseInt(textCantidad.getText()))));
                     
         try{
             Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
