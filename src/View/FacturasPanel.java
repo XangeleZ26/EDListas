@@ -54,12 +54,12 @@ public class FacturasPanel extends javax.swing.JPanel {
     }
     private void llenarProductos(){
         int tamaño = Configuracion.arrProductos.Contar();
-        Nodo_Factura pos;
+        Nodo_Producto pos;
         int i =0;
-        pos=Configuracion.arrFacturas.getPrimero();
+        pos=Configuracion.arrProductos.getPrimero();
         String[] listData = new String[tamaño];
         while(pos != null){
-            listData[i] = pos.getContenido().getNombre();
+            listData[i] = pos.getContenido().getNombreProducto();
         pos=pos.getSiguiente();
         i++;
         }

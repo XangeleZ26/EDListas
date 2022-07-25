@@ -81,9 +81,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         textValor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        textValorStock = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         panelGuardar = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         panelCancelar = new javax.swing.JPanel();
@@ -200,27 +197,6 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
-        textValorStock.setForeground(new java.awt.Color(204, 204, 204));
-        textValorStock.setText("jTextField4");
-        textValorStock.setBorder(null);
-        textValorStock.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                textValorStockMouseClicked(evt);
-            }
-        });
-        textValorStock.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textValorStockKeyTyped(evt);
-            }
-        });
-
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Valor stock:");
-
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-
         panelGuardar.setBackground(new java.awt.Color(204, 155, 64));
         panelGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -335,10 +311,6 @@ public class ProductoPanel extends javax.swing.JPanel {
                                     .addGap(10, 10, 10)
                                     .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(10, 10, 10)
-                                    .addComponent(textValorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(10, 10, 10)
                                     .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -346,8 +318,7 @@ public class ProductoPanel extends javax.swing.JPanel {
                                     .addGap(90, 90, 90)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(45, 45, 45)
                             .addComponent(jLabel1))
                         .addGroup(jPanel4Layout.createSequentialGroup()
@@ -396,13 +367,8 @@ public class ProductoPanel extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textValorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -459,7 +425,6 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         comboFiltro.setBackground(new java.awt.Color(220, 193, 138));
         comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin filtro", "Por categoría", "Stocks caducados", "Stocks vigentes", "Stocks agotados" }));
-        comboFiltro.setBorder(null);
         comboFiltro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,7 +435,6 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         comboOrdenar.setBackground(new java.awt.Color(220, 193, 138));
         comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Ganancias", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
-        comboOrdenar.setBorder(null);
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -778,8 +742,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         textCategoria.setForeground(new Color(204,204,204));
         textValor.setText(""+(Double) obj[3]);
         textValor.setForeground(new Color(204,204,204));
-        textValorStock.setText(""+(((Double) obj[3])*((Integer) obj[4])));
-        textValorStock.setForeground(new Color(204,204,204));
         labelCodigo.setText("Codigo: "+(String) obj[0]);
         labelStockInicial.setText("Stock Inicial: "+(Integer) obj[4]);
         labelStockActual.setText("Stock Actual: "+(Integer) obj[5]);
@@ -791,8 +753,8 @@ public class ProductoPanel extends javax.swing.JPanel {
         Nodo_Producto aux = Configuracion.arrProductos.Buscar((String) this.obj[0]);
         aux.getContenido().setNombreProducto(textNombre.getText());
         aux.getContenido().setCategoria(textCategoria.getText());
-        aux.getContenido().setValorXUnidad(Float.parseFloat(textValor.getText()));
-        aux.getContenido().setValorTotalStock(Float.parseFloat(textValorStock.getText()));
+        aux.getContenido().setValorXUnidad(Double.parseDouble(textValor.getText()));
+      
         try{
             Configuracion.serial.serializar("archivoProductos.dat",Configuracion.arrProductos); 
             
@@ -815,11 +777,6 @@ public class ProductoPanel extends javax.swing.JPanel {
         textValor.setText("");
         textValor.setForeground(Color.black);
     }//GEN-LAST:event_textValorMouseClicked
-
-    private void textValorStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textValorStockMouseClicked
-        textValorStock.setText("");
-        textValorStock.setForeground(Color.black);
-    }//GEN-LAST:event_textValorStockMouseClicked
 
     private void panelGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGuardarMouseClicked
         iniciarModificacion();
@@ -856,30 +813,18 @@ public class ProductoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_panelModificarMouseClicked
 
     private void textValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textValorKeyTyped
-        try{
-            float valor = Float.parseFloat(textValor.getText()+evt.getKeyChar())*(Integer) obj[3];
-            textValorStock.setText(valor+"");
-            textValorStock.setForeground(Color.BLACK);
-        }catch(Exception e){
-            float valor = Float.parseFloat(""+evt.getKeyChar())*(Integer) obj[3];
-            textValorStock.setText(valor+"");
-            textValorStock.setForeground(Color.BLACK);
-        }
-        
-    }//GEN-LAST:event_textValorKeyTyped
+//        try{
+//            float valor = Float.parseFloat(textValor.getText()+evt.getKeyChar())*(Integer) obj[3];
+//            textValorStock.setText(valor+"");
+//            textValorStock.setForeground(Color.BLACK);
+//        }catch(Exception e){
+//            float valor = Float.parseFloat(""+evt.getKeyChar())*(Integer) obj[3];
+//            textValorStock.setText(valor+"");
+//            textValorStock.setForeground(Color.BLACK);
+//        }
+//        
 
-    private void textValorStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textValorStockKeyTyped
-        try{
-            float valor = Float.parseFloat(textValorStock.getText()+evt.getKeyChar())/(Integer) obj[3];
-            textValor.setText(valor+"");
-            textValor.setForeground(Color.BLACK);
-        }catch(Exception e){
-            float valor = Float.parseFloat(""+evt.getKeyChar())/(Integer) obj[3];
-            textValor.setText(valor+"");
-            textValor.setForeground(Color.BLACK);
-        }
-        
-    }//GEN-LAST:event_textValorStockKeyTyped
+    }//GEN-LAST:event_textValorKeyTyped
 
     private void panelModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelModMouseClicked
      DefaultTableModel dtm = (DefaultTableModel) tableProducto.getModel();
@@ -1020,7 +965,6 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.ButtonGroup grupoBtnEliminar;
     public javax.swing.ButtonGroup grupoBtnOrdenar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -1035,9 +979,8 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    public javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1051,14 +994,13 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelDetalles;
     private javax.swing.JPanel panelGuardar;
     private javax.swing.JPanel panelMod;
-    private javax.swing.JPanel panelModificar;
+    public javax.swing.JPanel panelModificar;
     public javax.swing.JRadioButton radioAscendente;
     public javax.swing.JRadioButton radioDescendente;
     private javax.swing.JScrollPane scrollCategoria;
     public javax.swing.JTable tableProducto;
     private javax.swing.JTextField textCategoria;
     private javax.swing.JTextField textNombre;
-    private javax.swing.JTextField textValor;
-    private javax.swing.JTextField textValorStock;
+    public javax.swing.JTextField textValor;
     // End of variables declaration//GEN-END:variables
 }
