@@ -48,8 +48,6 @@ int xMouse, yMouse;
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -62,8 +60,6 @@ int xMouse, yMouse;
         porcionestxt = new javax.swing.JLabel();
         vencimientotxt = new javax.swing.JLabel();
         precioUnitariotxt = new javax.swing.JLabel();
-        stockinicialtxt = new javax.swing.JLabel();
-        valorInicialtxt = new javax.swing.JLabel();
         cantidadVendidatxt = new javax.swing.JLabel();
         stockActualtxt = new javax.swing.JLabel();
         valorActualDeStocktxt = new javax.swing.JLabel();
@@ -176,7 +172,7 @@ int xMouse, yMouse;
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("Stock actual:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 370, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Porciones por producto:");
@@ -196,23 +192,15 @@ int xMouse, yMouse;
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel11.setText("Valor actual de stock:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel12.setText("Valor inicial de stock:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 310, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel13.setText("Stock inicial:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 280, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("Ganancia actual:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel15.setText("Descripción:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel17.setText("Código de etiqueta:");
@@ -220,11 +208,11 @@ int xMouse, yMouse;
 
         jLabel18.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel18.setText("Estado:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel19.setText("Cantidad vendida:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 340, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel20.setText("Producto:");
@@ -254,33 +242,25 @@ int xMouse, yMouse;
         precioUnitariotxt.setText("Producto:");
         jPanel1.add(precioUnitariotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 230, -1));
 
-        stockinicialtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        stockinicialtxt.setText("Producto:");
-        jPanel1.add(stockinicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 230, -1));
-
-        valorInicialtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        valorInicialtxt.setText("Producto:");
-        jPanel1.add(valorInicialtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 230, -1));
-
         cantidadVendidatxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cantidadVendidatxt.setText("Producto:");
-        jPanel1.add(cantidadVendidatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 230, -1));
+        jPanel1.add(cantidadVendidatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 230, -1));
 
         stockActualtxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         stockActualtxt.setText("Producto:");
-        jPanel1.add(stockActualtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 230, -1));
+        jPanel1.add(stockActualtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 230, -1));
 
         valorActualDeStocktxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         valorActualDeStocktxt.setText("Producto:");
-        jPanel1.add(valorActualDeStocktxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 230, -1));
+        jPanel1.add(valorActualDeStocktxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 230, -1));
 
         gananciatxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         gananciatxt.setText("Producto:");
-        jPanel1.add(gananciatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 230, -1));
+        jPanel1.add(gananciatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 230, -1));
 
         estadotxt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         estadotxt.setText("Producto:");
-        jPanel1.add(estadotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 230, -1));
+        jPanel1.add(estadotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 230, -1));
 
         descripciontxt.setEditable(false);
         descripciontxt.setBackground(new java.awt.Color(255, 221, 158));
@@ -288,7 +268,7 @@ int xMouse, yMouse;
         descripciontxt.setRows(5);
         jScrollPane1.setViewportView(descripciontxt);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 180, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel2.setText("Detalles de stock");
@@ -369,8 +349,6 @@ int xMouse, yMouse;
     public javax.swing.JLabel imagentxt;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -392,11 +370,9 @@ int xMouse, yMouse;
     public javax.swing.JLabel porcionestxt;
     public javax.swing.JLabel precioUnitariotxt;
     public javax.swing.JLabel stockActualtxt;
-    public javax.swing.JLabel stockinicialtxt;
     private javax.swing.JLabel textMini;
     private javax.swing.JLabel textSalir;
     public javax.swing.JLabel valorActualDeStocktxt;
-    public javax.swing.JLabel valorInicialtxt;
     public javax.swing.JLabel vencimientotxt;
     // End of variables declaration//GEN-END:variables
 }

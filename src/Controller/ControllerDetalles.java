@@ -40,9 +40,7 @@ public class ControllerDetalles {
         }
         vista.precioUnitariotxt.setText("S/. "+String.valueOf(producto.getValorXUnidad()));
         vista.stockActualtxt.setText(String.valueOf(producto.getStock()));
-        vista.stockinicialtxt.setText(String.valueOf(producto.getStockInicial()));
         vista.valorActualDeStocktxt.setText("S/. "+String.valueOf(producto.getStock()*producto.getValorXUnidad()));
-        vista.valorInicialtxt.setText("S/. "+String.valueOf(producto.getValorTotalStock()));
         vista.vencimientotxt.setText(producto.getFechaVencimiento());
         
     }

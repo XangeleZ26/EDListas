@@ -99,18 +99,29 @@ public class Relog implements Runnable {
                         if (apoyo.getContenido().getStock() == 0) {
                             apoyo.getContenido().setEstado("AGOTADO");
                         }
-
                         try {
                             Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
 
                         } catch (IOException xd) {
                             JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
                         }
+
+                    }
+                    if (apoyo.getContenido().getEstado().equals("AGOTADO")) {
+                        if (apoyo.getContenido().getStock() > 0) {
+                            apoyo.getContenido().setEstado("VIGENTE");
+                            try {
+                                Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                            } catch (IOException xd) {
+                                JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+                            }
+                        }
                     }
                     apoyo = apoyo.siguiente;
                 }
                 try {
-                    Thread.sleep(10 * 1000); //se ejecuta dsps de pasado un tiempo
+                    Thread.sleep(4 * 1000); //se ejecuta dsps de pasado un tiempo
                 } catch (InterruptedException e) {
                 }
             } catch (Exception ex1) {

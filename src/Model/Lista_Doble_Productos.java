@@ -13,21 +13,20 @@ public class Lista_Doble_Productos implements Serializable {
     }
 
     public Object[] header() {
-        Object tmp[] = new Object[9];
+        Object tmp[] = new Object[8];
         tmp[0] = "Código";
         tmp[1] = "Nombre";
         tmp[2] = "Categoria";
         tmp[3] = "Valor c/u(S/.)";
-        tmp[4] = "Cant. inicial";
-        tmp[5] = "Cant. actual";
-        tmp[6] = "Cant. ventas";
-        tmp[7] = "Ganancias(S/.)";
-        tmp[8] = "Estado";
+        tmp[4] = "Stock";
+        tmp[5] = "Cant. ventas";
+        tmp[6] = "Ganancias(S/.)";
+        tmp[7] = "Estado";
         return tmp;
     }
 
     public Object[][] data() {
-        Object tmp[][] = new Object[this.Contar()][9];
+        Object tmp[][] = new Object[this.Contar()][8];
         int i = 0;
         Nodo_Producto pos = primero;
         while (pos != null) {
@@ -35,11 +34,10 @@ public class Lista_Doble_Productos implements Serializable {
             tmp[i][1] = pos.getContenido().getNombreProducto();
             tmp[i][2] = pos.getContenido().getCategoria();
             tmp[i][3] = pos.getContenido().getValorXUnidad();
-            tmp[i][4] = pos.getContenido().getStockInicial();
-            tmp[i][5] = pos.getContenido().getStock();
-            tmp[i][6] = pos.getContenido().getCantidadVendido();
-            tmp[i][7] = pos.getContenido().getCantidadVendido() * pos.getContenido().getValorXUnidad();
-            tmp[i][8] = pos.getContenido().getEstado();
+            tmp[i][4] = pos.getContenido().getStock();
+            tmp[i][5] = pos.getContenido().getCantidadVendido();
+            tmp[i][6] = pos.getContenido().getCantidadVendido() * pos.getContenido().getValorXUnidad();
+            tmp[i][7] = pos.getContenido().getEstado();
             pos = pos.siguiente;
             i++;
         }
@@ -213,44 +211,6 @@ public class Lista_Doble_Productos implements Serializable {
 
     }
 
-    public Lista_Doble_Productos Ordenar_Por_Stock_Inicial(boolean esAscendente) {
-        Producto temp;
-        Nodo_Producto auxiliar_J, auxiliar_X = null, menor;
-        Lista_Doble_Productos extraLista = new Lista_Doble_Productos();
-        //Crear copia de la lista original
-        Nodo_Producto PunterocopiaNodo = primero;
-        while (PunterocopiaNodo != null) {
-            Nodo_Producto copiaNodo = new Nodo_Producto(PunterocopiaNodo.getContenido());
-            extraLista.Insertar_Ultimo(copiaNodo);
-            PunterocopiaNodo = PunterocopiaNodo.siguiente;
-        }
-
-        auxiliar_J = extraLista.primero;
-        while (auxiliar_J != null) {
-            menor = auxiliar_J;
-            auxiliar_X = menor.getSiguiente();
-            while (auxiliar_X != null) {
-                if (esAscendente) { //ASCENDENTE
-                    if (auxiliar_X.getContenido().getStockInicial() < menor.getContenido().getStockInicial()) {
-                        menor = auxiliar_X;
-                    }
-                } else {     //DESCENDENTE
-                    if (auxiliar_X.getContenido().getStockInicial() > menor.getContenido().getStockInicial()) {
-                        menor = auxiliar_X;
-                    }
-                }
-
-                auxiliar_X = auxiliar_X.getSiguiente();
-            }
-            //aqui es donde se hace los cambios de posición
-            temp = auxiliar_J.getContenido();
-            auxiliar_J.setContenido(menor.getContenido());
-            menor.setContenido(temp);
-            auxiliar_J = auxiliar_J.siguiente;
-        }
-        return extraLista;
-
-    }
 
     public Lista_Doble_Productos Ordenar_Por_Ganancia(boolean esAscendente) {
 

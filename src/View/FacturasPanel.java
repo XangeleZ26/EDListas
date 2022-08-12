@@ -32,8 +32,9 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class FacturasPanel extends javax.swing.JPanel {
-    
+
     DefaultTableModel dtm = new DefaultTableModel();
+
     /**
      * Creates new form FacturasPanel
      */
@@ -41,30 +42,32 @@ public class FacturasPanel extends javax.swing.JPanel {
         initComponents();
         iniciarFactura();
     }
-    
-    private void iniciarFactura(){
+
+    private void iniciarFactura() {
         listP.setVisible(false);
         SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
-        textFecha.setText(formateadorFecha.format(new Date())+"");
-        
-        String[] titulo = new String[]{"Nombre ","Codigo ","Producto","Cantidad ","Monto "};
+        textFecha.setText(formateadorFecha.format(new Date()) + "");
+
+        String[] titulo = new String[]{"Nombre ", "Codigo ", "Producto", "Cantidad ", "Monto "};
         dtm.setColumnIdentifiers(titulo);
         tblDatos.setModel(dtm);
         llenarProductos();
     }
-    private void llenarProductos(){
+
+    private void llenarProductos() {
         int tamaño = Configuracion.arrProductos.Contar();
         Nodo_Producto pos;
-        int i =0;
-        pos=Configuracion.arrProductos.getPrimero();
+        int i = 0;
+        pos = Configuracion.arrProductos.getPrimero();
         String[] listData = new String[tamaño];
-        while(pos != null){
+        while (pos != null) {
             listData[i] = pos.getContenido().getNombreProducto();
-        pos=pos.getSiguiente();
-        i++;
+            pos = pos.getSiguiente();
+            i++;
         }
         listProductos.setListData(listData);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -389,50 +392,60 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textNombreActionPerformed
 
     private void textCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textCantidadKeyTyped
-     
-       
+
         char caracter = evt.getKeyChar();
-        
-        if((caracter < '0' || caracter > '9')
-                &&(caracter != KeyEvent.VK_BACK_SPACE)){
+
+        if ((caracter < '0' || caracter > '9')
+                && (caracter != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }
-        
-        
+
+
     }//GEN-LAST:event_textCantidadKeyTyped
 
     private void textNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNombreKeyTyped
-           if ((evt.getKeyChar() != 32)
+        if ((evt.getKeyChar() != 32)
                 && (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
             evt.consume();
         }
     }//GEN-LAST:event_textNombreKeyTyped
 
     private void textRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseClicked
+
         Lista_Doble_Productos aux = Configuracion.arrProductos;
-        Nodo_Producto pos ;
-        pos=Configuracion.arrProductos.getPrimero();
-        while(pos != null){
-            if(pos.getContenido().getNombreProducto().equals(productoSeleccionado.getText())){
-                pos.getContenido().setStock(pos.getContenido().getStock()-Integer.parseInt(textCantidad.getText()));
-                pos.getContenido().setCantidadVendido(Integer.parseInt(textCantidad.getText())+pos.getContenido().getCantidadVendido());
+        Nodo_Producto pos;
+        int agotado=1;
+        pos = Configuracion.arrProductos.getPrimero();
+        while (pos != null) {
+            if (pos.getContenido().getNombreProducto().equals(productoSeleccionado.getText())) {
+                if (pos.getContenido().getStock() > 0) {
+                    agotado=0;
+                    pos.getContenido().setStock(pos.getContenido().getStock() - Integer.parseInt(textCantidad.getText()));
+                    pos.getContenido().setCantidadVendido(Integer.parseInt(textCantidad.getText()) + pos.getContenido().getCantidadVendido());
+                }else{
+                    JOptionPane.showMessageDialog(null, "¡El stock de este producto está agotado!");
+                }        
             }
-        pos= pos.getSiguiente();}
+            pos = pos.getSiguiente();
+        }
+        if(agotado==0){
         Configuracion.setArrProductos(aux);
         agregar();
+        }
         borrarCampos();
+
     }//GEN-LAST:event_textRegistrarMouseClicked
 
     private void listProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProductosMouseClicked
         productoSeleccionado.setText(listProductos.getSelectedValue());
         listP.setVisible(false);
         Nodo_Producto aux = Configuracion.arrProductos.getPrimero();
-        while(aux!=null){
-            if(aux.getContenido().getNombreProducto().equals(productoSeleccionado.getText())){
-                textMonto.setText(aux.getContenido().getValorXUnidad()+"");
+        while (aux != null) {
+            if (aux.getContenido().getNombreProducto().equals(productoSeleccionado.getText())) {
+                textMonto.setText(aux.getContenido().getValorXUnidad() + "");
             }
-        aux=aux.getSiguiente();
-        }  
+            aux = aux.getSiguiente();
+        }
     }//GEN-LAST:event_listProductosMouseClicked
 
     private void textMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMontoActionPerformed
@@ -442,8 +455,8 @@ public class FacturasPanel extends javax.swing.JPanel {
     private void textMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMontoKeyTyped
 
         char caracter = evt.getKeyChar();
-        
-        if((caracter < '0' || caracter > '9')&&(caracter != KeyEvent.VK_PERIOD)){
+
+        if ((caracter < '0' || caracter > '9') && (caracter != KeyEvent.VK_PERIOD)) {
             evt.consume();
         }
     }//GEN-LAST:event_textMontoKeyTyped
@@ -461,11 +474,11 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_productoSeleccionadoKeyPressed
 
     private void productoSeleccionadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productoSeleccionadoKeyTyped
-         char caracter = evt.getKeyChar();
-        
-        if((caracter < 'a' || caracter > 'z')&&(caracter < 'A' || caracter > 'Z' )){
+        char caracter = evt.getKeyChar();
+
+        if ((caracter < 'a' || caracter > 'z') && (caracter < 'A' || caracter > 'Z')) {
             evt.consume();
-        }  
+        }
     }//GEN-LAST:event_productoSeleccionadoKeyTyped
 
     private void textRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseEntered
@@ -473,11 +486,11 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textRegistrarMouseEntered
 
     private void textRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textRegistrarMouseExited
-        panelRegistrar.setBackground(new Color(204,155,64));
+        panelRegistrar.setBackground(new Color(204, 155, 64));
     }//GEN-LAST:event_textRegistrarMouseExited
 
     private void panelGenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGenerarMouseClicked
-        
+
     }//GEN-LAST:event_panelGenerarMouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
@@ -485,20 +498,20 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
-        panelGenerar.setBackground(new Color(204,155,64));
+        panelGenerar.setBackground(new Color(204, 155, 64));
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         Plantilla plantilla = new Plantilla("ReporteBoletas",
-               new Date().toString(),
-               "src/Images/pasteleria (1).jpg",
-               Configuracion.getArrProductos());
+                new Date().toString(),
+                "src/Images/pasteleria (1).jpg",
+                Configuracion.getArrProductos());
         plantilla.crearPlantilla();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         abrir("ReporteBoletas");
-    }                                        
+    }
 
     public void abrir(String nombreOperador) {
         try {
@@ -514,49 +527,51 @@ public class FacturasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        panelAbrir.setBackground(new Color(204,155,64));
+        panelAbrir.setBackground(new Color(204, 155, 64));
     }//GEN-LAST:event_jLabel8MouseExited
-    
-    private void agregar(){
-        if(datosLlenos()){
-           SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
-        dtm = (DefaultTableModel) tblDatos.getModel();
-        dtm.addRow(new Object[] {
-            textNombre.getText(),
-            ""+(dtm.getRowCount()),
-            productoSeleccionado.getText(),
-            formateadorFecha.format(new Date()),
-            textCantidad.getText(),
-            Integer.parseInt(textCantidad.getText())
-                    *Float.parseFloat(textMonto.getText())});
-        
-        Configuracion.arrFacturas.Insertar_Ultimo(new Nodo_Factura(new Facturas(
+
+    private void agregar() {
+        if (datosLlenos()) {
+            SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+            dtm = (DefaultTableModel) tblDatos.getModel();
+            dtm.addRow(new Object[]{
                 textNombre.getText(),
-                ""+(dtm.getRowCount()-1),
+                "" + (dtm.getRowCount()),
                 productoSeleccionado.getText(),
-                new Date(),
-                Integer.parseInt(textCantidad.getText()),
-                Float.parseFloat(textMonto.getText())*
-                        Integer.parseInt(textCantidad.getText()))));
-                    
-        try{
-            Configuracion.serial.serializar("facturas.txt",Configuracion.arrFacturas); 
-            System.out.println(" Prueba"+Configuracion.arrFacturas);
-        } catch (IOException ex) {
-            //F
-        }  
-        }else{
-            JOptionPane.showMessageDialog(null,"Debe llenar todos los campos.");
+                formateadorFecha.format(new Date()),
+                textCantidad.getText(),
+                Integer.parseInt(textCantidad.getText())
+                * Float.parseFloat(textMonto.getText())});
+
+            Configuracion.arrFacturas.Insertar_Ultimo(new Nodo_Factura(new Facturas(
+                    textNombre.getText(),
+                    "" + (dtm.getRowCount() - 1),
+                    productoSeleccionado.getText(),
+                    new Date(),
+                    Integer.parseInt(textCantidad.getText()),
+                    Float.parseFloat(textMonto.getText())
+                    * Integer.parseInt(textCantidad.getText()))));
+
+            try {
+                Configuracion.serial.serializar("facturas.txt", Configuracion.arrFacturas);
+                System.out.println(" Prueba" + Configuracion.arrFacturas);
+            } catch (IOException ex) {
+                //F
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos.");
         }
-       
+
     }
-       public boolean datosLlenos() {
+
+    public boolean datosLlenos() {
         return (this.textNombre.getText().trim().length() != 0
                 && this.textCantidad.getText().trim().length() != 0
                 && this.productoSeleccionado.getText().trim().length() != 0
                 && this.textMonto.getText().trim().length() != 0);
     }
-    private void borrarCampos(){
+
+    private void borrarCampos() {
         textNombre.setText("");
         productoSeleccionado.setText("");
         textCantidad.setText("");

@@ -87,10 +87,11 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         labelEstado = new javax.swing.JLabel();
         labelVencimiento = new javax.swing.JLabel();
-        labelStockActual = new javax.swing.JLabel();
-        labelStockInicial = new javax.swing.JLabel();
         labelCodigo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        textStock = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         btnRefrescar = new javax.swing.JLabel();
@@ -263,17 +264,32 @@ public class ProductoPanel extends javax.swing.JPanel {
         labelVencimiento.setForeground(new java.awt.Color(153, 153, 153));
         labelVencimiento.setText("Vencimiento:");
 
-        labelStockActual.setForeground(new java.awt.Color(153, 153, 153));
-        labelStockActual.setText("Stock Actual:");
-
-        labelStockInicial.setForeground(new java.awt.Color(153, 153, 153));
-        labelStockInicial.setText("Stock inicial:");
-
         labelCodigo.setForeground(new java.awt.Color(153, 153, 153));
         labelCodigo.setText("Codigo: ");
 
         jLabel1.setForeground(new java.awt.Color(130, 130, 130));
         jLabel1.setText("Informacion del producto");
+
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Stock:");
+
+        textStock.setForeground(new java.awt.Color(204, 204, 204));
+        textStock.setText("jTextField3");
+        textStock.setBorder(null);
+        textStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textStockMouseClicked(evt);
+            }
+        });
+        textStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textStockKeyTyped(evt);
+            }
+        });
+
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -287,16 +303,7 @@ public class ProductoPanel extends javax.swing.JPanel {
                             .addComponent(labelCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(286, 286, 286)
-                            .addComponent(labelStockInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(286, 286, 286)
-                            .addComponent(labelStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(286, 286, 286)
                             .addComponent(labelVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(286, 286, 286)
-                            .addComponent(labelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(31, 31, 31)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,9 +325,17 @@ public class ProductoPanel extends javax.swing.JPanel {
                                     .addGap(90, 90, 90)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(45, 45, 45)
-                            .addComponent(jLabel1))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(labelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(81, 81, 81)
                             .addComponent(panelGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,18 +355,6 @@ public class ProductoPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(24, 24, 24)
-                        .addComponent(labelCodigo)
-                        .addGap(14, 14, 14)
-                        .addComponent(labelStockInicial)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelStockActual)
-                        .addGap(14, 14, 14)
-                        .addComponent(labelVencimiento)
-                        .addGap(14, 14, 14)
-                        .addComponent(labelEstado))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -366,13 +369,27 @@ public class ProductoPanel extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56)
+                            .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(24, 24, 24)
+                        .addComponent(labelCodigo)
+                        .addGap(29, 29, 29)
+                        .addComponent(labelVencimiento)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEstado))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(textStock))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         panelModificar.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 530, 430));
@@ -385,7 +402,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad de productos: ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
 
         btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refrescar.png"))); // NOI18N
         btnRefrescar.setText("jLabel1");
@@ -434,7 +451,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jPanel1.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 28));
 
         comboOrdenar.setBackground(new java.awt.Color(220, 193, 138));
-        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Ganancias", "Cantidad inicial", "Cantidad actual", "Nombre de producto" }));
+        comboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin ordenar", "Cantidad de ventas", "Ganancias", "Por stock", "Nombre de producto" }));
         comboOrdenar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboOrdenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,7 +550,7 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         cantidadProductos.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cantidadProductos.setText("2");
-        jPanel2.add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 60, 40));
+        jPanel2.add(cantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 60, 40));
 
         btnCancelarBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cerrar.png"))); // NOI18N
         btnCancelarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -541,29 +558,29 @@ public class ProductoPanel extends javax.swing.JPanel {
 
         tableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
             }
         ));
         tableProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -577,7 +594,6 @@ public class ProductoPanel extends javax.swing.JPanel {
             tableProducto.getColumnModel().getColumn(0).setPreferredWidth(50);
             tableProducto.getColumnModel().getColumn(0).setMaxWidth(50);
             tableProducto.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tableProducto.getColumnModel().getColumn(8).setPreferredWidth(60);
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 700, 360));
@@ -742,19 +758,19 @@ public class ProductoPanel extends javax.swing.JPanel {
         textCategoria.setForeground(new Color(204,204,204));
         textValor.setText(""+(Double) obj[3]);
         textValor.setForeground(new Color(204,204,204));
+        textStock.setText(""+ obj[4]);
+        textStock.setForeground(new Color(204,204,204));
         labelCodigo.setText("Codigo: "+(String) obj[0]);
-        labelStockInicial.setText("Stock Inicial: "+(Integer) obj[4]);
-        labelStockActual.setText("Stock Actual: "+(Integer) obj[5]);
         labelVencimiento.setText("Fecha de Vencimiento: "+
                 aux.getContenido().getFechaVencimiento());
-        labelEstado.setText("Estado: "+(String) obj[8]);
+        labelEstado.setText("Estado: "+(String) obj[7]);
     }
     private void iniciarModificacion(){
         Nodo_Producto aux = Configuracion.arrProductos.Buscar((String) this.obj[0]);
         aux.getContenido().setNombreProducto(textNombre.getText());
         aux.getContenido().setCategoria(textCategoria.getText());
         aux.getContenido().setValorXUnidad(Double.parseDouble(textValor.getText()));
-      
+        aux.getContenido().setStock(Integer.parseInt(textStock.getText()));
         try{
             Configuracion.serial.serializar("archivoProductos.dat",Configuracion.arrProductos); 
             
@@ -834,6 +850,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         int index=0;
         try{
             index=tableProducto.getSelectedRow();
+            System.out.println(index);
             this.obj = new Object[] {
                 dtm.getValueAt(index, 0),
                 dtm.getValueAt(index, 1),
@@ -842,8 +859,7 @@ public class ProductoPanel extends javax.swing.JPanel {
                 dtm.getValueAt(index, 4),
                 dtm.getValueAt(index, 5),
                 dtm.getValueAt(index, 6),
-                dtm.getValueAt(index, 7),
-                dtm.getValueAt(index, 8)
+                dtm.getValueAt(index, 7)
             };
             llenarDatos();
             panelModificar.setVisible(true);
@@ -923,6 +939,15 @@ public class ProductoPanel extends javax.swing.JPanel {
         this.btnAplicarCambios.setBackground(new Color(204,155,64));
     }//GEN-LAST:event_btnAplicarCambiosMouseExited
 
+    private void textStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textStockMouseClicked
+         textStock.setText("");
+        textStock.setForeground(Color.black);
+    }//GEN-LAST:event_textStockMouseClicked
+
+    private void textStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textStockKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textStockKeyTyped
+
     
         public void llenarListaCategoria() {
         DefaultListModel agregarElementos = new DefaultListModel();
@@ -965,6 +990,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.ButtonGroup grupoBtnEliminar;
     public javax.swing.ButtonGroup grupoBtnOrdenar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -984,10 +1010,9 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelEstado;
-    private javax.swing.JLabel labelStockActual;
-    private javax.swing.JLabel labelStockInicial;
     private javax.swing.JLabel labelVencimiento;
     private javax.swing.JList<String> listaCategoria;
     private javax.swing.JPanel panelCancelar;
@@ -1001,6 +1026,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     public javax.swing.JTable tableProducto;
     private javax.swing.JTextField textCategoria;
     private javax.swing.JTextField textNombre;
+    public javax.swing.JTextField textStock;
     public javax.swing.JTextField textValor;
     // End of variables declaration//GEN-END:variables
 }

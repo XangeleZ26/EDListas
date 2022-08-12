@@ -130,14 +130,10 @@ public class ControllerProductoPanel {
                             break;
                         }
                         case 3: { //cantidad inicial de stock
-                            ordenarStockInicial(esAscendente);
-                            break;
-                        }
-                        case 4: { //actidad actual de stock
                             ordenarStockActual(esAscendente);
                             break;
                         }
-                        case 5: { //ordenamiento por nombre
+                        case 4: { //actidad actual de stock
                             ordenarNombre(esAscendente);
                             break;
                         }
@@ -183,13 +179,13 @@ public class ControllerProductoPanel {
                             String codigo = frmProducto.tableProducto.getValueAt(seleccionado, 0).toString();
                             Configuracion.arrProductos.Elimina_Nodo(Configuracion.arrProductos.Buscar(codigo));
                             JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
-//                            try {
-//                                Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-//
-//                            } catch (Exception ex) {
-//                                JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-//
-//                            }
+                            try {
+                                Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                            }
                             frmProducto.Buscadortxt.getCaret().setVisible(false);
                             frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
                             frmProducto.Buscadortxt.setForeground(Color.gray);
@@ -212,13 +208,13 @@ public class ControllerProductoPanel {
                         Configuracion.arrProductos.colocarEliminandoParaCaducados();
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
-//                        try {
-//                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-//
-//                        } catch (Exception ex) {
-//                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-//
-//                        }
+                        try {
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                        }
                         frmProducto.Buscadortxt.getCaret().setVisible(false);
                         frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
                         frmProducto.Buscadortxt.setForeground(Color.gray);
@@ -236,13 +232,13 @@ public class ControllerProductoPanel {
                         Configuracion.arrProductos.colocarEliminandoParaAgotados();
                         concretarElim();
                         JOptionPane.showMessageDialog(null, "Eliminado con éxito.");
-//                        try {
-//                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
-//
-//                        } catch (Exception ex) {
-//                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
-//
-//                        }
+                        try {
+                            Configuracion.serial.serializar("archivoProductos.dat", Configuracion.arrProductos);
+
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Fallo en el guardado de archivo");
+
+                        }
                         frmProducto.Buscadortxt.getCaret().setVisible(false);
                         frmProducto.Buscadortxt.setText("Ingrese nombre del producto");
                         frmProducto.Buscadortxt.setForeground(Color.gray);
@@ -388,10 +384,7 @@ public class ControllerProductoPanel {
         this.Productos = this.Productos.Ordenar_Por_Stock(esAscendente);
     }
 
-    void ordenarStockInicial(boolean esAscendente) {
-        this.Productos = this.Productos.Ordenar_Por_Stock_Inicial(esAscendente);
-//    this.Productos.Ordenar_Por_Stock_Inicial();  //ESTO ERA LO Q ESTABA ANTES
-    }
+
 
     public void paraBuscar(String dato) {
 
